@@ -1,0 +1,1519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="JournalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Articles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="title_en" Type="varchar" MaxLength="512" />
+          <Property Name="title_az" Type="varchar" MaxLength="512" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="content_en" Type="ntext" />
+          <Property Name="content_az" Type="ntext" />
+          <Property Name="title_img_id" Type="int" />
+          <Property Name="author_id" Type="int" />
+          <Property Name="editor_id" Type="int" />
+          <Property Name="published" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="ArticlesCategories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="article_id" Type="int" />
+          <Property Name="category_id" Type="int" />
+        </EntityType>
+        <EntityType Name="ArticlesTags">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="article_id" Type="int" />
+          <Property Name="tag_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="title_en" Type="varchar" MaxLength="256" />
+          <Property Name="title_az" Type="varchar" MaxLength="256" />
+          <Property Name="alias" Type="varchar" MaxLength="256" />
+          <Property Name="title_img_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="comment" Type="ntext" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="article_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="title_en" Type="varchar" MaxLength="64" />
+          <Property Name="title_az" Type="varchar" MaxLength="64" />
+          <Property Name="code" Type="varchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="DownloadableResources">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="article_id" Type="int" />
+          <Property Name="title" Type="varchar" MaxLength="512" />
+          <Property Name="lang" Type="char" MaxLength="2" />
+          <Property Name="file_dir" Type="varchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="EducationLevels">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="title_en" Type="varchar" MaxLength="64" />
+          <Property Name="title_az" Type="varchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="ExhibitColumns">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="exhibit_id" Type="int" />
+          <Property Name="title_en" Type="varchar" MaxLength="256" />
+          <Property Name="title_az" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="ExhibitData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="exhibit_column_id" Type="int" />
+          <Property Name="content_en" Type="ntext" />
+          <Property Name="content_az" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Exhibits">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="article_id" Type="int" />
+          <Property Name="title_en" Type="varchar" MaxLength="256" />
+          <Property Name="title_az" Type="varchar" MaxLength="256" />
+          <Property Name="excerpt_en" Type="varchar" MaxLength="512" />
+          <Property Name="excerpt_az" Type="varchar" MaxLength="512" />
+        </EntityType>
+        <EntityType Name="Galleries">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="article_id" Type="int" />
+        </EntityType>
+        <EntityType Name="GalleryImages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="gallery_id" Type="int" />
+          <Property Name="image_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="filename" Type="varchar" MaxLength="512" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="width" Type="int" />
+          <Property Name="height" Type="int" />
+          <Property Name="file_dir" Type="varchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="Podcasts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="title_en" Type="varchar" MaxLength="512" />
+          <Property Name="title_az" Type="varchar" MaxLength="512" />
+          <Property Name="article_id" Type="int" />
+          <Property Name="file_dir" Type="varchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="Subscriptions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="256" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="category_id" Type="int" />
+          <Property Name="author_id" Type="int" />
+          <Property Name="status" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="title_en" Type="varchar" MaxLength="256" />
+          <Property Name="title_az" Type="varchar" MaxLength="256" />
+          <Property Name="alias" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Universities">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="title_en" Type="varchar" MaxLength="256" />
+          <Property Name="title_az" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="UserGroups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="64" />
+          <Property Name="last_name" Type="varchar" MaxLength="64" />
+          <Property Name="email" Type="varchar" MaxLength="128" />
+          <Property Name="password" Type="varchar" MaxLength="512" />
+          <Property Name="gender" Type="tinyint" />
+          <Property Name="birthday" Type="datetime" />
+          <Property Name="about" Type="varchar" MaxLength="512" />
+          <Property Name="biography" Type="ntext" />
+          <Property Name="phone" Type="varchar" MaxLength="64" />
+          <Property Name="user_group_id" Type="int" />
+          <Property Name="country_id" Type="int" />
+          <Property Name="education_lvl_id" Type="int" />
+          <Property Name="university_id" Type="int" />
+          <Property Name="major" Type="varchar" MaxLength="256" />
+          <Property Name="employer" Type="varchar" MaxLength="256" />
+          <Property Name="job_title" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <Association Name="FK_Articles_Authors">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Articles">
+              <PropertyRef Name="author_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articles_Editors">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Articles">
+              <PropertyRef Name="editor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articles_Images">
+          <End Role="Images" Type="Self.Images" Multiplicity="0..1" />
+          <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Images">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Articles">
+              <PropertyRef Name="title_img_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticlesCategories_Articles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="0..1" />
+          <End Role="ArticlesCategories" Type="Self.ArticlesCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ArticlesCategories">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticlesCategories_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="ArticlesCategories" Type="Self.ArticlesCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ArticlesCategories">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticlesTags_Articles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="0..1" />
+          <End Role="ArticlesTags" Type="Self.ArticlesTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ArticlesTags">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticlesTags_Tags">
+          <End Role="Tags" Type="Self.Tags" Multiplicity="0..1" />
+          <End Role="ArticlesTags" Type="Self.ArticlesTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ArticlesTags">
+              <PropertyRef Name="tag_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categories_Images">
+          <End Role="Images" Type="Self.Images" Multiplicity="0..1" />
+          <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Images">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="title_img_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_Articles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="0..1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DownloadableResources_Articles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="0..1" />
+          <End Role="DownloadableResources" Type="Self.DownloadableResources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DownloadableResources">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExhibitData_ExhibitColumns">
+          <End Role="ExhibitColumns" Type="Self.ExhibitColumns" Multiplicity="0..1" />
+          <End Role="ExhibitData" Type="Self.ExhibitData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExhibitColumns">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExhibitData">
+              <PropertyRef Name="exhibit_column_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exhibits_Articles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="0..1" />
+          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Exhibits">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Galleries_Articles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="0..1" />
+          <End Role="Galleries" Type="Self.Galleries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Galleries">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GalleryImages_Galleries">
+          <End Role="Galleries" Type="Self.Galleries" Multiplicity="0..1" />
+          <End Role="GalleryImages" Type="Self.GalleryImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Galleries">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GalleryImages">
+              <PropertyRef Name="gallery_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GalleryImages_Images">
+          <End Role="Images" Type="Self.Images" Multiplicity="0..1" />
+          <End Role="GalleryImages" Type="Self.GalleryImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Images">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GalleryImages">
+              <PropertyRef Name="image_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Podcasts_Articles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="0..1" />
+          <End Role="Podcasts" Type="Self.Podcasts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Podcasts">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscriptions_Authors">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Subscriptions" Type="Self.Subscriptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Subscriptions">
+              <PropertyRef Name="author_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscriptions_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Subscriptions" Type="Self.Subscriptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Subscriptions">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscriptions_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Subscriptions" Type="Self.Subscriptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Subscriptions">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_EducationLevels">
+          <End Role="EducationLevels" Type="Self.EducationLevels" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EducationLevels">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="education_lvl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Universities">
+          <End Role="Universities" Type="Self.Universities" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Universities">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="university_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UserGroups">
+          <End Role="UserGroups" Type="Self.UserGroups" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserGroups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="user_group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JournalModelStoreContainer">
+          <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArticlesCategories" EntityType="Self.ArticlesCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArticlesTags" EntityType="Self.ArticlesTags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DownloadableResources" EntityType="Self.DownloadableResources" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EducationLevels" EntityType="Self.EducationLevels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExhibitColumns" EntityType="Self.ExhibitColumns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExhibitData" EntityType="Self.ExhibitData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exhibits" EntityType="Self.Exhibits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Galleries" EntityType="Self.Galleries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GalleryImages" EntityType="Self.GalleryImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Podcasts" EntityType="Self.Podcasts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscriptions" EntityType="Self.Subscriptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Universities" EntityType="Self.Universities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserGroups" EntityType="Self.UserGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Articles_Authors" Association="Self.FK_Articles_Authors">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Articles" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articles_Editors" Association="Self.FK_Articles_Editors">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Articles" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articles_Images" Association="Self.FK_Articles_Images">
+            <End Role="Images" EntitySet="Images" />
+            <End Role="Articles" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticlesCategories_Articles" Association="Self.FK_ArticlesCategories_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="ArticlesCategories" EntitySet="ArticlesCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticlesCategories_Categories" Association="Self.FK_ArticlesCategories_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="ArticlesCategories" EntitySet="ArticlesCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticlesTags_Articles" Association="Self.FK_ArticlesTags_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="ArticlesTags" EntitySet="ArticlesTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticlesTags_Tags" Association="Self.FK_ArticlesTags_Tags">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="ArticlesTags" EntitySet="ArticlesTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categories_Images" Association="Self.FK_Categories_Images">
+            <End Role="Images" EntitySet="Images" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_Articles" Association="Self.FK_Comments_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_Users" Association="Self.FK_Comments_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DownloadableResources_Articles" Association="Self.FK_DownloadableResources_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="DownloadableResources" EntitySet="DownloadableResources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExhibitData_ExhibitColumns" Association="Self.FK_ExhibitData_ExhibitColumns">
+            <End Role="ExhibitColumns" EntitySet="ExhibitColumns" />
+            <End Role="ExhibitData" EntitySet="ExhibitData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exhibits_Articles" Association="Self.FK_Exhibits_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Exhibits" EntitySet="Exhibits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Galleries_Articles" Association="Self.FK_Galleries_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Galleries" EntitySet="Galleries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GalleryImages_Galleries" Association="Self.FK_GalleryImages_Galleries">
+            <End Role="Galleries" EntitySet="Galleries" />
+            <End Role="GalleryImages" EntitySet="GalleryImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GalleryImages_Images" Association="Self.FK_GalleryImages_Images">
+            <End Role="Images" EntitySet="Images" />
+            <End Role="GalleryImages" EntitySet="GalleryImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Podcasts_Articles" Association="Self.FK_Podcasts_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Podcasts" EntitySet="Podcasts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscriptions_Authors" Association="Self.FK_Subscriptions_Authors">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Subscriptions" EntitySet="Subscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscriptions_Categories" Association="Self.FK_Subscriptions_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Subscriptions" EntitySet="Subscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscriptions_Users" Association="Self.FK_Subscriptions_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Subscriptions" EntitySet="Subscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Countries" Association="Self.FK_Users_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_EducationLevels" Association="Self.FK_Users_EducationLevels">
+            <End Role="EducationLevels" EntitySet="EducationLevels" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Universities" Association="Self.FK_Users_Universities">
+            <End Role="Universities" EntitySet="Universities" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UserGroups" Association="Self.FK_Users_UserGroups">
+            <End Role="UserGroups" EntitySet="UserGroups" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JournalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title_en" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="content_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="content_az" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="title_img_id" Type="Int32" />
+          <Property Name="author_id" Type="Int32" />
+          <Property Name="editor_id" Type="Int32" />
+          <Property Name="published" Type="Byte" />
+          <NavigationProperty Name="Author" Relationship="Self.FK_Articles_Authors" FromRole="Articles" ToRole="Users" />
+          <NavigationProperty Name="Editor" Relationship="Self.FK_Articles_Editors" FromRole="Articles" ToRole="Users" />
+          <NavigationProperty Name="Image" Relationship="Self.FK_Articles_Images" FromRole="Articles" ToRole="Images" />
+          <NavigationProperty Name="ArticlesCategories" Relationship="Self.FK_ArticlesCategories_Articles" FromRole="Articles" ToRole="ArticlesCategories" />
+          <NavigationProperty Name="ArticlesTags" Relationship="Self.FK_ArticlesTags_Articles" FromRole="Articles" ToRole="ArticlesTags" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Articles" FromRole="Articles" ToRole="Comments" />
+          <NavigationProperty Name="DownloadableResources" Relationship="Self.FK_DownloadableResources_Articles" FromRole="Articles" ToRole="DownloadableResources" />
+          <NavigationProperty Name="Exhibits" Relationship="Self.FK_Exhibits_Articles" FromRole="Articles" ToRole="Exhibits" />
+          <NavigationProperty Name="Galleries" Relationship="Self.FK_Galleries_Articles" FromRole="Articles" ToRole="Galleries" />
+          <NavigationProperty Name="Podcasts" Relationship="Self.FK_Podcasts_Articles" FromRole="Articles" ToRole="Podcasts" />
+        </EntityType>
+        <EntityType Name="ArticlesCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="article_id" Type="Int32" />
+          <Property Name="category_id" Type="Int32" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_ArticlesCategories_Articles" FromRole="ArticlesCategories" ToRole="Articles" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_ArticlesCategories_Categories" FromRole="ArticlesCategories" ToRole="Categories" />
+        </EntityType>
+        <EntityType Name="ArticlesTag">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="article_id" Type="Int32" />
+          <Property Name="tag_id" Type="Int32" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_ArticlesTags_Articles" FromRole="ArticlesTags" ToRole="Articles" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_ArticlesTags_Tags" FromRole="ArticlesTags" ToRole="Tags" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title_en" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="alias" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="title_img_id" Type="Int32" />
+          <NavigationProperty Name="ArticlesCategories" Relationship="Self.FK_ArticlesCategories_Categories" FromRole="Categories" ToRole="ArticlesCategories" />
+          <NavigationProperty Name="Image" Relationship="Self.FK_Categories_Images" FromRole="Categories" ToRole="Images" />
+          <NavigationProperty Name="Subscriptions" Relationship="Self.FK_Subscriptions_Categories" FromRole="Categories" ToRole="Subscriptions" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="comment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="article_id" Type="Int32" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_Comments_Articles" FromRole="Comments" ToRole="Articles" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Comments_Users" FromRole="Comments" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title_en" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="code" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Countries" FromRole="Countries" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="DownloadableResource">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="article_id" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="lang" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="file_dir" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_DownloadableResources_Articles" FromRole="DownloadableResources" ToRole="Articles" />
+        </EntityType>
+        <EntityType Name="EducationLevel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title_en" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_EducationLevels" FromRole="EducationLevels" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="ExhibitColumn">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="exhibit_id" Type="Int32" />
+          <Property Name="title_en" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ExhibitDatas" Relationship="Self.FK_ExhibitData_ExhibitColumns" FromRole="ExhibitColumns" ToRole="ExhibitData" />
+        </EntityType>
+        <EntityType Name="ExhibitData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="exhibit_column_id" Type="Int32" />
+          <Property Name="content_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="content_az" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ExhibitColumn" Relationship="Self.FK_ExhibitData_ExhibitColumns" FromRole="ExhibitData" ToRole="ExhibitColumns" />
+        </EntityType>
+        <EntityType Name="Exhibit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="article_id" Type="Int32" />
+          <Property Name="title_en" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="excerpt_en" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="excerpt_az" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_Exhibits_Articles" FromRole="Exhibits" ToRole="Articles" />
+        </EntityType>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="article_id" Type="Int32" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_Galleries_Articles" FromRole="Galleries" ToRole="Articles" />
+          <NavigationProperty Name="GalleryImages" Relationship="Self.FK_GalleryImages_Galleries" FromRole="Galleries" ToRole="GalleryImages" />
+        </EntityType>
+        <EntityType Name="GalleryImage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="gallery_id" Type="Int32" />
+          <Property Name="image_id" Type="Int32" />
+          <NavigationProperty Name="Gallery" Relationship="Self.FK_GalleryImages_Galleries" FromRole="GalleryImages" ToRole="Galleries" />
+          <NavigationProperty Name="Image" Relationship="Self.FK_GalleryImages_Images" FromRole="GalleryImages" ToRole="Images" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="filename" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="width" Type="Int32" />
+          <Property Name="height" Type="Int32" />
+          <Property Name="file_dir" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK_Articles_Images" FromRole="Images" ToRole="Articles" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK_Categories_Images" FromRole="Images" ToRole="Categories" />
+          <NavigationProperty Name="GalleryImages" Relationship="Self.FK_GalleryImages_Images" FromRole="Images" ToRole="GalleryImages" />
+        </EntityType>
+        <EntityType Name="Podcast">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title_en" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="article_id" Type="Int32" />
+          <Property Name="file_dir" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_Podcasts_Articles" FromRole="Podcasts" ToRole="Articles" />
+        </EntityType>
+        <EntityType Name="Subscription">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="category_id" Type="Int32" />
+          <Property Name="author_id" Type="Int32" />
+          <Property Name="status" Type="Byte" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Subscriptions_Categories" FromRole="Subscriptions" ToRole="Categories" />
+          <NavigationProperty Name="Author" Relationship="Self.FK_Subscriptions_Authors" FromRole="Subscriptions" ToRole="Users" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Subscriptions_Users" FromRole="Subscriptions" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title_en" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="alias" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ArticlesTags" Relationship="Self.FK_ArticlesTags_Tags" FromRole="Tags" ToRole="ArticlesTags" />
+        </EntityType>
+        <EntityType Name="University">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title_en" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Universities" FromRole="Universities" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_UserGroups" FromRole="UserGroups" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="Byte" />
+          <Property Name="birthday" Type="DateTime" Precision="3" />
+          <Property Name="about" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="biography" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="user_group_id" Type="Int32" />
+          <Property Name="country_id" Type="Int32" />
+          <Property Name="education_lvl_id" Type="Int32" />
+          <Property Name="university_id" Type="Int32" />
+          <Property Name="major" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="employer" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="job_title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ArticleAuthor" Relationship="Self.FK_Articles_Authors" FromRole="Users" ToRole="Articles" />
+          <NavigationProperty Name="ArticleEditor" Relationship="Self.FK_Articles_Editors" FromRole="Users" ToRole="Articles" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Users" FromRole="Users" ToRole="Comments" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Users_Countries" FromRole="Users" ToRole="Countries" />
+          <NavigationProperty Name="EducationLevel" Relationship="Self.FK_Users_EducationLevels" FromRole="Users" ToRole="EducationLevels" />
+          <NavigationProperty Name="SubscriptionToAuthor" Relationship="Self.FK_Subscriptions_Authors" FromRole="Users" ToRole="Subscriptions" />
+          <NavigationProperty Name="SubscriptionUser" Relationship="Self.FK_Subscriptions_Users" FromRole="Users" ToRole="Subscriptions" />
+          <NavigationProperty Name="University" Relationship="Self.FK_Users_Universities" FromRole="Users" ToRole="Universities" />
+          <NavigationProperty Name="UserGroup" Relationship="Self.FK_Users_UserGroups" FromRole="Users" ToRole="UserGroups" />
+        </EntityType>
+        <Association Name="FK_Articles_Authors">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Articles" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Articles">
+              <PropertyRef Name="author_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articles_Editors">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Articles" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Articles">
+              <PropertyRef Name="editor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articles_Images">
+          <End Role="Images" Type="Self.Image" Multiplicity="0..1" />
+          <End Role="Articles" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Images">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Articles">
+              <PropertyRef Name="title_img_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticlesCategories_Articles">
+          <End Role="Articles" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="ArticlesCategories" Type="Self.ArticlesCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ArticlesCategories">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticlesTags_Articles">
+          <End Role="Articles" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="ArticlesTags" Type="Self.ArticlesTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ArticlesTags">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_Articles">
+          <End Role="Articles" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DownloadableResources_Articles">
+          <End Role="Articles" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="DownloadableResources" Type="Self.DownloadableResource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DownloadableResources">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exhibits_Articles">
+          <End Role="Articles" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="Exhibits" Type="Self.Exhibit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Exhibits">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Galleries_Articles">
+          <End Role="Articles" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="Galleries" Type="Self.Gallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Galleries">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Podcasts_Articles">
+          <End Role="Articles" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="Podcasts" Type="Self.Podcast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Podcasts">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticlesCategories_Categories">
+          <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="ArticlesCategories" Type="Self.ArticlesCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ArticlesCategories">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticlesTags_Tags">
+          <End Role="Tags" Type="Self.Tag" Multiplicity="0..1" />
+          <End Role="ArticlesTags" Type="Self.ArticlesTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ArticlesTags">
+              <PropertyRef Name="tag_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categories_Images">
+          <End Role="Images" Type="Self.Image" Multiplicity="0..1" />
+          <End Role="Categories" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Images">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="title_img_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscriptions_Categories">
+          <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Subscriptions" Type="Self.Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Subscriptions">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Countries">
+          <End Role="Countries" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_EducationLevels">
+          <End Role="EducationLevels" Type="Self.EducationLevel" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EducationLevels">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="education_lvl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExhibitData_ExhibitColumns">
+          <End Role="ExhibitColumns" Type="Self.ExhibitColumn" Multiplicity="0..1" />
+          <End Role="ExhibitData" Type="Self.ExhibitData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExhibitColumns">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExhibitData">
+              <PropertyRef Name="exhibit_column_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GalleryImages_Galleries">
+          <End Role="Galleries" Type="Self.Gallery" Multiplicity="0..1" />
+          <End Role="GalleryImages" Type="Self.GalleryImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Galleries">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GalleryImages">
+              <PropertyRef Name="gallery_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GalleryImages_Images">
+          <End Role="Images" Type="Self.Image" Multiplicity="0..1" />
+          <End Role="GalleryImages" Type="Self.GalleryImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Images">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GalleryImages">
+              <PropertyRef Name="image_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscriptions_Authors">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Subscriptions" Type="Self.Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Subscriptions">
+              <PropertyRef Name="author_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscriptions_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Subscriptions" Type="Self.Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Subscriptions">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Universities">
+          <End Role="Universities" Type="Self.University" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Universities">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="university_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UserGroups">
+          <End Role="UserGroups" Type="Self.UserGroup" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserGroups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="user_group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JournalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Articles" EntityType="Self.Article" />
+          <EntitySet Name="ArticlesCategories" EntityType="Self.ArticlesCategory" />
+          <EntitySet Name="ArticlesTags" EntityType="Self.ArticlesTag" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Comments" EntityType="Self.Comment" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="DownloadableResources" EntityType="Self.DownloadableResource" />
+          <EntitySet Name="EducationLevels" EntityType="Self.EducationLevel" />
+          <EntitySet Name="ExhibitColumns" EntityType="Self.ExhibitColumn" />
+          <EntitySet Name="ExhibitDatas" EntityType="Self.ExhibitData" />
+          <EntitySet Name="Exhibits" EntityType="Self.Exhibit" />
+          <EntitySet Name="Galleries" EntityType="Self.Gallery" />
+          <EntitySet Name="GalleryImages" EntityType="Self.GalleryImage" />
+          <EntitySet Name="Images" EntityType="Self.Image" />
+          <EntitySet Name="Podcasts" EntityType="Self.Podcast" />
+          <EntitySet Name="Subscriptions" EntityType="Self.Subscription" />
+          <EntitySet Name="Tags" EntityType="Self.Tag" />
+          <EntitySet Name="Universities" EntityType="Self.University" />
+          <EntitySet Name="UserGroups" EntityType="Self.UserGroup" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Articles_Authors" Association="Self.FK_Articles_Authors">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Articles" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articles_Editors" Association="Self.FK_Articles_Editors">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Articles" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articles_Images" Association="Self.FK_Articles_Images">
+            <End Role="Images" EntitySet="Images" />
+            <End Role="Articles" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticlesCategories_Articles" Association="Self.FK_ArticlesCategories_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="ArticlesCategories" EntitySet="ArticlesCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticlesTags_Articles" Association="Self.FK_ArticlesTags_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="ArticlesTags" EntitySet="ArticlesTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_Articles" Association="Self.FK_Comments_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DownloadableResources_Articles" Association="Self.FK_DownloadableResources_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="DownloadableResources" EntitySet="DownloadableResources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exhibits_Articles" Association="Self.FK_Exhibits_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Exhibits" EntitySet="Exhibits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Galleries_Articles" Association="Self.FK_Galleries_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Galleries" EntitySet="Galleries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Podcasts_Articles" Association="Self.FK_Podcasts_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Podcasts" EntitySet="Podcasts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticlesCategories_Categories" Association="Self.FK_ArticlesCategories_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="ArticlesCategories" EntitySet="ArticlesCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticlesTags_Tags" Association="Self.FK_ArticlesTags_Tags">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="ArticlesTags" EntitySet="ArticlesTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categories_Images" Association="Self.FK_Categories_Images">
+            <End Role="Images" EntitySet="Images" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscriptions_Categories" Association="Self.FK_Subscriptions_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Subscriptions" EntitySet="Subscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_Users" Association="Self.FK_Comments_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Countries" Association="Self.FK_Users_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_EducationLevels" Association="Self.FK_Users_EducationLevels">
+            <End Role="EducationLevels" EntitySet="EducationLevels" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExhibitData_ExhibitColumns" Association="Self.FK_ExhibitData_ExhibitColumns">
+            <End Role="ExhibitColumns" EntitySet="ExhibitColumns" />
+            <End Role="ExhibitData" EntitySet="ExhibitDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GalleryImages_Galleries" Association="Self.FK_GalleryImages_Galleries">
+            <End Role="Galleries" EntitySet="Galleries" />
+            <End Role="GalleryImages" EntitySet="GalleryImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GalleryImages_Images" Association="Self.FK_GalleryImages_Images">
+            <End Role="Images" EntitySet="Images" />
+            <End Role="GalleryImages" EntitySet="GalleryImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscriptions_Authors" Association="Self.FK_Subscriptions_Authors">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Subscriptions" EntitySet="Subscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscriptions_Users" Association="Self.FK_Subscriptions_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Subscriptions" EntitySet="Subscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Universities" Association="Self.FK_Users_Universities">
+            <End Role="Universities" EntitySet="Universities" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UserGroups" Association="Self.FK_Users_UserGroups">
+            <End Role="UserGroups" EntitySet="UserGroups" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JournalModelStoreContainer" CdmEntityContainer="JournalEntities">
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="JournalModel.Article">
+              <MappingFragment StoreEntitySet="Articles">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title_en" ColumnName="title_en" />
+                <ScalarProperty Name="title_az" ColumnName="title_az" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="content_en" ColumnName="content_en" />
+                <ScalarProperty Name="content_az" ColumnName="content_az" />
+                <ScalarProperty Name="title_img_id" ColumnName="title_img_id" />
+                <ScalarProperty Name="author_id" ColumnName="author_id" />
+                <ScalarProperty Name="editor_id" ColumnName="editor_id" />
+                <ScalarProperty Name="published" ColumnName="published" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArticlesCategories">
+            <EntityTypeMapping TypeName="JournalModel.ArticlesCategory">
+              <MappingFragment StoreEntitySet="ArticlesCategories">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="article_id" ColumnName="article_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArticlesTags">
+            <EntityTypeMapping TypeName="JournalModel.ArticlesTag">
+              <MappingFragment StoreEntitySet="ArticlesTags">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="article_id" ColumnName="article_id" />
+                <ScalarProperty Name="tag_id" ColumnName="tag_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="JournalModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title_en" ColumnName="title_en" />
+                <ScalarProperty Name="title_az" ColumnName="title_az" />
+                <ScalarProperty Name="alias" ColumnName="alias" />
+                <ScalarProperty Name="title_img_id" ColumnName="title_img_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="JournalModel.Comment">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="comment1" ColumnName="comment" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="article_id" ColumnName="article_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="JournalModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title_en" ColumnName="title_en" />
+                <ScalarProperty Name="title_az" ColumnName="title_az" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DownloadableResources">
+            <EntityTypeMapping TypeName="JournalModel.DownloadableResource">
+              <MappingFragment StoreEntitySet="DownloadableResources">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="article_id" ColumnName="article_id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="lang" ColumnName="lang" />
+                <ScalarProperty Name="file_dir" ColumnName="file_dir" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EducationLevels">
+            <EntityTypeMapping TypeName="JournalModel.EducationLevel">
+              <MappingFragment StoreEntitySet="EducationLevels">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title_en" ColumnName="title_en" />
+                <ScalarProperty Name="title_az" ColumnName="title_az" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExhibitColumns">
+            <EntityTypeMapping TypeName="JournalModel.ExhibitColumn">
+              <MappingFragment StoreEntitySet="ExhibitColumns">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="exhibit_id" ColumnName="exhibit_id" />
+                <ScalarProperty Name="title_en" ColumnName="title_en" />
+                <ScalarProperty Name="title_az" ColumnName="title_az" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExhibitDatas">
+            <EntityTypeMapping TypeName="JournalModel.ExhibitData">
+              <MappingFragment StoreEntitySet="ExhibitData">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="exhibit_column_id" ColumnName="exhibit_column_id" />
+                <ScalarProperty Name="content_en" ColumnName="content_en" />
+                <ScalarProperty Name="content_az" ColumnName="content_az" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exhibits">
+            <EntityTypeMapping TypeName="JournalModel.Exhibit">
+              <MappingFragment StoreEntitySet="Exhibits">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="article_id" ColumnName="article_id" />
+                <ScalarProperty Name="title_en" ColumnName="title_en" />
+                <ScalarProperty Name="title_az" ColumnName="title_az" />
+                <ScalarProperty Name="excerpt_en" ColumnName="excerpt_en" />
+                <ScalarProperty Name="excerpt_az" ColumnName="excerpt_az" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Galleries">
+            <EntityTypeMapping TypeName="JournalModel.Gallery">
+              <MappingFragment StoreEntitySet="Galleries">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="article_id" ColumnName="article_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GalleryImages">
+            <EntityTypeMapping TypeName="JournalModel.GalleryImage">
+              <MappingFragment StoreEntitySet="GalleryImages">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gallery_id" ColumnName="gallery_id" />
+                <ScalarProperty Name="image_id" ColumnName="image_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="JournalModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="file_dir" ColumnName="file_dir" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Podcasts">
+            <EntityTypeMapping TypeName="JournalModel.Podcast">
+              <MappingFragment StoreEntitySet="Podcasts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title_en" ColumnName="title_en" />
+                <ScalarProperty Name="title_az" ColumnName="title_az" />
+                <ScalarProperty Name="article_id" ColumnName="article_id" />
+                <ScalarProperty Name="file_dir" ColumnName="file_dir" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subscriptions">
+            <EntityTypeMapping TypeName="JournalModel.Subscription">
+              <MappingFragment StoreEntitySet="Subscriptions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="author_id" ColumnName="author_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="JournalModel.Tag">
+              <MappingFragment StoreEntitySet="Tags">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title_en" ColumnName="title_en" />
+                <ScalarProperty Name="title_az" ColumnName="title_az" />
+                <ScalarProperty Name="alias" ColumnName="alias" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Universities">
+            <EntityTypeMapping TypeName="JournalModel.University">
+              <MappingFragment StoreEntitySet="Universities">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title_en" ColumnName="title_en" />
+                <ScalarProperty Name="title_az" ColumnName="title_az" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserGroups">
+            <EntityTypeMapping TypeName="JournalModel.UserGroup">
+              <MappingFragment StoreEntitySet="UserGroups">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="JournalModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="about" ColumnName="about" />
+                <ScalarProperty Name="biography" ColumnName="biography" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="user_group_id" ColumnName="user_group_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="education_lvl_id" ColumnName="education_lvl_id" />
+                <ScalarProperty Name="university_id" ColumnName="university_id" />
+                <ScalarProperty Name="major" ColumnName="major" />
+                <ScalarProperty Name="employer" ColumnName="employer" />
+                <ScalarProperty Name="job_title" ColumnName="job_title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

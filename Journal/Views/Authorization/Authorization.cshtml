@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.title = "Authorization";
+    ViewBag.headerClass = "fixed dark";
+    ViewBag.footerClass = "border-top";
+    ViewBag.page = "auth";
+}
+
+<!-- Login & SignUp Page -->
+<div id="login-signup-page">
+
+    <!-- Form Tabs Wrappers -->
+    <div class="tabs-wrapper">
+
+        <!-- Tab Links Wrapper -->
+        <div class="tab-links-wrapper">
+
+            <!-- Tab Link -->
+            <a href="#login" class="tab-link active"><i class="far fa-sign-in-alt"></i> Log In</a>
+
+            <!-- Tab Link -->
+            <a href="#signup" class="tab-link"><i class="far fa-user-plus"></i> Sign Up</a>
+        </div>
+
+        <!-- Tab Contents Wrapper -->
+        <div class="tab-contents-wrapper">
+
+            <!-- Tab Content -->
+            <div id="login" class="tab-content active">
+                <h3 class="tab-header">Log In</h3>
+                <form action="#" id="login-form">
+                    <div class="form-group">
+                        <label>
+                            E-mail
+                            <input type="email" class="form-control" name="email">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Password
+                            <input type="password" class="form-control" name="password">
+                        </label>
+                    </div>
+                    <p class="signup-tip">
+                        Do not have an account? Let's <a id="signup-trigger" href="#signup">create one</a>. You will
+                        get all news about our issues, articles and insights.
+                    </p>
+                    <div class="form-buttons">
+                        <button class="btn btn-primary" type="submit">
+                            Log In
+                            <i class="far fa-sign-in-alt"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Tab Content -->
+            <div id="signup" class="tab-content">
+                <h3 class="tab-header">Sign Up</h3>
+                <form action="#" id="signup-form">
+                    <div class="form-group">
+                        <label>
+                            E-mail
+                            <input type="email" class="form-control" name="email">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Password
+                            <input type="password" class="form-control" name="password">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Password Confirmation
+                            <input type="password" class="form-control" name="password_confirmation">
+                        </label>
+                    </div>
+                    <p class="signup-tip">
+                        By clicking Sign Up button you agree to our <a href="#">Terms of Use</a>.
+                    </p>
+                    <div class="form-buttons">
+                        <button class="btn btn-primary" type="submit">
+                            Sign Up
+                            <i class="far fa-user-plus"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
