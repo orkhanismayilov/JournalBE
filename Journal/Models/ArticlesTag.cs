@@ -15,8 +15,8 @@ namespace Journal.Models
     public partial class ArticlesTag
     {
         public int id { get; set; }
-        public Nullable<int> article_id { get; set; }
-        public Nullable<int> tag_id { get; set; }
+        public int article_id { get; set; }
+        public int tag_id { get; set; }
     
         public virtual Article Article { get; set; }
         public virtual Tag Tag { get; set; }

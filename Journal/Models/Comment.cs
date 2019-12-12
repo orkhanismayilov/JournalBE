@@ -16,8 +16,9 @@ namespace Journal.Models
     {
         public int id { get; set; }
         public string comment1 { get; set; }
-        public Nullable<int> user_id { get; set; }
-        public Nullable<int> article_id { get; set; }
+        public int user_id { get; set; }
+        public int article_id { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
     
         public virtual Article Article { get; set; }
         public virtual User User { get; set; }

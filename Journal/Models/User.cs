@@ -20,8 +20,8 @@ namespace Journal.Models
             this.ArticleAuthor = new HashSet<Article>();
             this.ArticleEditor = new HashSet<Article>();
             this.Comments = new HashSet<Comment>();
-            this.SubscriptionToAuthor = new HashSet<Subscription>();
-            this.SubscriptionUser = new HashSet<Subscription>();
+            this.SubscriptionsToAuthor = new HashSet<Subscription>();
+            this.Subscriptions = new HashSet<Subscription>();
         }
     
         public int id { get; set; }
@@ -34,13 +34,16 @@ namespace Journal.Models
         public string about { get; set; }
         public string biography { get; set; }
         public string phone { get; set; }
-        public Nullable<int> user_group_id { get; set; }
+        public int user_group_id { get; set; }
         public Nullable<int> country_id { get; set; }
         public Nullable<int> education_lvl_id { get; set; }
         public Nullable<int> university_id { get; set; }
         public string major { get; set; }
         public string employer { get; set; }
         public string job_title { get; set; }
+        public Nullable<System.DateTime> reg_date { get; set; }
+        public Nullable<System.DateTime> last_login_date { get; set; }
+        public string token { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Article> ArticleAuthor { get; set; }
@@ -51,9 +54,9 @@ namespace Journal.Models
         public virtual Country Country { get; set; }
         public virtual EducationLevel EducationLevel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Subscription> SubscriptionToAuthor { get; set; }
+        public virtual ICollection<Subscription> SubscriptionsToAuthor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Subscription> SubscriptionUser { get; set; }
+        public virtual ICollection<Subscription> Subscriptions { get; set; }
         public virtual University University { get; set; }
         public virtual UserGroup UserGroup { get; set; }
     }

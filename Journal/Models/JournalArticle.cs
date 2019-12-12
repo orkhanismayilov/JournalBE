@@ -12,13 +12,13 @@ namespace Journal.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ExhibitData
+    public partial class JournalArticle
     {
         public int id { get; set; }
-        public int exhibit_column_id { get; set; }
-        public string content_en { get; set; }
-        public string content_az { get; set; }
+        public int journal_id { get; set; }
+        public int article_id { get; set; }
     
-        public virtual ExhibitColumn ExhibitColumn { get; set; }
+        public virtual Article Article { get; set; }
+        public virtual Journal Journal { get; set; }
     }
 }

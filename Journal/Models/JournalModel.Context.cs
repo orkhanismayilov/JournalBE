@@ -39,6 +39,8 @@ namespace Journal.Models
         public virtual DbSet<Gallery> Galleries { get; set; }
         public virtual DbSet<GalleryImage> GalleryImages { get; set; }
         public virtual DbSet<Image> Images { get; set; }
+        public virtual DbSet<JournalArticle> JournalArticles { get; set; }
+        public virtual DbSet<Journal> Journals { get; set; }
         public virtual DbSet<Podcast> Podcasts { get; set; }
         public virtual DbSet<Subscription> Subscriptions { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }

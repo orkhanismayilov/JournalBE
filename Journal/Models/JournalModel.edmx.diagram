@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8b8e3fa188064cb885343661221250ba" Name="Diagram1">
+        <EntityTypeShape EntityType="JournalModel.Article" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.ArticlesCategory" Width="1.5" PointX="8.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.ArticlesTag" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.Category" Width="1.5" PointX="3" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.Comment" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.Country" Width="1.5" PointX="1.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.DownloadableResource" Width="1.5" PointX="5.25" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.EducationLevel" Width="1.5" PointX="1.5" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.ExhibitColumn" Width="1.5" PointX="3.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.ExhibitData" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.Exhibit" Width="1.5" PointX="5.25" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.Gallery" Width="1.5" PointX="5.25" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.GalleryImage" Width="1.5" PointX="7.5" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.Image" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.JournalArticle" Width="1.5" PointX="8.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.Journal" Width="1.5" PointX="6" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.Podcast" Width="1.5" PointX="5.25" PointY="32.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.Subscription" Width="1.5" PointX="5.25" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.Tag" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.University" Width="1.5" PointX="1.5" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.UserGroup" Width="1.5" PointX="1.5" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JournalModel.User" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="JournalModel.FK_Articles_Authors" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_Articles_Editors" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_Articles_Images" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_ArticlesCategories_Articles" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_ArticlesTags_Articles" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_Comments_Articles" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_DownloadableResources_Articles" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_Exhibits_Articles" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_Galleries_Articles" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_JournalArticles_Articles" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_Podcasts_Articles" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_ArticlesCategories_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_ArticlesTags_Tags" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_Categories_Images" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_Subscriptions_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_Comments_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_Users_Countries" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_Users_EducationLevels" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_ExhibitData_ExhibitColumns" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_GalleryImages_Galleries" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_GalleryImages_Images" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_JournalArticles_Journals" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_Subscriptions_Authors" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_Subscriptions_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_Users_Universities" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_Users_UserGroups" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

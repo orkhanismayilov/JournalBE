@@ -15,8 +15,8 @@ namespace Journal.Models
     public partial class GalleryImage
     {
         public int id { get; set; }
-        public Nullable<int> gallery_id { get; set; }
-        public Nullable<int> image_id { get; set; }
+        public int gallery_id { get; set; }
+        public int image_id { get; set; }
     
         public virtual Gallery Gallery { get; set; }
         public virtual Image Image { get; set; }

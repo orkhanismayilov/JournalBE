@@ -17,7 +17,8 @@ namespace Journal.Models
         public int id { get; set; }
         public string title_en { get; set; }
         public string title_az { get; set; }
-        public Nullable<int> article_id { get; set; }
+        public int article_id { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
         public string file_dir { get; set; }
     
         public virtual Article Article { get; set; }

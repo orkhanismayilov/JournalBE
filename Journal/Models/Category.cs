@@ -25,7 +25,7 @@ namespace Journal.Models
         public string title_en { get; set; }
         public string title_az { get; set; }
         public string alias { get; set; }
-        public Nullable<int> title_img_id { get; set; }
+        public int title_img_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArticlesCategory> ArticlesCategories { get; set; }

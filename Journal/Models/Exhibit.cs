@@ -15,7 +15,7 @@ namespace Journal.Models
     public partial class Exhibit
     {
         public int id { get; set; }
-        public Nullable<int> article_id { get; set; }
+        public int article_id { get; set; }
         public string title_en { get; set; }
         public string title_az { get; set; }
         public string excerpt_en { get; set; }

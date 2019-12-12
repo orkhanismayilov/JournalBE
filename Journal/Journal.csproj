@@ -140,79 +140,85 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Article.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ArticlesCategory.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ArticlesTag.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Comment.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Country.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DownloadableResource.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EducationLevel.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Exhibit.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ExhibitColumn.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ExhibitData.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gallery.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GalleryImage.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Image.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Journal.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Journal.Context.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Journal.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Journal.Designer.cs">
+    <Compile Include="Models\JournalArticle.cs">
+      <DependentUpon>JournalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JournalModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Journal.edmx</DependentUpon>
+      <DependentUpon>JournalModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JournalModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JournalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JournalModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JournalModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Podcast.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Subscription.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tag.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\University.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserGroup.cs">
-      <DependentUpon>Journal.tt</DependentUpon>
+      <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -331,15 +337,15 @@
     <Content Include="assets\logo\journal_logo_white.svg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Models\Journal.Context.tt">
+    <Content Include="Models\JournalModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Journal.edmx</DependentUpon>
-      <LastGenOutput>Journal.Context.cs</LastGenOutput>
+      <DependentUpon>JournalModel.edmx</DependentUpon>
+      <LastGenOutput>JournalModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Journal.tt">
+    <Content Include="Models\JournalModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Journal.edmx</DependentUpon>
-      <LastGenOutput>Journal.cs</LastGenOutput>
+      <DependentUpon>JournalModel.edmx</DependentUpon>
+      <LastGenOutput>JournalModel.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -403,13 +409,6 @@
     <Content Include="assets\fontawesome\webfonts\fa-solid-900.woff" />
     <Content Include="assets\fontawesome\webfonts\fa-solid-900.woff2" />
     <Content Include="assets\favicons\site.webmanifest" />
-    <EntityDeploy Include="Models\Journal.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Journal.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Journal.edmx.diagram">
-      <DependentUpon>Journal.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
@@ -429,6 +428,13 @@
     <Content Include="Areas\Admin\assets\fonts\CoreUI-Icons-Free.ttf" />
     <Content Include="Areas\Admin\assets\fonts\CoreUI-Icons-Free.woff" />
     <Content Include="Areas\Admin\assets\fonts\CoreUI-Icons-Free.woff2" />
+    <EntityDeploy Include="Models\JournalModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>JournalModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\JournalModel.edmx.diagram">
+      <DependentUpon>JournalModel.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Views\Category\Category.cshtml" />
     <Content Include="Views\Authorization\Authorization.cshtml" />

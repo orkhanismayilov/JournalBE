@@ -23,6 +23,7 @@ namespace Journal.Models
             this.DownloadableResources = new HashSet<DownloadableResource>();
             this.Exhibits = new HashSet<Exhibit>();
             this.Galleries = new HashSet<Gallery>();
+            this.JournalArticles = new HashSet<JournalArticle>();
             this.Podcasts = new HashSet<Podcast>();
         }
     
@@ -32,10 +33,11 @@ namespace Journal.Models
         public Nullable<System.DateTime> date { get; set; }
         public string content_en { get; set; }
         public string content_az { get; set; }
-        public Nullable<int> title_img_id { get; set; }
-        public Nullable<int> author_id { get; set; }
-        public Nullable<int> editor_id { get; set; }
-        public Nullable<byte> published { get; set; }
+        public int title_img_id { get; set; }
+        public int author_id { get; set; }
+        public int editor_id { get; set; }
+        public int views_count { get; set; }
+        public byte published { get; set; }
     
         public virtual User Author { get; set; }
         public virtual User Editor { get; set; }
@@ -52,6 +54,8 @@ namespace Journal.Models
         public virtual ICollection<Exhibit> Exhibits { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Gallery> Galleries { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<JournalArticle> JournalArticles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Podcast> Podcasts { get; set; }
     }

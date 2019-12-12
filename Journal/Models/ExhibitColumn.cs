@@ -21,7 +21,7 @@ namespace Journal.Models
         }
     
         public int id { get; set; }
-        public Nullable<int> exhibit_id { get; set; }
+        public int exhibit_id { get; set; }
         public string title_en { get; set; }
         public string title_az { get; set; }
     

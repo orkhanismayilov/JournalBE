@@ -16,13 +16,14 @@ namespace Journal.Models
     {
         public int id { get; set; }
         public string email { get; set; }
-        public Nullable<int> user_id { get; set; }
-        public Nullable<int> category_id { get; set; }
-        public Nullable<int> author_id { get; set; }
-        public Nullable<byte> status { get; set; }
+        public int user_id { get; set; }
+        public int category_id { get; set; }
+        public int author_id { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
+        public byte status { get; set; }
     
         public virtual Category Category { get; set; }
-        public virtual User Author { get; set; }
         public virtual User User { get; set; }
+        public virtual User User1 { get; set; }
     }
 }
