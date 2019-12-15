@@ -53,13 +53,13 @@ namespace Journal.Areas.Admin
             );
 
             context.MapRoute(
-                "Add Issues",
+                "Edit Issues",
                 "admin/issues/edit/{id}",
-                new { controller = "Issues", action = "Create", id = 0 }
+                new { controller = "Issues", action = "Edit", id = 0 }
             );
 
             context.MapRoute(
-                "Add Issues",
+                "Delete Issues",
                 "admin/issues/delete/{id}",
                 new { controller = "Issues", action = "Delete", id = 0 }
             );
