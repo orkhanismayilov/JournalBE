@@ -47,5 +47,6 @@ namespace Journal.Models
         public virtual DbSet<University> Universities { get; set; }
         public virtual DbSet<UserGroup> UserGroups { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<FeaturedArticle> FeaturedArticles { get; set; }
     }
 }

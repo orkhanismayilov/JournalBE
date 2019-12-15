@@ -129,7 +129,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ArticlesController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\IssuesController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -170,6 +172,9 @@
       <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ExhibitData.cs">
+      <DependentUpon>JournalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeaturedArticle.cs">
       <DependentUpon>JournalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gallery.cs">
@@ -435,6 +440,14 @@
     <Content Include="Models\JournalModel.edmx.diagram">
       <DependentUpon>JournalModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Issues\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Issues\Published.cshtml" />
+    <Content Include="Areas\Admin\Views\Issues\NonPublished.cshtml" />
+    <Content Include="Areas\Admin\Views\Issues\Deleted.cshtml" />
+    <Content Include="Areas\Admin\Views\Issues\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Issues\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Issues\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Articles\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Category\Category.cshtml" />
     <Content Include="Views\Authorization\Authorization.cshtml" />

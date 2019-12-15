@@ -25,6 +25,7 @@ namespace Journal.Models
             this.Galleries = new HashSet<Gallery>();
             this.JournalArticles = new HashSet<JournalArticle>();
             this.Podcasts = new HashSet<Podcast>();
+            this.FeaturedArticles = new HashSet<FeaturedArticle>();
         }
     
         public int id { get; set; }
@@ -58,5 +59,7 @@ namespace Journal.Models
         public virtual ICollection<JournalArticle> JournalArticles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Podcast> Podcasts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FeaturedArticle> FeaturedArticles { get; set; }
     }
 }

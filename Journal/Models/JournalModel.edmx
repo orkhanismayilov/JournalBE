@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="JournalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="JournalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Articles">
           <Key>
             <PropertyRef Name="id" />
@@ -112,6 +112,14 @@
           <Property Name="title_az" Type="varchar" MaxLength="256" />
           <Property Name="excerpt_en" Type="varchar" MaxLength="512" />
           <Property Name="excerpt_az" Type="varchar" MaxLength="512" />
+        </EntityType>
+        <EntityType Name="FeaturedArticles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="article_id" Type="int" Nullable="false" />
+          <Property Name="position" Type="tinyint" />
         </EntityType>
         <EntityType Name="Galleries">
           <Key>
@@ -386,6 +394,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_FeaturedArticles_Articles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="1" />
+          <End Role="FeaturedArticles" Type="Self.FeaturedArticles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FeaturedArticles">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Galleries_Articles">
           <End Role="Articles" Type="Self.Articles" Multiplicity="1" />
           <End Role="Galleries" Type="Self.Galleries" Multiplicity="*" />
@@ -554,6 +574,7 @@
           <EntitySet Name="ExhibitColumns" EntityType="Self.ExhibitColumns" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExhibitData" EntityType="Self.ExhibitData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Exhibits" EntityType="Self.Exhibits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeaturedArticles" EntityType="Self.FeaturedArticles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Galleries" EntityType="Self.Galleries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GalleryImages" EntityType="Self.GalleryImages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
@@ -617,6 +638,10 @@
             <End Role="Articles" EntitySet="Articles" />
             <End Role="Exhibits" EntitySet="Exhibits" />
           </AssociationSet>
+          <AssociationSet Name="FK_FeaturedArticles_Articles" Association="Self.FK_FeaturedArticles_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="FeaturedArticles" EntitySet="FeaturedArticles" />
+          </AssociationSet>
           <AssociationSet Name="FK_Galleries_Articles" Association="Self.FK_Galleries_Articles">
             <End Role="Articles" EntitySet="Articles" />
             <End Role="Galleries" EntitySet="Galleries" />
@@ -670,8 +695,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="JournalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -701,6 +725,7 @@
           <NavigationProperty Name="Galleries" Relationship="Self.FK_Galleries_Articles" FromRole="Articles" ToRole="Galleries" />
           <NavigationProperty Name="JournalArticles" Relationship="Self.FK_JournalArticles_Articles" FromRole="Articles" ToRole="JournalArticles" />
           <NavigationProperty Name="Podcasts" Relationship="Self.FK_Podcasts_Articles" FromRole="Articles" ToRole="Podcasts" />
+          <NavigationProperty Name="FeaturedArticles" Relationship="JournalModel.FK_FeaturedArticles_Articles" FromRole="Article" ToRole="FeaturedArticle" />
         </EntityType>
         <EntityType Name="ArticlesCategory">
           <Key>
@@ -1391,7 +1416,33 @@
             <End Role="UserGroups" EntitySet="UserGroups" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="FeaturedArticles" EntityType="JournalModel.FeaturedArticle" />
+          <AssociationSet Name="FK_FeaturedArticles_Articles" Association="JournalModel.FK_FeaturedArticles_Articles">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="FeaturedArticle" EntitySet="FeaturedArticles" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="FeaturedArticle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="article_id" Type="Int32" Nullable="false" />
+          <Property Name="position" Type="Byte" />
+          <NavigationProperty Name="Article" Relationship="JournalModel.FK_FeaturedArticles_Articles" FromRole="FeaturedArticle" ToRole="Article" />
+        </EntityType>
+        <Association Name="FK_FeaturedArticles_Articles">
+          <End Type="JournalModel.Article" Role="Article" Multiplicity="1" />
+          <End Type="JournalModel.FeaturedArticle" Role="FeaturedArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FeaturedArticle">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1642,6 +1693,15 @@
                 <ScalarProperty Name="reg_date" ColumnName="reg_date" />
                 <ScalarProperty Name="last_login_date" ColumnName="last_login_date" />
                 <ScalarProperty Name="token" ColumnName="token" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeaturedArticles">
+            <EntityTypeMapping TypeName="JournalModel.FeaturedArticle">
+              <MappingFragment StoreEntitySet="FeaturedArticles">
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="article_id" ColumnName="article_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

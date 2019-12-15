@@ -53,6 +53,8 @@
         <AssociationConnector Association="JournalModel.FK_Subscriptions_Users" ManuallyRouted="false" />
         <AssociationConnector Association="JournalModel.FK_Users_Universities" ManuallyRouted="false" />
         <AssociationConnector Association="JournalModel.FK_Users_UserGroups" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="JournalModel.FeaturedArticle" Width="1.5" PointX="5.25" PointY="4.5" />
+        <AssociationConnector Association="JournalModel.FK_FeaturedArticles_Articles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
