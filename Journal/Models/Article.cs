@@ -22,10 +22,10 @@ namespace Journal.Models
             this.Comments = new HashSet<Comment>();
             this.DownloadableResources = new HashSet<DownloadableResource>();
             this.Exhibits = new HashSet<Exhibit>();
+            this.FeaturedArticles = new HashSet<FeaturedArticle>();
             this.Galleries = new HashSet<Gallery>();
             this.JournalArticles = new HashSet<JournalArticle>();
             this.Podcasts = new HashSet<Podcast>();
-            this.FeaturedArticles = new HashSet<FeaturedArticle>();
         }
     
         public int id { get; set; }
@@ -54,12 +54,12 @@ namespace Journal.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Exhibit> Exhibits { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FeaturedArticle> FeaturedArticles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Gallery> Galleries { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JournalArticle> JournalArticles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Podcast> Podcasts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FeaturedArticle> FeaturedArticles { get; set; }
     }
 }

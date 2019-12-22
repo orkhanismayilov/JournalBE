@@ -16,7 +16,8 @@ namespace Journal.Models
     {
         public int id { get; set; }
         public int article_id { get; set; }
-        public string title { get; set; }
+        public string title_en { get; set; }
+        public string title_az { get; set; }
         public string lang { get; set; }
         public string file_dir { get; set; }
     

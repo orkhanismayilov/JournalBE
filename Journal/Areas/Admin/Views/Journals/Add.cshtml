@@ -1,0 +1,51 @@
+﻿@model Journal.Areas.Admin.Models.ViewJournals
+@{
+    ViewBag.title = "Add Journal";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Add Journal</h5>
+            </div>
+
+            <div class="card-body">
+                <form method="post">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="title-az">Title (AZ)</label>
+                                <input type="text" name="title_az" id="title-az" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="title-en">Title (EN)</label>
+                                <input type="text" name="title_en" id="title-en" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="button" class="btn btn-primary mb-2">Select Articles</button>
+                        </div>
+                        <div class="col-12">
+                            <button type="button" class="btn btn-secondary">Select Cover Image</button>
+                            <input type="hidden" name="title_img_id" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card-footer">
+                <div class="d-flex">
+                    <a href="/admin/" class="btn btn-secondary ml-auto" role="button"><i class="cil-x"></i> Cancel</a>
+                    <button type="button" class="btn btn-success ml-2" onclick="$('form').submit()"><i class="cil-plus"></i> Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,68 +3,78 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Journal.Areas.Admin.Models;
 
 namespace Journal.Areas.Admin.Controllers
 {
-    public class IssuesController : Controller
+    public class JournalsController : Controller
     {
-        // GET: Admin/Issues
+        // GET: Admin/Journals
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Admin/Issues/Published
+        // GET: Admin/Journals/Published
         public ActionResult Published()
         {
             return View();
         }
 
-        // GET: Admin/Issues/Non-published
+        // GET: Admin/Journals/Non-published
         public ActionResult NonPublished()
         {
             return View();
         }
 
-        // GET: Admin/Issues/Deleted
+        // GET: Admin/Journals/Deleted
         public ActionResult Deleted()
         {
             return View();
         }
 
-        // GET: Admin/Issues/Add
+        // GET: Admin/Journals/Add
         public ActionResult Add()
         {
-            return View();
+            ViewJournals viewJournals = new ViewJournals();
+
+            viewJournals.Breadcrumbs.Add(new Breadcrumb
+            {
+                title = "Add",
+                state = "active",
+                isLeaf = true
+            });
+
+            return View(model: viewJournals);
         }
 
-        // POST: Admin/Issues/Add
+        // POST: Admin/Journals/Add
         [HttpPost]
         public ActionResult Add(FormCollection collection)
         {
             return View();
         }
 
-        // GET: Admin/Issues/Edit/{id}
+        // GET: Admin/Journals/Edit/{id}
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Admin/Issues/Edit/{id}
+        // POST: Admin/Journals/Edit/{id}
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
             return View();
         }
 
-        // GET: Admin/Issues/Delete/{id}
+        // GET: Admin/Journals/Delete/{id}
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Admin/Issues/Delete/{id}
+        // POST: Admin/Journals/Delete/{id}
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

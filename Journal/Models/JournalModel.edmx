@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="JournalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="JournalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Articles">
           <Key>
             <PropertyRef Name="id" />
@@ -72,7 +72,8 @@
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="article_id" Type="int" Nullable="false" />
-          <Property Name="title" Type="varchar" MaxLength="512" />
+          <Property Name="title_en" Type="varchar" MaxLength="512" />
+          <Property Name="title_az" Type="varchar" MaxLength="512" />
           <Property Name="lang" Type="char" MaxLength="2" />
           <Property Name="file_dir" Type="varchar" MaxLength="1024" />
         </EntityType>
@@ -161,7 +162,7 @@
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="512" />
-          <Property Name="title_ru" Type="varchar" MaxLength="512" />
+          <Property Name="title_az" Type="varchar" MaxLength="512" />
           <Property Name="date" Type="datetime" />
           <Property Name="title_img_id" Type="int" Nullable="false" />
           <Property Name="published" Type="tinyint" Nullable="false" />
@@ -695,7 +696,8 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="JournalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -722,10 +724,10 @@
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Articles" FromRole="Articles" ToRole="Comments" />
           <NavigationProperty Name="DownloadableResources" Relationship="Self.FK_DownloadableResources_Articles" FromRole="Articles" ToRole="DownloadableResources" />
           <NavigationProperty Name="Exhibits" Relationship="Self.FK_Exhibits_Articles" FromRole="Articles" ToRole="Exhibits" />
+          <NavigationProperty Name="FeaturedArticles" Relationship="Self.FK_FeaturedArticles_Articles" FromRole="Articles" ToRole="FeaturedArticles" />
           <NavigationProperty Name="Galleries" Relationship="Self.FK_Galleries_Articles" FromRole="Articles" ToRole="Galleries" />
           <NavigationProperty Name="JournalArticles" Relationship="Self.FK_JournalArticles_Articles" FromRole="Articles" ToRole="JournalArticles" />
           <NavigationProperty Name="Podcasts" Relationship="Self.FK_Podcasts_Articles" FromRole="Articles" ToRole="Podcasts" />
-          <NavigationProperty Name="FeaturedArticles" Relationship="JournalModel.FK_FeaturedArticles_Articles" FromRole="Article" ToRole="FeaturedArticle" />
         </EntityType>
         <EntityType Name="ArticlesCategory">
           <Key>
@@ -788,7 +790,8 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="article_id" Type="Int32" Nullable="false" />
-          <Property Name="title" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="title_en" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
           <Property Name="lang" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="file_dir" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Article" Relationship="Self.FK_DownloadableResources_Articles" FromRole="DownloadableResources" ToRole="Articles" />
@@ -833,6 +836,15 @@
           <Property Name="excerpt_en" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
           <Property Name="excerpt_az" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Article" Relationship="Self.FK_Exhibits_Articles" FromRole="Exhibits" ToRole="Articles" />
+        </EntityType>
+        <EntityType Name="FeaturedArticle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="article_id" Type="Int32" Nullable="false" />
+          <Property Name="position" Type="Byte" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_FeaturedArticles_Articles" FromRole="FeaturedArticles" ToRole="Articles" />
         </EntityType>
         <EntityType Name="Gallery">
           <Key>
@@ -883,7 +895,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="title_en" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
-          <Property Name="title_ru" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="title_img_id" Type="Int32" Nullable="false" />
           <Property Name="published" Type="Byte" Nullable="false" />
@@ -913,8 +925,8 @@
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="status" Type="Byte" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Subscriptions_Categories" FromRole="Subscriptions" ToRole="Categories" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Subscriptions_Authors" FromRole="Subscriptions" ToRole="Users" />
-          <NavigationProperty Name="User1" Relationship="Self.FK_Subscriptions_Users" FromRole="Subscriptions" ToRole="Users" />
+          <NavigationProperty Name="Author" Relationship="Self.FK_Subscriptions_Authors" FromRole="Subscriptions" ToRole="Users" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Subscriptions_Users" FromRole="Subscriptions" ToRole="Users" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
@@ -967,8 +979,8 @@
           <Property Name="reg_date" Type="DateTime" Precision="3" />
           <Property Name="last_login_date" Type="DateTime" Precision="3" />
           <Property Name="token" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ArticleAuthor" Relationship="Self.FK_Articles_Authors" FromRole="Users" ToRole="Articles" />
-          <NavigationProperty Name="ArticleEditor" Relationship="Self.FK_Articles_Editors" FromRole="Users" ToRole="Articles" />
+          <NavigationProperty Name="AuthorsArticles" Relationship="Self.FK_Articles_Authors" FromRole="Users" ToRole="Articles" />
+          <NavigationProperty Name="EditorsArticles" Relationship="Self.FK_Articles_Editors" FromRole="Users" ToRole="Articles" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Users" FromRole="Users" ToRole="Comments" />
           <NavigationProperty Name="Country" Relationship="Self.FK_Users_Countries" FromRole="Users" ToRole="Countries" />
           <NavigationProperty Name="EducationLevel" Relationship="Self.FK_Users_EducationLevels" FromRole="Users" ToRole="EducationLevels" />
@@ -1069,6 +1081,18 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Exhibits">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeaturedArticles_Articles">
+          <End Role="Articles" Type="Self.Article" Multiplicity="1" />
+          <End Role="FeaturedArticles" Type="Self.FeaturedArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FeaturedArticles">
               <PropertyRef Name="article_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -1289,7 +1313,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="JournalEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Articles" EntityType="Self.Article" />
           <EntitySet Name="ArticlesCategories" EntityType="Self.ArticlesCategory" />
           <EntitySet Name="ArticlesTags" EntityType="Self.ArticlesTag" />
@@ -1301,6 +1325,7 @@
           <EntitySet Name="ExhibitColumns" EntityType="Self.ExhibitColumn" />
           <EntitySet Name="ExhibitDatas" EntityType="Self.ExhibitData" />
           <EntitySet Name="Exhibits" EntityType="Self.Exhibit" />
+          <EntitySet Name="FeaturedArticles" EntityType="Self.FeaturedArticle" />
           <EntitySet Name="Galleries" EntityType="Self.Gallery" />
           <EntitySet Name="GalleryImages" EntityType="Self.GalleryImage" />
           <EntitySet Name="Images" EntityType="Self.Image" />
@@ -1343,6 +1368,10 @@
           <AssociationSet Name="FK_Exhibits_Articles" Association="Self.FK_Exhibits_Articles">
             <End Role="Articles" EntitySet="Articles" />
             <End Role="Exhibits" EntitySet="Exhibits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeaturedArticles_Articles" Association="Self.FK_FeaturedArticles_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="FeaturedArticles" EntitySet="FeaturedArticles" />
           </AssociationSet>
           <AssociationSet Name="FK_Galleries_Articles" Association="Self.FK_Galleries_Articles">
             <End Role="Articles" EntitySet="Articles" />
@@ -1416,39 +1445,13 @@
             <End Role="UserGroups" EntitySet="UserGroups" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <EntitySet Name="FeaturedArticles" EntityType="JournalModel.FeaturedArticle" />
-          <AssociationSet Name="FK_FeaturedArticles_Articles" Association="JournalModel.FK_FeaturedArticles_Articles">
-            <End Role="Article" EntitySet="Articles" />
-            <End Role="FeaturedArticle" EntitySet="FeaturedArticles" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="FeaturedArticle">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="article_id" Type="Int32" Nullable="false" />
-          <Property Name="position" Type="Byte" />
-          <NavigationProperty Name="Article" Relationship="JournalModel.FK_FeaturedArticles_Articles" FromRole="FeaturedArticle" ToRole="Article" />
-        </EntityType>
-        <Association Name="FK_FeaturedArticles_Articles">
-          <End Type="JournalModel.Article" Role="Article" Multiplicity="1" />
-          <End Type="JournalModel.FeaturedArticle" Role="FeaturedArticle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Article">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="FeaturedArticle">
-              <PropertyRef Name="article_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="JournalModelStoreContainer" CdmEntityContainer="JournalEntities">
+        <EntityContainerMapping StorageEntityContainer="JournalModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Articles">
             <EntityTypeMapping TypeName="JournalModel.Article">
               <MappingFragment StoreEntitySet="Articles">
@@ -1521,7 +1524,8 @@
               <MappingFragment StoreEntitySet="DownloadableResources">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="article_id" ColumnName="article_id" />
-                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="title_en" ColumnName="title_en" />
+                <ScalarProperty Name="title_az" ColumnName="title_az" />
                 <ScalarProperty Name="lang" ColumnName="lang" />
                 <ScalarProperty Name="file_dir" ColumnName="file_dir" />
               </MappingFragment>
@@ -1568,6 +1572,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="FeaturedArticles">
+            <EntityTypeMapping TypeName="JournalModel.FeaturedArticle">
+              <MappingFragment StoreEntitySet="FeaturedArticles">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="article_id" ColumnName="article_id" />
+                <ScalarProperty Name="position" ColumnName="position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Galleries">
             <EntityTypeMapping TypeName="JournalModel.Gallery">
               <MappingFragment StoreEntitySet="Galleries">
@@ -1611,7 +1624,7 @@
               <MappingFragment StoreEntitySet="Journals">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title_en" ColumnName="title_en" />
-                <ScalarProperty Name="title_ru" ColumnName="title_ru" />
+                <ScalarProperty Name="title_az" ColumnName="title_az" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="title_img_id" ColumnName="title_img_id" />
                 <ScalarProperty Name="published" ColumnName="published" />
@@ -1693,15 +1706,6 @@
                 <ScalarProperty Name="reg_date" ColumnName="reg_date" />
                 <ScalarProperty Name="last_login_date" ColumnName="last_login_date" />
                 <ScalarProperty Name="token" ColumnName="token" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FeaturedArticles">
-            <EntityTypeMapping TypeName="JournalModel.FeaturedArticle">
-              <MappingFragment StoreEntitySet="FeaturedArticles">
-                <ScalarProperty Name="position" ColumnName="position" />
-                <ScalarProperty Name="article_id" ColumnName="article_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

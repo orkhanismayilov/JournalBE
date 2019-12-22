@@ -21,47 +21,47 @@ namespace Journal.Areas.Admin
                 new { controller = "Dashboard", action = "Index" }
             );
 
-            // ISSUES ROUTES
+            // JOURNALS ROUTES
             context.MapRoute(
-                "Issues List",
-                "admin/issues/",
-                new { controller = "Issues", action = "Index" }
+                "Journals List",
+                "admin/journals/",
+                new { controller = "Journals", action = "Index" }
             );
 
             context.MapRoute(
-                "Published Issues",
-                "admin/issues/published/",
-                new { controller = "Issues", action = "Published" }
+                "Published Journals",
+                "admin/journals/published/",
+                new { controller = "Journals", action = "Published" }
             );
 
             context.MapRoute(
-                "Non-published Issues",
-                "admin/issues/non-published/",
-                new { controller = "Issues", action = "NonPublished" }
+                "Non-published Journals",
+                "admin/journals/non-published/",
+                new { controller = "Journals", action = "NonPublished" }
             );
 
             context.MapRoute(
-                "Deleted Issues",
-                "admin/issues/deleted/",
-                new { controller = "Issues", action = "Deleted" }
+                "Deleted Journals",
+                "admin/journals/deleted/",
+                new { controller = "Journals", action = "Deleted" }
             );
 
             context.MapRoute(
-                "Add Issues",
-                "admin/issues/add/",
-                new { controller = "Issues", action = "Create" }
+                "Add Journals",
+                "admin/journals/add/",
+                new { controller = "Journals", action = "Add" }
             );
 
             context.MapRoute(
-                "Edit Issues",
-                "admin/issues/edit/{id}",
-                new { controller = "Issues", action = "Edit", id = 0 }
+                "Edit Journals",
+                "admin/journals/edit/{id}",
+                new { controller = "Journals", action = "Edit", id = 0 }
             );
 
             context.MapRoute(
-                "Delete Issues",
-                "admin/issues/delete/{id}",
-                new { controller = "Issues", action = "Delete", id = 0 }
+                "Delete Journals",
+                "admin/journals/delete/{id}",
+                new { controller = "Journals", action = "Delete", id = 0 }
             );
         }
     }

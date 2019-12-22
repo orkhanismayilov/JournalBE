@@ -23,7 +23,7 @@ namespace Journal.Models
         public byte status { get; set; }
     
         public virtual Category Category { get; set; }
+        public virtual User Author { get; set; }
         public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
     }
 }

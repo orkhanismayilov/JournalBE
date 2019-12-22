@@ -22,7 +22,7 @@ namespace Journal.Models
     
         public int id { get; set; }
         public string title_en { get; set; }
-        public string title_ru { get; set; }
+        public string title_az { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public int title_img_id { get; set; }
         public byte published { get; set; }

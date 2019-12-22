@@ -131,7 +131,9 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ArticlesController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
-    <Compile Include="Areas\Admin\Controllers\IssuesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\JournalsController.cs" />
+    <Compile Include="Areas\Admin\Models\Breadcrumb.cs" />
+    <Compile Include="Areas\Admin\Models\ViewJournals.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -228,24 +230,28 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Admin\assets\css\bootstrap.css" />
-    <Content Include="Areas\Admin\assets\css\bootstrap.min.css" />
-    <Content Include="Areas\Admin\assets\css\coreui-icons.css" />
-    <Content Include="Areas\Admin\assets\css\coreui-icons.min.css" />
-    <Content Include="Areas\Admin\assets\css\coreui.min.css" />
-    <Content Include="Areas\Admin\assets\css\fonts.css" />
-    <Content Include="Areas\Admin\assets\css\main.css" />
-    <Content Include="Areas\Admin\assets\css\coreui.css" />
-    <Content Include="Areas\Admin\assets\fonts\CoreUI-Icons-Brand.svg" />
-    <Content Include="Areas\Admin\assets\fonts\CoreUI-Icons-Free.svg" />
-    <Content Include="Areas\Admin\assets\img\user-placeholder.png" />
-    <Content Include="Areas\Admin\assets\js\bootstrap.bundle.js" />
-    <Content Include="Areas\Admin\assets\js\bootstrap.bundle.min.js" />
-    <Content Include="Areas\Admin\assets\js\coreui.bundle.js" />
-    <Content Include="Areas\Admin\assets\js\coreui.bundle.min.js" />
-    <Content Include="Areas\Admin\assets\js\jquery.js" />
-    <Content Include="Areas\Admin\assets\js\jquery.min.js" />
-    <Content Include="Areas\Admin\assets\js\main.js" />
+    <Content Include="assets\admin\css\bootstrap.css" />
+    <Content Include="assets\admin\css\bootstrap.min.css" />
+    <Content Include="assets\admin\css\coreui-icons.css" />
+    <Content Include="assets\admin\css\coreui-icons.min.css" />
+    <Content Include="assets\admin\css\coreui.min.css" />
+    <Content Include="assets\admin\css\fonts.css" />
+    <Content Include="assets\admin\css\main.css" />
+    <Content Include="assets\admin\css\coreui.css" />
+    <Content Include="assets\admin\css\select2.css" />
+    <Content Include="assets\admin\css\select2.min.css" />
+    <Content Include="assets\admin\fonts\CoreUI-Icons-Brand.svg" />
+    <Content Include="assets\admin\fonts\CoreUI-Icons-Free.svg" />
+    <Content Include="assets\admin\img\user-placeholder.png" />
+    <Content Include="assets\admin\js\bootstrap.bundle.js" />
+    <Content Include="assets\admin\js\bootstrap.bundle.min.js" />
+    <Content Include="assets\admin\js\coreui.bundle.js" />
+    <Content Include="assets\admin\js\coreui.bundle.min.js" />
+    <Content Include="assets\admin\js\jquery.js" />
+    <Content Include="assets\admin\js\jquery.min.js" />
+    <Content Include="assets\admin\js\main.js" />
+    <Content Include="assets\admin\js\select2.js" />
+    <Content Include="assets\admin\js\select2.min.js" />
     <Content Include="assets\css\fonts.css" />
     <Content Include="assets\css\hamburgers.css" />
     <Content Include="assets\css\hamburgers.min.css" />
@@ -367,7 +373,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\fonts.css.map" />
@@ -418,21 +423,29 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
-    <Content Include="Areas\Admin\assets\css\main.less" />
-    <Content Include="Areas\Admin\assets\css\fonts.less" />
-    <Content Include="Areas\Admin\assets\css\fonts.css.map" />
-    <Content Include="Areas\Admin\assets\css\main.css.map" />
+    <Content Include="assets\admin\css\main.less" />
+    <Content Include="assets\admin\css\fonts.less" />
+    <Content Include="assets\admin\css\fonts.css.map" />
+    <Content Include="assets\admin\css\main.css.map" />
     <Content Include="Areas\Admin\Views\Shared\_Sidebar.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Header.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Footer.cshtml" />
-    <Content Include="Areas\Admin\assets\fonts\CoreUI-Icons-Brand.eot" />
-    <Content Include="Areas\Admin\assets\fonts\CoreUI-Icons-Brand.ttf" />
-    <Content Include="Areas\Admin\assets\fonts\CoreUI-Icons-Brand.woff" />
-    <Content Include="Areas\Admin\assets\fonts\CoreUI-Icons-Brand.woff2" />
-    <Content Include="Areas\Admin\assets\fonts\CoreUI-Icons-Free.eot" />
-    <Content Include="Areas\Admin\assets\fonts\CoreUI-Icons-Free.ttf" />
-    <Content Include="Areas\Admin\assets\fonts\CoreUI-Icons-Free.woff" />
-    <Content Include="Areas\Admin\assets\fonts\CoreUI-Icons-Free.woff2" />
+    <Content Include="assets\admin\fonts\CoreUI-Icons-Brand.eot" />
+    <Content Include="assets\admin\fonts\CoreUI-Icons-Brand.ttf" />
+    <Content Include="assets\admin\fonts\CoreUI-Icons-Brand.woff" />
+    <Content Include="assets\admin\fonts\CoreUI-Icons-Brand.woff2" />
+    <Content Include="assets\admin\fonts\CoreUI-Icons-Free.eot" />
+    <Content Include="assets\admin\fonts\CoreUI-Icons-Free.ttf" />
+    <Content Include="assets\admin\fonts\CoreUI-Icons-Free.woff" />
+    <Content Include="assets\admin\fonts\CoreUI-Icons-Free.woff2" />
+    <Content Include="Areas\Admin\Views\Journals\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Journals\Published.cshtml" />
+    <Content Include="Areas\Admin\Views\Journals\NonPublished.cshtml" />
+    <Content Include="Areas\Admin\Views\Journals\Deleted.cshtml" />
+    <Content Include="Areas\Admin\Views\Journals\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Journals\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Journals\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Articles\Index.cshtml" />
     <EntityDeploy Include="Models\JournalModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>JournalModel.Designer.cs</LastGenOutput>
@@ -440,14 +453,6 @@
     <Content Include="Models\JournalModel.edmx.diagram">
       <DependentUpon>JournalModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\Issues\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Issues\Published.cshtml" />
-    <Content Include="Areas\Admin\Views\Issues\NonPublished.cshtml" />
-    <Content Include="Areas\Admin\Views\Issues\Deleted.cshtml" />
-    <Content Include="Areas\Admin\Views\Issues\Add.cshtml" />
-    <Content Include="Areas\Admin\Views\Issues\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Issues\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Articles\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Category\Category.cshtml" />
     <Content Include="Views\Authorization\Authorization.cshtml" />

@@ -13,10 +13,10 @@ namespace Journal.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class JournalEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public JournalEntities()
-            : base("name=JournalEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -36,6 +36,7 @@ namespace Journal.Models
         public virtual DbSet<ExhibitColumn> ExhibitColumns { get; set; }
         public virtual DbSet<ExhibitData> ExhibitDatas { get; set; }
         public virtual DbSet<Exhibit> Exhibits { get; set; }
+        public virtual DbSet<FeaturedArticle> FeaturedArticles { get; set; }
         public virtual DbSet<Gallery> Galleries { get; set; }
         public virtual DbSet<GalleryImage> GalleryImages { get; set; }
         public virtual DbSet<Image> Images { get; set; }
@@ -47,6 +48,5 @@ namespace Journal.Models
         public virtual DbSet<University> Universities { get; set; }
         public virtual DbSet<UserGroup> UserGroups { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<FeaturedArticle> FeaturedArticles { get; set; }
     }
 }
