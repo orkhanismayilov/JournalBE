@@ -132,7 +132,9 @@
     <Compile Include="Areas\Admin\Controllers\ArticlesController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\JournalsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MediaController.cs" />
     <Compile Include="Areas\Admin\Models\Breadcrumb.cs" />
+    <Compile Include="Areas\Admin\Models\Media.cs" />
     <Compile Include="Areas\Admin\Models\ViewJournals.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\AuthorizationController.cs" />
@@ -247,11 +249,14 @@
     <Content Include="assets\admin\js\bootstrap.bundle.min.js" />
     <Content Include="assets\admin\js\coreui.bundle.js" />
     <Content Include="assets\admin\js\coreui.bundle.min.js" />
+    <Content Include="assets\admin\js\dropzone.js" />
+    <Content Include="assets\admin\js\dropzone.min.js" />
     <Content Include="assets\admin\js\jquery.js" />
     <Content Include="assets\admin\js\jquery.min.js" />
     <Content Include="assets\admin\js\main.js" />
     <Content Include="assets\admin\js\select2.js" />
     <Content Include="assets\admin\js\select2.min.js" />
+    <Content Include="assets\admin\js\uploadmedia.js" />
     <Content Include="assets\css\fonts.css" />
     <Content Include="assets\css\hamburgers.css" />
     <Content Include="assets\css\hamburgers.min.css" />
@@ -373,6 +378,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Views\Media\" />
+    <Folder Include="uploads\docs\" />
+    <Folder Include="uploads\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\fonts.css.map" />

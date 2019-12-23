@@ -1,6 +1,7 @@
 ﻿@model Journal.Areas.Admin.Models.ViewJournals
 @{
     ViewBag.title = "Add Journal";
+    ViewBag.useUploadMediaJs = true;
 }
 
 <div class="row">
@@ -33,7 +34,7 @@
                             <button type="button" class="btn btn-primary mb-2">Select Articles</button>
                         </div>
                         <div class="col-12">
-                            <button type="button" class="btn btn-secondary">Select Cover Image</button>
+                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#media-browser">Select Cover Image</button>
                             <input type="hidden" name="title_img_id" />
                         </div>
                     </div>
@@ -45,6 +46,46 @@
                     <a href="/admin/" class="btn btn-secondary ml-auto" role="button"><i class="cil-x"></i> Cancel</a>
                     <button type="button" class="btn btn-success ml-2" onclick="$('form').submit()"><i class="cil-plus"></i> Add</button>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="media-browser" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Media Browser</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="cil-x"></i></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row mb-3">
+                        <div class="col-12 p-0">
+                            <h5 class="mb-2">Upload</h5>
+                            <div class="dropzone-wrapper">
+                                <span class="dropzone-note">Drag & Drop your files here to upload</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <h5 class="mb-2">Choose</h5>
+                            <div class="images-grid">
+                                <div class="grid-item example">
+                                    <img src="https://via.placeholder.com/100" class="grid-image" />
+                                    <span class="overlay"><i class="cil-check-circle"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="cil-x"></i> Close</button>
+                <button type="button" class="btn btn-primary">OK</button>
             </div>
         </div>
     </div>

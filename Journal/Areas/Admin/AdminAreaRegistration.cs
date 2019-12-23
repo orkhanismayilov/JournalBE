@@ -21,6 +21,13 @@ namespace Journal.Areas.Admin
                 new { controller = "Dashboard", action = "Index" }
             );
 
+            // MEDIA ROUTES
+            context.MapRoute(
+                "Media Upload",
+                "admin/media/upload/",
+                new { controller = "Media", action = "Upload" }
+            );
+
             // JOURNALS ROUTES
             context.MapRoute(
                 "Journals List",
