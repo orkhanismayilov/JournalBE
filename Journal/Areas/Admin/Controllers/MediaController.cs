@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
+using Journal.Areas.Admin.Models;
 
 namespace Journal.Areas.Admin.Controllers
 {
@@ -15,11 +16,13 @@ namespace Journal.Areas.Admin.Controllers
         {
             if (file != null)
             {
-                string fileName = Path.GetFileName(file.FileName);
-                string path = getMediaPath();
-                Directory.CreateDirectory(path);
+                Media media = new Media()
+                {
+                    file = file,
+                    savePath = GetMediaPath()
+                };
 
-                file.SaveAs(Path.Combine(path, fileName));
+                media.Add(file);
 
                 return Json("OK", JsonRequestBehavior.AllowGet);
             }
@@ -27,7 +30,7 @@ namespace Journal.Areas.Admin.Controllers
             return Json("false", JsonRequestBehavior.AllowGet);
         }
 
-        public string getMediaPath()
+        public string GetMediaPath()
         {
             return Server.MapPath("~/uploads/images/" + DateTime.Today.ToString("yyyy/MM/dd") + "/");
         }
