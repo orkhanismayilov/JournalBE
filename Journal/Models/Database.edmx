@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="JournalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="JournalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Articles">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="512" />
           <Property Name="title_az" Type="varchar" MaxLength="512" />
           <Property Name="date" Type="datetime" />
@@ -25,7 +25,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="article_id" Type="int" Nullable="false" />
           <Property Name="category_id" Type="int" Nullable="false" />
         </EntityType>
@@ -33,7 +33,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="article_id" Type="int" Nullable="false" />
           <Property Name="tag_id" Type="int" Nullable="false" />
         </EntityType>
@@ -41,7 +41,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="256" />
           <Property Name="title_az" Type="varchar" MaxLength="256" />
           <Property Name="alias" Type="varchar" MaxLength="256" />
@@ -51,7 +51,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="comment" Type="ntext" />
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="article_id" Type="int" Nullable="false" />
@@ -61,7 +61,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="64" />
           <Property Name="title_az" Type="varchar" MaxLength="64" />
           <Property Name="code" Type="varchar" MaxLength="4" />
@@ -70,7 +70,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="article_id" Type="int" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="512" />
           <Property Name="title_az" Type="varchar" MaxLength="512" />
@@ -81,7 +81,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="64" />
           <Property Name="title_az" Type="varchar" MaxLength="64" />
         </EntityType>
@@ -89,7 +89,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="exhibit_id" Type="int" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="256" />
           <Property Name="title_az" Type="varchar" MaxLength="256" />
@@ -98,7 +98,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="exhibit_column_id" Type="int" Nullable="false" />
           <Property Name="content_en" Type="ntext" />
           <Property Name="content_az" Type="ntext" />
@@ -107,7 +107,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="article_id" Type="int" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="256" />
           <Property Name="title_az" Type="varchar" MaxLength="256" />
@@ -118,7 +118,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="article_id" Type="int" Nullable="false" />
           <Property Name="position" Type="tinyint" />
         </EntityType>
@@ -126,14 +126,14 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="article_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="GalleryImages">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="gallery_id" Type="int" Nullable="false" />
           <Property Name="image_id" Type="int" Nullable="false" />
         </EntityType>
@@ -141,7 +141,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="filename" Type="varchar" MaxLength="512" />
           <Property Name="date" Type="datetime" />
           <Property Name="width" Type="int" />
@@ -152,7 +152,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="journal_id" Type="int" Nullable="false" />
           <Property Name="article_id" Type="int" Nullable="false" />
         </EntityType>
@@ -160,7 +160,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="512" />
           <Property Name="title_az" Type="varchar" MaxLength="512" />
           <Property Name="date" Type="datetime" />
@@ -171,7 +171,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="512" />
           <Property Name="title_az" Type="varchar" MaxLength="512" />
           <Property Name="article_id" Type="int" Nullable="false" />
@@ -182,7 +182,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="category_id" Type="int" Nullable="false" />
@@ -194,7 +194,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="256" />
           <Property Name="title_az" Type="varchar" MaxLength="256" />
           <Property Name="alias" Type="varchar" MaxLength="256" />
@@ -203,7 +203,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="256" />
           <Property Name="title_az" Type="varchar" MaxLength="256" />
         </EntityType>
@@ -211,14 +211,14 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="varchar" MaxLength="64" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="first_name" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="last_name" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="128" Nullable="false" />
@@ -368,6 +368,18 @@
             </Principal>
             <Dependent Role="DownloadableResources">
               <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExhibitColumns_Exhibits">
+          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="1" />
+          <End Role="ExhibitColumns" Type="Self.ExhibitColumns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exhibits">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExhibitColumns">
+              <PropertyRef Name="exhibit_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -631,6 +643,10 @@
             <End Role="Articles" EntitySet="Articles" />
             <End Role="DownloadableResources" EntitySet="DownloadableResources" />
           </AssociationSet>
+          <AssociationSet Name="FK_ExhibitColumns_Exhibits" Association="Self.FK_ExhibitColumns_Exhibits">
+            <End Role="Exhibits" EntitySet="Exhibits" />
+            <End Role="ExhibitColumns" EntitySet="ExhibitColumns" />
+          </AssociationSet>
           <AssociationSet Name="FK_ExhibitData_ExhibitColumns" Association="Self.FK_ExhibitData_ExhibitColumns">
             <End Role="ExhibitColumns" EntitySet="ExhibitColumns" />
             <End Role="ExhibitData" EntitySet="ExhibitData" />
@@ -696,8 +712,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="JournalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -814,6 +829,7 @@
           <Property Name="title_en" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="title_az" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ExhibitDatas" Relationship="Self.FK_ExhibitData_ExhibitColumns" FromRole="ExhibitColumns" ToRole="ExhibitData" />
+          <NavigationProperty Name="Exhibit" Relationship="JournalModel.FK_ExhibitColumns_Exhibits" FromRole="ExhibitColumn" ToRole="Exhibit" />
         </EntityType>
         <EntityType Name="ExhibitData">
           <Key>
@@ -836,6 +852,7 @@
           <Property Name="excerpt_en" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
           <Property Name="excerpt_az" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Article" Relationship="Self.FK_Exhibits_Articles" FromRole="Exhibits" ToRole="Articles" />
+          <NavigationProperty Name="ExhibitColumns" Relationship="JournalModel.FK_ExhibitColumns_Exhibits" FromRole="Exhibit" ToRole="ExhibitColumn" />
         </EntityType>
         <EntityType Name="FeaturedArticle">
           <Key>
@@ -979,12 +996,12 @@
           <Property Name="reg_date" Type="DateTime" Precision="3" />
           <Property Name="last_login_date" Type="DateTime" Precision="3" />
           <Property Name="token" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AuthorsArticles" Relationship="Self.FK_Articles_Authors" FromRole="Users" ToRole="Articles" />
-          <NavigationProperty Name="EditorsArticles" Relationship="Self.FK_Articles_Editors" FromRole="Users" ToRole="Articles" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK_Articles_Authors" FromRole="Users" ToRole="Articles" />
+          <NavigationProperty Name="EditedArticles" Relationship="Self.FK_Articles_Editors" FromRole="Users" ToRole="Articles" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Users" FromRole="Users" ToRole="Comments" />
           <NavigationProperty Name="Country" Relationship="Self.FK_Users_Countries" FromRole="Users" ToRole="Countries" />
           <NavigationProperty Name="EducationLevel" Relationship="Self.FK_Users_EducationLevels" FromRole="Users" ToRole="EducationLevels" />
-          <NavigationProperty Name="SubscriptionsToAuthor" Relationship="Self.FK_Subscriptions_Authors" FromRole="Users" ToRole="Subscriptions" />
+          <NavigationProperty Name="SubscribedToAuthor" Relationship="Self.FK_Subscriptions_Authors" FromRole="Users" ToRole="Subscriptions" />
           <NavigationProperty Name="Subscriptions" Relationship="Self.FK_Subscriptions_Users" FromRole="Users" ToRole="Subscriptions" />
           <NavigationProperty Name="University" Relationship="Self.FK_Users_Universities" FromRole="Users" ToRole="Universities" />
           <NavigationProperty Name="UserGroup" Relationship="Self.FK_Users_UserGroups" FromRole="Users" ToRole="UserGroups" />
@@ -1313,7 +1330,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="JournalEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Articles" EntityType="Self.Article" />
           <EntitySet Name="ArticlesCategories" EntityType="Self.ArticlesCategory" />
           <EntitySet Name="ArticlesTags" EntityType="Self.ArticlesTag" />
@@ -1445,13 +1462,29 @@
             <End Role="UserGroups" EntitySet="UserGroups" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <AssociationSet Name="FK_ExhibitColumns_Exhibits" Association="JournalModel.FK_ExhibitColumns_Exhibits">
+            <End Role="Exhibit" EntitySet="Exhibits" />
+            <End Role="ExhibitColumn" EntitySet="ExhibitColumns" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_ExhibitColumns_Exhibits">
+          <End Type="JournalModel.Exhibit" Role="Exhibit" Multiplicity="1" />
+          <End Type="JournalModel.ExhibitColumn" Role="ExhibitColumn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exhibit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExhibitColumn">
+              <PropertyRef Name="exhibit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="JournalModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="JournalModelStoreContainer" CdmEntityContainer="JournalEntities">
           <EntitySetMapping Name="Articles">
             <EntityTypeMapping TypeName="JournalModel.Article">
               <MappingFragment StoreEntitySet="Articles">

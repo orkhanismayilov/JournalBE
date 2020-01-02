@@ -14,6 +14,12 @@ namespace Journal.Models
     
     public partial class Exhibit
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Exhibit()
+        {
+            this.ExhibitColumns = new HashSet<ExhibitColumn>();
+        }
+    
         public int id { get; set; }
         public int article_id { get; set; }
         public string title_en { get; set; }
@@ -22,5 +28,7 @@ namespace Journal.Models
         public string excerpt_az { get; set; }
     
         public virtual Article Article { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExhibitColumn> ExhibitColumns { get; set; }
     }
 }

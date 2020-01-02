@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="94fd0b5399d549359eac306eba38cb9d" Name="Diagram">
+      <Diagram DiagramId="fcbedb503d92428b8df14a171e993694" Name="Diagram">
         <EntityTypeShape EntityType="JournalModel.Article" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
         <EntityTypeShape EntityType="JournalModel.ArticlesCategory" Width="1.5" PointX="8.25" PointY="23.25" IsExpanded="true" />
         <EntityTypeShape EntityType="JournalModel.ArticlesTag" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
@@ -55,6 +55,7 @@
         <AssociationConnector Association="JournalModel.FK_Subscriptions_Users" ManuallyRouted="false" />
         <AssociationConnector Association="JournalModel.FK_Users_Universities" ManuallyRouted="false" />
         <AssociationConnector Association="JournalModel.FK_Users_UserGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="JournalModel.FK_ExhibitColumns_Exhibits" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,11 +1,8 @@
-﻿using Microsoft.Ajax.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Web;
 using System.Web.Mvc;
-using System.IO;
 using Journal.Areas.Admin.Models;
+using Journal.Models;
 
 namespace Journal.Areas.Admin.Controllers
 {
@@ -19,10 +16,10 @@ namespace Journal.Areas.Admin.Controllers
                 Media media = new Media()
                 {
                     file = file,
-                    savePath = GetMediaPath()
+                    savePath = Server.MapPath(GetMediaPath())
                 };
 
-                media.Add(file);
+                media.Add();
 
                 return Json("OK", JsonRequestBehavior.AllowGet);
             }
@@ -32,7 +29,7 @@ namespace Journal.Areas.Admin.Controllers
 
         public string GetMediaPath()
         {
-            return Server.MapPath("~/uploads/images/" + DateTime.Today.ToString("yyyy/MM/dd") + "/");
+            return "~" + Globals.MediaUploadsPath + DateTime.Today.ToString("yyyy/MM/dd") + "/";
         }
     }
 }

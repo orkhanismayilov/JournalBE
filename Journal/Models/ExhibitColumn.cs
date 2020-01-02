@@ -27,5 +27,6 @@ namespace Journal.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExhibitData> ExhibitDatas { get; set; }
+        public virtual Exhibit Exhibit { get; set; }
     }
 }

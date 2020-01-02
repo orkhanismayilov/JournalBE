@@ -16,11 +16,11 @@
         dropzoneNote.hide();
     });
 
-    dropzone.on('queuecomplete', function(){
-        dropzoneNote.fadeIn();
-    });
-
     dropzone.on('complete', function (file) {
         dropzone.removeFile(file);
+    });
+
+    dropzone.on('queuecomplete', function(){
+        dropzoneNote.fadeIn();
     });
 });

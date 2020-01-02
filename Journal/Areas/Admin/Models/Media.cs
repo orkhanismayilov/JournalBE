@@ -1,27 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 using System.IO;
 using SoundInTheory.DynamicImage;
 using SoundInTheory.DynamicImage.Layers;
 using SoundInTheory.DynamicImage.Filters;
+using Journal.Models;
 
 namespace Journal.Areas.Admin.Models
 {
     public class Media
     {
+        JournalEntities db = new JournalEntities();
+
         public HttpPostedFileBase file;
+        public int width;
+        public int height;
         public string savePath;
 
-        public void Add(HttpPostedFileBase file)
+        public void Add()
         {
-            Dictionary<string, string> saveResult = SaveFile(file, savePath);
+            IDictionary<string, string> saveResult = SaveFile(file, savePath);
             Resize(saveResult);
+
+            Image image = new Image
+            {
+                filename = saveResult["fileName"],
+                date = DateTime.Now,
+                width = width,
+                height = height,
+                file_dir = Globals.MediaUploadsPath + DateTime.Today.ToString("yyyy/MM/dd") + "/"
+            };
+
+            db.Images.Add(image);
+            db.SaveChanges();
         }
 
-        public Dictionary<string, string> SaveFile(HttpPostedFileBase file, string savePath)
+        public IDictionary<string, string> SaveFile(HttpPostedFileBase file, string savePath)
         {
             string fileName = file.FileName;
             string pathToCheck = savePath + fileName;
@@ -49,47 +64,62 @@ namespace Journal.Areas.Admin.Models
             string pathToSave = savePath + fileName;
             file.SaveAs(pathToSave);
 
-            Dictionary<string, string> result = new Dictionary<string, string>
+            IDictionary<string, string> result = new Dictionary<string, string>
             {
                 { "savePath", pathToSave },
                 { "fileName", fileName }
             };
 
+            width = System.Drawing.Image.FromFile(pathToSave).Width;
+            height = System.Drawing.Image.FromFile(pathToSave).Height;
+
             return result;
         }
 
-        public void Resize(Dictionary<string, string> saveResult)
+        public void Resize(IDictionary<string, string> saveResult)
         {
-            Composition composition = new Composition();
-            composition.Layers.Add(new ImageLayer
+            string folderName = "";
+
+            foreach (KeyValuePair<string, int[]> sizes in Globals.MediaSizes)
             {
-                SourceFileName = saveResult["savePath"],
-                Filters =
+                Composition composition = new Composition();
+                composition.Layers.Add(new ImageLayer
+                {
+                    SourceFileName = saveResult["savePath"],
+                    Filters =
                     {
                         new ResizeFilter
                         {
-                           Width = new Unit(1000),
-                           Height = new Unit(1000),
+                           Width = new Unit(sizes.Value[0]),
+                           Height = new Unit(sizes.Value[1]),
                            Mode = ResizeMode.UniformFill
                         }
                     }
-            });
+                });
 
-            SaveResized(composition, saveResult["fileName"]);
+                folderName = sizes.Key;
+
+                SaveResized(composition, saveResult["fileName"], folderName);
+            }
         }
 
-        public void SaveResized(Composition composition, string fileName)
+        public void SaveResized(Composition composition, string fileName, string folderName)
         {
             GeneratedImage generatedImage = composition.GenerateImage();
 
-            string thumbPath = savePath + @"thumbnails/";
+            string finalPath = savePath + folderName + @"/";
 
-            if (!Directory.Exists(thumbPath))
+            if (!Directory.Exists(finalPath))
             {
-                Directory.CreateDirectory(thumbPath);
+                Directory.CreateDirectory(finalPath);
             }
 
-            generatedImage.Save(thumbPath + fileName);
+            generatedImage.Save(finalPath + fileName);
+        }
+
+        public string GetMediaPath()
+        {
+            return Globals.MediaUploadsPath + DateTime.Today.ToString("yyyy/MM/dd") + "/";
         }
     }
 }

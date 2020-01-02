@@ -17,10 +17,10 @@ namespace Journal.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.AuthorsArticles = new HashSet<Article>();
-            this.EditorsArticles = new HashSet<Article>();
+            this.Articles = new HashSet<Article>();
+            this.EditedArticles = new HashSet<Article>();
             this.Comments = new HashSet<Comment>();
-            this.SubscriptionsToAuthor = new HashSet<Subscription>();
+            this.SubscribedToAuthor = new HashSet<Subscription>();
             this.Subscriptions = new HashSet<Subscription>();
         }
     
@@ -46,15 +46,15 @@ namespace Journal.Models
         public string token { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Article> AuthorsArticles { get; set; }
+        public virtual ICollection<Article> Articles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Article> EditorsArticles { get; set; }
+        public virtual ICollection<Article> EditedArticles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual Country Country { get; set; }
         public virtual EducationLevel EducationLevel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Subscription> SubscriptionsToAuthor { get; set; }
+        public virtual ICollection<Subscription> SubscribedToAuthor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subscription> Subscriptions { get; set; }
         public virtual University University { get; set; }
