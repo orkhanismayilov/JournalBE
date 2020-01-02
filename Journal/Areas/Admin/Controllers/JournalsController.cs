@@ -4,11 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Journal.Areas.Admin.Models;
+using Journal.Models;
 
 namespace Journal.Areas.Admin.Controllers
 {
     public class JournalsController : Controller
     {
+        JournalEntities db = new JournalEntities();
+
         // GET: Admin/Journals
         public ActionResult Index()
         {
@@ -44,6 +47,17 @@ namespace Journal.Areas.Admin.Controllers
                 state = "active",
                 isLeaf = true
             });
+
+            List<Image> lastImages = db.Images.Take(18).ToList();
+            foreach (Image image in lastImages)
+            {
+                image.thumbnail = image.file_dir + "thumbnails/" + image.filename;
+                image.image_large = image.file_dir + "1920x1080" + image.filename;
+                image.image_medium_vertical = image.file_dir + "500x720" + image.filename;
+                image.image_medium_horizontal = image.file_dir + "600x320" + image.filename;
+                image.image_square = image.file_dir + "300x300" + image.filename;
+            }
+            viewJournals.Images = lastImages;
 
             return View(model: viewJournals);
         }

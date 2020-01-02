@@ -9,6 +9,7 @@ namespace Journal.Areas.Admin.Controllers
     public class MediaController : Controller
     {
         // POST: Admin/Media/Upload
+        [HttpPost]
         public JsonResult Upload(HttpPostedFileBase file)
         {
             if (file != null)
@@ -19,12 +20,12 @@ namespace Journal.Areas.Admin.Controllers
                     savePath = Server.MapPath(GetMediaPath())
                 };
 
-                media.Add();
+                Image image = media.Add();
 
-                return Json("OK", JsonRequestBehavior.AllowGet);
+                return Json(image);
             }
 
-            return Json("false", JsonRequestBehavior.AllowGet);
+            return Json("false");
         }
 
         public string GetMediaPath()

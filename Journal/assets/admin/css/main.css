@@ -12,6 +12,28 @@
 .close:hover {
   color: #fff;
 }
+img {
+  display: block;
+  max-width: 100%;
+}
+.title-image-wrapper {
+  display: none;
+  width: 120px;
+  margin-top: 10px;
+  position: relative;
+}
+.title-image-wrapper #title-image {
+  width: 100%;
+}
+.title-image-wrapper .dismiss-title-image {
+  position: absolute;
+  top: 0;
+  right: 3px;
+  font-size: 1.5rem;
+  color: #D16767;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
 .dropzone-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -107,36 +129,32 @@
 .images-grid {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-  max-height: 210px;
   margin: 0 -5px;
 }
 .images-grid .grid-item {
-  width: 100px;
-  height: 100px;
-  margin: 0 5px 5px;
+  flex: 1 1 calc(16.6666% - 10px);
+  max-width: calc(16.6666% - 10px);
+  margin: 0 5px 10px;
   border-radius: 3px;
   overflow: hidden;
   cursor: pointer;
   position: relative;
 }
+.images-grid .grid-item:hover .overlay,
 .images-grid .grid-item.active .overlay {
-  background: transparent;
-  opacity: 1;
-  visibility: visible;
-}
-.images-grid .grid-item:hover .overlay {
   background: rgba(0, 0, 0, 0.5);
   opacity: 1;
   visibility: visible;
 }
-.images-grid .grid-item:hover i {
+.images-grid .grid-item:hover i,
+.images-grid .grid-item.active i {
   color: #fff;
 }
 .images-grid .grid-item.example {
   display: none;
 }
 .images-grid .grid-image {
+  display: block;
   width: 100%;
 }
 .images-grid .overlay {

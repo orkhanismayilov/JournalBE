@@ -35,6 +35,10 @@
                         </div>
                         <div class="col-12">
                             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#media-browser">Select Cover Image</button>
+                            <div class="title-image-wrapper">
+                                <img id="title-image" alt="Title Image" />
+                                <span class="dismiss-title-image"><i class="cil-x"></i></span>
+                            </div>
                             <input type="hidden" name="title_img_id" />
                         </div>
                     </div>
@@ -75,9 +79,17 @@
                             <h5 class="mb-2">Choose</h5>
                             <div class="images-grid">
                                 <div class="grid-item example">
-                                    <img src="https://via.placeholder.com/100" class="grid-image" />
+                                    <img src="" class="grid-image" />
                                     <span class="overlay"><i class="cil-check-circle"></i></span>
                                 </div>
+
+                                @foreach (var image in Model.Images)
+                                {
+                                    <div class="grid-item" data-id="@image.id">
+                                        <img src="@image.thumbnail" class="grid-image" />
+                                        <span class="overlay"><i class="cil-check-circle"></i></span>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
@@ -85,7 +97,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="cil-x"></i> Close</button>
-                <button type="button" class="btn btn-primary">OK</button>
+                <button type="button" class="btn btn-primary" id="select-title-img" data-dismiss="modal">OK</button>
             </div>
         </div>
     </div>

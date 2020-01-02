@@ -18,7 +18,7 @@ namespace Journal.Areas.Admin.Models
         public int height;
         public string savePath;
 
-        public void Add()
+        public Image Add()
         {
             IDictionary<string, string> saveResult = SaveFile(file, savePath);
             Resize(saveResult);
@@ -34,6 +34,8 @@ namespace Journal.Areas.Admin.Models
 
             db.Images.Add(image);
             db.SaveChanges();
+
+            return image;
         }
 
         public IDictionary<string, string> SaveFile(HttpPostedFileBase file, string savePath)
