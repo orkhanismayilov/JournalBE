@@ -197,7 +197,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="256" />
           <Property Name="title_az" Type="varchar" MaxLength="256" />
-          <Property Name="alias" Type="varchar" MaxLength="256" />
+          <Property Name="alias" Type="varchar" MaxLength="256" Nullable="false" />
         </EntityType>
         <EntityType Name="Universities">
           <Key>
@@ -952,7 +952,7 @@
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="title_en" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="title_az" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="alias" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="alias" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="ArticlesTags" Relationship="Self.FK_ArticlesTags_Tags" FromRole="Tags" ToRole="ArticlesTags" />
         </EntityType>
         <EntityType Name="University">

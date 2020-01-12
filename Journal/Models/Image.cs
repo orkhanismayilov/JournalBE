@@ -11,7 +11,7 @@ namespace Journal.Models
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Image
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +21,7 @@ namespace Journal.Models
             this.Categories = new HashSet<Category>();
             this.GalleryImages = new HashSet<GalleryImage>();
         }
-
+    
         public int id { get; set; }
         public string filename { get; set; }
         public Nullable<System.DateTime> date { get; set; }
@@ -29,12 +29,12 @@ namespace Journal.Models
         public Nullable<int> height { get; set; }
         public string file_dir { get; set; }
 
-        public virtual string thumbnail { get; set; }
-        public virtual string image_large { get; set; }
-        public virtual string image_medium_vertical { get; set; }
-        public virtual string image_medium_horizontal { get; set; }
-        public virtual string image_square { get; set; }
-        
+        public string thumbnail { get; set; }
+        public string image_large { get; set; }
+        public string image_medium_vertical { get; set; }
+        public string image_medium_horizontal { get; set; }
+        public string image_square { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Article> Articles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

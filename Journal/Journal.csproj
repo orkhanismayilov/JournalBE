@@ -144,9 +144,11 @@
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\JournalsController.cs" />
     <Compile Include="Areas\Admin\Controllers\MediaController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TagsController.cs" />
     <Compile Include="Areas\Admin\Models\Breadcrumb.cs" />
     <Compile Include="Areas\Admin\Models\Media.cs" />
     <Compile Include="Areas\Admin\Models\ViewJournals.cs" />
+    <Compile Include="Areas\Admin\Models\ViewTags.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -473,6 +475,11 @@
     <Content Include="Models\Database.edmx.diagram">
       <DependentUpon>Database.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Tags\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Tags\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Error404.cshtml" />
+    <Content Include="Areas\Admin\Views\Tags\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Tags\Delete.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Category\Category.cshtml" />
     <Content Include="Views\Authorization\Authorization.cshtml" />

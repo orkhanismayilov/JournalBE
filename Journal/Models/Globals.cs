@@ -12,6 +12,8 @@ namespace Journal.Models
 
         }
 
+        public static string ProjectTitle = "Journal";
+        public static string AdminTitle = "Journal Admin Panel";
         public static string MediaUploadsPath { get; } = "/uploads/images/";
         public static string FilesUploadsPath { get; } = "/uplaods/docs/";
 

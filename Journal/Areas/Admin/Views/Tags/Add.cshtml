@@ -1,0 +1,61 @@
+﻿@model Journal.Areas.Admin.Models.ViewTags
+@{
+    ViewBag.title = "Add Tag";
+}
+
+<div class="row">
+
+    @if (Model.ErrorMsg != null)
+    {
+        <div class="col-12">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error!</strong> @(Model.ErrorMsg)
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    }
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Add Tag</h5>
+            </div>
+
+            <div class="card-body">
+                <form method="post">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="title-az">Title AZ</label>
+                                <input type="text" name="title_az" id="title-az" class="form-control" value="@Request["title_az"]" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="title-en">Title EN</label>
+                                <input type="text" name="title_en" id="title-en" class="form-control" value="@Request["title_en"]" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="alias">Alias</label>
+                                <input type="text" name="alias" id="alias" class="form-control" value="@Request["alias"]" />
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="card-footer">
+                <div class="d-flex">
+                    <a href="/admin/tags/" class="btn btn-secondary ml-auto" role="button"><i class="cil-x"></i> Cancel</a>
+                    <button type="button" class="btn btn-success ml-2" onclick="$('form').submit()"><i class="cil-plus"></i> Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

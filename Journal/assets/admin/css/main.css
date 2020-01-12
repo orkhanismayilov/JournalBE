@@ -176,4 +176,8 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.c-sidebar-fixed {
+  box-shadow: 0 0 10px rgba(34, 34, 34, 0.65);
+  z-index: 1031 !important;
+}
 /*# sourceMappingURL=main.css.map */

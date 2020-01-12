@@ -6,18 +6,20 @@ using Journal.Models;
 
 namespace Journal.Areas.Admin.Models
 {
-    public class ViewJournals
+    public class ViewTags
     {
-        public ViewJournals()
+        public ViewTags()
         {
             Breadcrumbs.Add(new Breadcrumb
             {
-                title = "Journals",
-                link = "/admin/journals/",
+                title = "Tags",
+                link = "/admin/tags/",
             });
         }
 
+        public Tag Tag { get; set; }
         public List<Breadcrumb> Breadcrumbs { get; set; } = new List<Breadcrumb>();
-        public List<Image> Images { get; set; }
+        public List<Tag> TagsList { get; set; }
+        public string ErrorMsg { get; set; }
     }
 }

@@ -11,6 +11,7 @@ namespace Journal.Areas.Admin.Controllers
     public class JournalsController : Controller
     {
         JournalEntities db = new JournalEntities();
+        ViewJournals viewJournals = new ViewJournals();
 
         // GET: Admin/Journals
         public ActionResult Index()
@@ -39,8 +40,6 @@ namespace Journal.Areas.Admin.Controllers
         // GET: Admin/Journals/Add
         public ActionResult Add()
         {
-            ViewJournals viewJournals = new ViewJournals();
-
             viewJournals.Breadcrumbs.Add(new Breadcrumb
             {
                 title = "Add",

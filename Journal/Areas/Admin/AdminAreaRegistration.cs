@@ -70,6 +70,31 @@ namespace Journal.Areas.Admin
                 "admin/journals/delete/{id}",
                 new { controller = "Journals", action = "Delete", id = 0 }
             );
+
+            // TAGS ROUTES
+            context.MapRoute(
+                "Tags List",
+                "admin/tags/",
+                new { controller = "Tags", action = "Index" }
+            );
+
+            context.MapRoute(
+                "Add Tags",
+                "admin/tags/add/",
+                new { controller = "Tags", action = "Add" }
+            );
+
+            context.MapRoute(
+                "Edit Tags",
+                "admin/tags/edit/{id}",
+                new { controller = "Tags", action = "Edit", id = 0 }
+            );
+
+            context.MapRoute(
+                "Delete Tags",
+                "admin/tags/delete/{id}",
+                new { controller = "Tags", action = "Delete", id = 0 }
+            );
         }
     }
 }

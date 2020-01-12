@@ -1,0 +1,67 @@
+﻿@model Journal.Areas.Admin.Models.ViewTags
+@{
+    ViewBag.title = "Tags";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <h5 class="mb-0">Tags List</h5>
+                <a href="/admin/tags/add/" class="btn btn-primary font-weight-bold" role="button"><i class="cil-plus"></i> Tag</a>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" width="5%">
+                                    ID
+                                </th>
+                                <th class="text-center" scope="col">
+                                    Title AZ
+                                </th>
+                                <th class="text-center" scope="col">
+                                    Title EN
+                                </th>
+                                <th class="text-center" scope="col">
+                                    Alias
+                                </th>
+                                <th class="text-center" scope="col" width="10%">
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var tag in Model.TagsList)
+                            {
+                                <tr>
+                                    <td class="font-lg align-middle">
+                                        @tag.id
+                                    </td>
+                                    <td class="text-center font-lg align-middle">
+                                        @tag.title_az
+                                    </td>
+                                    <td class="text-center font-lg align-middle">
+                                        @tag.title_en
+                                    </td>
+                                    <td class="text-center font-lg align-middle">
+                                        @tag.alias
+                                    </td>
+                                    <td class="text-center font-xl align-middle">
+                                        <a href="/admin/tags/edit/@tag.id" class="text-warning mr-2"><i class="cil-pencil"></i></a>
+                                        <a href="/admin/tags/delete/@tag.id" class="text-danger"><i class="cil-x-circle"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
