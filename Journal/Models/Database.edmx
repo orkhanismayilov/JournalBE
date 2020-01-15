@@ -11,7 +11,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="512" />
-          <Property Name="title_az" Type="varchar" MaxLength="512" />
+          <Property Name="title_az" Type="nvarchar" MaxLength="512" />
           <Property Name="date" Type="datetime" />
           <Property Name="content_en" Type="ntext" />
           <Property Name="content_az" Type="ntext" />
@@ -66,7 +66,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="64" />
-          <Property Name="title_az" Type="varchar" MaxLength="64" />
+          <Property Name="title_az" Type="nvarchar" MaxLength="64" />
           <Property Name="code" Type="varchar" MaxLength="4" />
         </EntityType>
         <EntityType Name="DownloadableResources">
@@ -76,7 +76,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="article_id" Type="int" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="512" />
-          <Property Name="title_az" Type="varchar" MaxLength="512" />
+          <Property Name="title_az" Type="nvarchar" MaxLength="512" />
           <Property Name="lang" Type="char" MaxLength="2" />
           <Property Name="file_dir" Type="varchar" MaxLength="1024" />
         </EntityType>
@@ -86,7 +86,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="64" />
-          <Property Name="title_az" Type="varchar" MaxLength="64" />
+          <Property Name="title_az" Type="nvarchar" MaxLength="64" />
         </EntityType>
         <EntityType Name="ExhibitColumns">
           <Key>
@@ -95,7 +95,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="exhibit_id" Type="int" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="256" />
-          <Property Name="title_az" Type="varchar" MaxLength="256" />
+          <Property Name="title_az" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="ExhibitData">
           <Key>
@@ -113,9 +113,9 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="article_id" Type="int" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="256" />
-          <Property Name="title_az" Type="varchar" MaxLength="256" />
+          <Property Name="title_az" Type="nvarchar" MaxLength="256" />
           <Property Name="excerpt_en" Type="varchar" MaxLength="512" />
-          <Property Name="excerpt_az" Type="varchar" MaxLength="512" />
+          <Property Name="excerpt_az" Type="nvarchar" MaxLength="512" />
         </EntityType>
         <EntityType Name="FeaturedArticles">
           <Key>
@@ -174,7 +174,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="512" />
-          <Property Name="title_az" Type="varchar" MaxLength="512" />
+          <Property Name="title_az" Type="nvarchar" MaxLength="512" />
           <Property Name="date" Type="datetime" />
           <Property Name="title_img_id" Type="int" Nullable="false" />
           <Property Name="published" Type="tinyint" Nullable="false" />
@@ -185,7 +185,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="512" />
-          <Property Name="title_az" Type="varchar" MaxLength="512" />
+          <Property Name="title_az" Type="nvarchar" MaxLength="512" />
           <Property Name="article_id" Type="int" Nullable="false" />
           <Property Name="date" Type="datetime" />
           <Property Name="file_dir" Type="varchar" MaxLength="1024" />
@@ -208,7 +208,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="256" Nullable="false" />
-          <Property Name="title_az" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="title_az" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="alias" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="link_short" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="link" Type="varchar" MaxLength="512" Nullable="false" />
@@ -219,7 +219,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title_en" Type="varchar" MaxLength="256" />
-          <Property Name="title_az" Type="varchar" MaxLength="256" />
+          <Property Name="title_az" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="UserGroups">
           <Key>
@@ -233,22 +233,22 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="first_name" Type="varchar" MaxLength="64" Nullable="false" />
-          <Property Name="last_name" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="last_name" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="password" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="512" Nullable="false" />
           <Property Name="gender" Type="tinyint" />
           <Property Name="birthday" Type="datetime" />
-          <Property Name="about" Type="varchar" MaxLength="512" />
+          <Property Name="about" Type="nvarchar" MaxLength="512" />
           <Property Name="biography" Type="ntext" />
           <Property Name="phone" Type="varchar" MaxLength="64" />
           <Property Name="user_group_id" Type="int" Nullable="false" />
           <Property Name="country_id" Type="int" />
           <Property Name="education_lvl_id" Type="int" />
           <Property Name="university_id" Type="int" />
-          <Property Name="major" Type="varchar" MaxLength="256" />
-          <Property Name="employer" Type="varchar" MaxLength="256" />
-          <Property Name="job_title" Type="varchar" MaxLength="256" />
+          <Property Name="major" Type="nvarchar" MaxLength="256" />
+          <Property Name="employer" Type="nvarchar" MaxLength="256" />
+          <Property Name="job_title" Type="nvarchar" MaxLength="256" />
           <Property Name="reg_date" Type="datetime" />
           <Property Name="last_login_date" Type="datetime" />
           <Property Name="token" Type="varchar" MaxLength="32" />
@@ -752,6 +752,7 @@
           <EntitySet Name="ArticlesCategories" EntityType="JournalModel.ArticlesCategory" />
           <EntitySet Name="ArticlesTags" EntityType="JournalModel.ArticlesTag" />
           <EntitySet Name="Categories" EntityType="JournalModel.Category" />
+          <EntitySet Name="Comments" EntityType="JournalModel.Comment" />
           <EntitySet Name="Countries" EntityType="JournalModel.Country" />
           <EntitySet Name="DownloadableResources" EntityType="JournalModel.DownloadableResource" />
           <EntitySet Name="EducationLevels" EntityType="JournalModel.EducationLevel" />
@@ -790,6 +791,10 @@
           <AssociationSet Name="FK_ArticlesTags_Articles" Association="JournalModel.FK_ArticlesTags_Articles">
             <End Role="Article" EntitySet="Articles" />
             <End Role="ArticlesTag" EntitySet="ArticlesTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_Articles" Association="JournalModel.FK_Comments_Articles">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Comment" EntitySet="Comments" />
           </AssociationSet>
           <AssociationSet Name="FK_DownloadableResources_Articles" Association="JournalModel.FK_DownloadableResources_Articles">
             <End Role="Article" EntitySet="Articles" />
@@ -830,6 +835,10 @@
           <AssociationSet Name="FK_Subscriptions_Categories" Association="JournalModel.FK_Subscriptions_Categories">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Subscription" EntitySet="Subscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_Users" Association="JournalModel.FK_Comments_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Comment" EntitySet="Comments" />
           </AssociationSet>
           <AssociationSet Name="FK_Users_Countries" Association="JournalModel.FK_Users_Countries">
             <End Role="Country" EntitySet="Countries" />
@@ -879,15 +888,6 @@
             <End Role="UserGroup" EntitySet="UserGroups" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
-          <EntitySet Name="Comments" EntityType="JournalModel.Comment" />
-          <AssociationSet Name="FK_Comments_Articles" Association="JournalModel.FK_Comments_Articles">
-            <End Role="Article" EntitySet="Articles" />
-            <End Role="Comment" EntitySet="Comments" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Comments_Users" Association="JournalModel.FK_Comments_Users">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Comment" EntitySet="Comments" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Article">
           <Key>
@@ -895,7 +895,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title_en" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
-          <Property Name="title_az" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="content_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="content_az" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -909,13 +909,13 @@
           <NavigationProperty Name="Image" Relationship="JournalModel.FK_Articles_Images" FromRole="Article" ToRole="Image" />
           <NavigationProperty Name="ArticlesCategories" Relationship="JournalModel.FK_ArticlesCategories_Articles" FromRole="Article" ToRole="ArticlesCategory" />
           <NavigationProperty Name="ArticlesTags" Relationship="JournalModel.FK_ArticlesTags_Articles" FromRole="Article" ToRole="ArticlesTag" />
+          <NavigationProperty Name="Comments" Relationship="JournalModel.FK_Comments_Articles" FromRole="Article" ToRole="Comment" />
           <NavigationProperty Name="DownloadableResources" Relationship="JournalModel.FK_DownloadableResources_Articles" FromRole="Article" ToRole="DownloadableResource" />
           <NavigationProperty Name="Exhibits" Relationship="JournalModel.FK_Exhibits_Articles" FromRole="Article" ToRole="Exhibit" />
           <NavigationProperty Name="FeaturedArticles" Relationship="JournalModel.FK_FeaturedArticles_Articles" FromRole="Article" ToRole="FeaturedArticle" />
           <NavigationProperty Name="Galleries" Relationship="JournalModel.FK_Galleries_Articles" FromRole="Article" ToRole="Gallery" />
           <NavigationProperty Name="JournalArticles" Relationship="JournalModel.FK_JournalArticles_Articles" FromRole="Article" ToRole="JournalArticle" />
           <NavigationProperty Name="Podcasts" Relationship="JournalModel.FK_Podcasts_Articles" FromRole="Article" ToRole="Podcast" />
-          <NavigationProperty Name="Comments" Relationship="JournalModel.FK_Comments_Articles" FromRole="Article" ToRole="Comment" />
         </EntityType>
         <EntityType Name="ArticlesCategory">
           <Key>
@@ -953,13 +953,25 @@
           <NavigationProperty Name="Image" Relationship="JournalModel.FK_Categories_Images" FromRole="Category" ToRole="Image" />
           <NavigationProperty Name="Subscriptions" Relationship="JournalModel.FK_Subscriptions_Categories" FromRole="Category" ToRole="Subscription" />
         </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="article_id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Article" Relationship="JournalModel.FK_Comments_Articles" FromRole="Comment" ToRole="Article" />
+          <NavigationProperty Name="User" Relationship="JournalModel.FK_Comments_Users" FromRole="Comment" ToRole="User" />
+        </EntityType>
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title_en" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="title_az" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="code" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Users" Relationship="JournalModel.FK_Users_Countries" FromRole="Country" ToRole="User" />
         </EntityType>
@@ -970,7 +982,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="article_id" Type="Int32" Nullable="false" />
           <Property Name="title_en" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
-          <Property Name="title_az" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="lang" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="file_dir" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Article" Relationship="JournalModel.FK_DownloadableResources_Articles" FromRole="DownloadableResource" ToRole="Article" />
@@ -981,7 +993,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title_en" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="title_az" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Users" Relationship="JournalModel.FK_Users_EducationLevels" FromRole="EducationLevel" ToRole="User" />
         </EntityType>
         <EntityType Name="ExhibitColumn">
@@ -991,7 +1003,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="exhibit_id" Type="Int32" Nullable="false" />
           <Property Name="title_en" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="title_az" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Exhibit" Relationship="JournalModel.FK_ExhibitColumns_Exhibits" FromRole="ExhibitColumn" ToRole="Exhibit" />
           <NavigationProperty Name="ExhibitDatas" Relationship="JournalModel.FK_ExhibitData_ExhibitColumns" FromRole="ExhibitColumn" ToRole="ExhibitData" />
         </EntityType>
@@ -1012,9 +1024,9 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="article_id" Type="Int32" Nullable="false" />
           <Property Name="title_en" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="title_az" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="excerpt_en" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
-          <Property Name="excerpt_az" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="excerpt_az" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Article" Relationship="JournalModel.FK_Exhibits_Articles" FromRole="Exhibit" ToRole="Article" />
           <NavigationProperty Name="ExhibitColumns" Relationship="JournalModel.FK_ExhibitColumns_Exhibits" FromRole="Exhibit" ToRole="ExhibitColumn" />
         </EntityType>
@@ -1087,7 +1099,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title_en" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
-          <Property Name="title_az" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="title_img_id" Type="Int32" Nullable="false" />
           <Property Name="published" Type="Byte" Nullable="false" />
@@ -1099,7 +1111,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title_en" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
-          <Property Name="title_az" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="article_id" Type="Int32" Nullable="false" />
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="file_dir" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
@@ -1126,7 +1138,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title_en" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="title_az" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="alias" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="link_short" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="link" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
@@ -1138,7 +1150,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title_en" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="title_az" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="title_az" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Users" Relationship="JournalModel.FK_Users_Universities" FromRole="University" ToRole="User" />
         </EntityType>
         <EntityType Name="UserGroup">
@@ -1154,34 +1166,34 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="first_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="last_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="email" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="gender" Type="Byte" />
           <Property Name="birthday" Type="DateTime" Precision="3" />
-          <Property Name="about" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="about" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="biography" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="phone" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="user_group_id" Type="Int32" Nullable="false" />
           <Property Name="country_id" Type="Int32" />
           <Property Name="education_lvl_id" Type="Int32" />
           <Property Name="university_id" Type="Int32" />
-          <Property Name="major" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="employer" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="job_title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="major" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="employer" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="job_title" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="reg_date" Type="DateTime" Precision="3" />
           <Property Name="last_login_date" Type="DateTime" Precision="3" />
           <Property Name="token" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Article" Relationship="JournalModel.FK_Articles_Authors" FromRole="User" ToRole="Article" />
-          <NavigationProperty Name="ArticleEdited" Relationship="JournalModel.FK_Articles_Editors" FromRole="User" ToRole="Article" />
+          <NavigationProperty Name="Articles" Relationship="JournalModel.FK_Articles_Authors" FromRole="User" ToRole="Article" />
+          <NavigationProperty Name="ArticlesEdited" Relationship="JournalModel.FK_Articles_Editors" FromRole="User" ToRole="Article" />
+          <NavigationProperty Name="Comments" Relationship="JournalModel.FK_Comments_Users" FromRole="User" ToRole="Comment" />
           <NavigationProperty Name="Country" Relationship="JournalModel.FK_Users_Countries" FromRole="User" ToRole="Country" />
           <NavigationProperty Name="EducationLevel" Relationship="JournalModel.FK_Users_EducationLevels" FromRole="User" ToRole="EducationLevel" />
-          <NavigationProperty Name="SubscriptionToAuthor" Relationship="JournalModel.FK_Subscriptions_Authors" FromRole="User" ToRole="Subscription" />
+          <NavigationProperty Name="SubscriptionsToAuthors" Relationship="JournalModel.FK_Subscriptions_Authors" FromRole="User" ToRole="Subscription" />
           <NavigationProperty Name="Subscriptions" Relationship="JournalModel.FK_Subscriptions_Users" FromRole="User" ToRole="Subscription" />
           <NavigationProperty Name="University" Relationship="JournalModel.FK_Users_Universities" FromRole="User" ToRole="University" />
           <NavigationProperty Name="UserGroup" Relationship="JournalModel.FK_Users_UserGroups" FromRole="User" ToRole="UserGroup" />
-          <NavigationProperty Name="Comments" Relationship="JournalModel.FK_Comments_Users" FromRole="User" ToRole="Comment" />
         </EntityType>
         <Association Name="FK_Articles_Authors">
           <End Type="JournalModel.User" Role="User" Multiplicity="1" />
@@ -1239,6 +1251,18 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="ArticlesTag">
+              <PropertyRef Name="article_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_Articles">
+          <End Type="JournalModel.Article" Role="Article" Multiplicity="1" />
+          <End Type="JournalModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Comment">
               <PropertyRef Name="article_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -1360,6 +1384,18 @@
             </Principal>
             <Dependent Role="Subscription">
               <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_Users">
+          <End Type="JournalModel.User" Role="User" Multiplicity="1" />
+          <End Type="JournalModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="user_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1507,42 +1543,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Comment">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="user_id" Type="Int32" Nullable="false" />
-          <Property Name="article_id" Type="Int32" Nullable="false" />
-          <Property Name="date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Article" Relationship="JournalModel.FK_Comments_Articles" FromRole="Comment" ToRole="Article" />
-          <NavigationProperty Name="User" Relationship="JournalModel.FK_Comments_Users" FromRole="Comment" ToRole="User" />
-        </EntityType>
-        <Association Name="FK_Comments_Articles">
-          <End Type="JournalModel.Article" Role="Article" Multiplicity="1" />
-          <End Type="JournalModel.Comment" Role="Comment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Article">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Comment">
-              <PropertyRef Name="article_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Comments_Users">
-          <End Type="JournalModel.User" Role="User" Multiplicity="1" />
-          <End Type="JournalModel.Comment" Role="Comment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Comment">
-              <PropertyRef Name="user_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1594,6 +1594,17 @@
                 <ScalarProperty Name="alias" ColumnName="alias" />
                 <ScalarProperty Name="title_az" ColumnName="title_az" />
                 <ScalarProperty Name="title_en" ColumnName="title_en" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="JournalModel.Comment">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="article_id" ColumnName="article_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="text" ColumnName="text" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1806,17 +1817,6 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="last_name" ColumnName="last_name" />
                 <ScalarProperty Name="first_name" ColumnName="first_name" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Comments">
-            <EntityTypeMapping TypeName="JournalModel.Comment">
-              <MappingFragment StoreEntitySet="Comments">
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="article_id" ColumnName="article_id" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
-                <ScalarProperty Name="text" ColumnName="text" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

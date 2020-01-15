@@ -17,11 +17,11 @@ namespace Journal.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Article = new HashSet<Article>();
-            this.ArticleEdited = new HashSet<Article>();
-            this.SubscriptionToAuthor = new HashSet<Subscription>();
-            this.Subscriptions = new HashSet<Subscription>();
+            this.Articles = new HashSet<Article>();
+            this.ArticlesEdited = new HashSet<Article>();
             this.Comments = new HashSet<Comment>();
+            this.SubscriptionsToAuthors = new HashSet<Subscription>();
+            this.Subscriptions = new HashSet<Subscription>();
         }
     
         public int id { get; set; }
@@ -46,18 +46,18 @@ namespace Journal.Models
         public string token { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Article> Article { get; set; }
+        public virtual ICollection<Article> Articles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Article> ArticleEdited { get; set; }
+        public virtual ICollection<Article> ArticlesEdited { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comment> Comments { get; set; }
         public virtual Country Country { get; set; }
         public virtual EducationLevel EducationLevel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Subscription> SubscriptionToAuthor { get; set; }
+        public virtual ICollection<Subscription> SubscriptionsToAuthors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subscription> Subscriptions { get; set; }
         public virtual University University { get; set; }
         public virtual UserGroup UserGroup { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comment> Comments { get; set; }
     }
 }
