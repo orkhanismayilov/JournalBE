@@ -342,3 +342,4 @@ healthchecksdb
 /Journal/Web.Debug.config
 /Journal/Web.config
 /Journal/App_Start
+/Journal/uploads
