@@ -8,16 +8,16 @@ namespace Journal.Areas.Admin.Models
 {
     public class ViewJournals
     {
-        public ViewJournals()
+        public ViewJournals() { }
+
+        public List<Breadcrumb> Breadcrumbs { get; set; } = new List<Breadcrumb>()
         {
-            Breadcrumbs.Add(new Breadcrumb
+            new Breadcrumb
             {
                 title = "Journals",
                 link = "/admin/journals/",
-            });
-        }
-
-        public List<Breadcrumb> Breadcrumbs { get; set; } = new List<Breadcrumb>();
-        public List<Image> Images { get; set; }
+            }
+        };
+        public List<Image> Images { get; set; } = new List<Image>();
     }
 }

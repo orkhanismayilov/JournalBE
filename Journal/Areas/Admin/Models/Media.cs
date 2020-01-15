@@ -35,6 +35,20 @@ namespace Journal.Areas.Admin.Models
             db.Images.Add(image);
             db.SaveChanges();
 
+            foreach (KeyValuePair<string, int[]> size in Globals.MediaSizes)
+            {
+                ImagesMeta imageMeta = new ImagesMeta
+                {
+                    image_id = image.id,
+                    meta_name = size.Key,
+                    meta_value = image.file_dir + size.Key + "/" + image.filename
+                };
+
+                db.ImagesMetas.Add(imageMeta);
+            }
+
+            db.SaveChanges();
+
             return image;
         }
 
@@ -82,7 +96,7 @@ namespace Journal.Areas.Admin.Models
         {
             string folderName = "";
 
-            foreach (KeyValuePair<string, int[]> sizes in Globals.MediaSizes)
+            foreach (KeyValuePair<string, int[]> size in Globals.MediaSizes)
             {
                 Composition composition = new Composition();
                 composition.Layers.Add(new ImageLayer
@@ -92,14 +106,14 @@ namespace Journal.Areas.Admin.Models
                     {
                         new ResizeFilter
                         {
-                           Width = new Unit(sizes.Value[0]),
-                           Height = new Unit(sizes.Value[1]),
+                           Width = new Unit(size.Value[0]),
+                           Height = new Unit(size.Value[1]),
                            Mode = ResizeMode.UniformFill
                         }
                     }
                 });
 
-                folderName = sizes.Key;
+                folderName = size.Key;
 
                 SaveResized(composition, saveResult["fileName"], folderName);
             }

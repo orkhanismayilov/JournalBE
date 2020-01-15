@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Text.RegularExpressions;
 using Journal.Models;
 using Journal.Areas.Admin.Models;
 
@@ -16,15 +17,16 @@ namespace Journal.Areas.Admin.Controllers
         // GET: Admin/Tags
         public ActionResult Index()
         {
-            viewTags.TagsList = db.Tags.OrderByDescending(t => t.id).Take(10).ToList();
+            List<Tag> tagsList = db.Tags.OrderByDescending(t => t.id).Take(10).ToList();
+            viewTags.TagsList = tagsList;
             return View(model: viewTags);
         }
 
         // GET: Admin/Tags/Add
         public ActionResult Add()
         {
-            viewTags.Breadcrumbs.Add(new Breadcrumb 
-            { 
+            viewTags.Breadcrumbs.Add(new Breadcrumb
+            {
                 title = "Add",
                 state = "active",
                 isLeaf = true
@@ -38,6 +40,11 @@ namespace Journal.Areas.Admin.Controllers
         public ActionResult Add(FormCollection collection)
         {
             string alias = collection["alias"];
+
+            if (!CheckAlias(alias))
+            {
+                return View(model: viewTags);
+            }
 
             if (TagExists(alias))
             {
@@ -53,8 +60,11 @@ namespace Journal.Areas.Admin.Controllers
             {
                 title_az = collection["title_az"].ToString(),
                 title_en = collection["title_en"].ToString(),
-                alias = collection["alias"].ToString()
+                alias = collection["alias"].ToString(),
             };
+
+            tag.link_short = "/tags/" + tag.alias + "/";
+            tag.link = Globals.ProjectURL + tag.link_short;
 
             db.Tags.Add(tag);
             db.SaveChanges();
@@ -77,7 +87,8 @@ namespace Journal.Areas.Admin.Controllers
                 return View("Error404", model: viewTags);
             }
 
-            viewTags.Tag = db.Tags.Find(id);
+            Tag tag = db.Tags.Find(id);
+            viewTags.Tag = tag;
             return View(model: viewTags);
         }
 
@@ -95,6 +106,11 @@ namespace Journal.Areas.Admin.Controllers
 
             string alias = collection["alias"];
 
+            if (!CheckAlias(alias))
+            {
+                return View(model: viewTags);
+            }
+
             if (TagExistsById(alias, id))
             {
                 return View(model: viewTags);
@@ -108,6 +124,8 @@ namespace Journal.Areas.Admin.Controllers
             tag.title_az = collection["title_az"].ToString();
             tag.title_en = collection["title_en"].ToString();
             tag.alias = collection["alias"].ToString();
+            tag.link_short = "/tags/" + tag.alias + "/";
+            tag.link = Globals.ProjectURL + tag.link_short;
 
             db.SaveChanges();
 
@@ -129,7 +147,8 @@ namespace Journal.Areas.Admin.Controllers
                 return View("Error404", model: viewTags);
             }
 
-            viewTags.Tag = db.Tags.Find(id);
+            Tag tag = db.Tags.Find(id);
+            viewTags.Tag = tag;
             return View(model: viewTags);
         }
 
@@ -149,11 +168,23 @@ namespace Journal.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        private bool CheckAlias(string alias)
+        {
+            Regex aliasRegex = new Regex("^[a-zA-Z0-9]+$", RegexOptions.Multiline);
+            if (!aliasRegex.IsMatch(alias))
+            {
+                viewTags.ErrorMsg = "Alias format is wrong! Whitespace and special chars is not allowed.";
+                return false;
+            };
+
+            return false;
+        }
+
         private bool TagExists(string alias)
         {
             if (db.Tags.Where(t => t.alias == alias).FirstOrDefault() != null)
             {
-                viewTags.ErrorMsg = "Tag with alias \"" + alias + "\" is already exists";
+                viewTags.ErrorMsg = "Tag with alias \"" + alias + "\" already exists";
                 return true;
             }
 
@@ -164,7 +195,7 @@ namespace Journal.Areas.Admin.Controllers
         {
             if (db.Tags.Where(t => t.alias == alias && t.id != id).FirstOrDefault() != null)
             {
-                viewTags.ErrorMsg = "Tag with alias \"" + alias + "\" is already exists";
+                viewTags.ErrorMsg = "Tag with alias \"" + alias + "\" already exists";
                 return true;
             }
 

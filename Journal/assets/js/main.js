@@ -257,7 +257,8 @@ $(document).ready(function () {
                     });
                 },
                 slideChangeTransitionStart: function () {
-                    if (this.realIndex === this.slides.length - 2) {
+                    if (this.realIndex < this.slides.length - 1) {
+                        $HB.animate({ scrollTop: 0 }, 200);
                         $B.addClass('no-scroll');
                     }
                 },

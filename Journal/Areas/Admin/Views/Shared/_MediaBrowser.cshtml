@@ -1,0 +1,49 @@
+﻿@using Journal.Models
+<div class="modal fade" id="media-browser" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Media Browser</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="cil-x"></i></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row mb-3">
+                        <div class="col-12 p-0">
+                            <h5 class="mb-2">Upload</h5>
+                            <div class="dropzone-wrapper">
+                                <span class="dropzone-note">Drag & Drop your files here to upload</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <h5 class="mb-2">Choose</h5>
+                            <div class="images-grid">
+                                <div class="grid-item example">
+                                    <img src="" class="grid-image" />
+                                    <span class="overlay"><i class="cil-check-circle"></i></span>
+                                </div>
+                                @foreach (Image image in Model.Images)
+                                {
+                                    var thumbnail_url = image.ImagesMetas.Where(im => im.meta_name == "thumbnails").FirstOrDefault().meta_value;
+
+                                    <div class="grid-item" data-id="@image.id">
+                                        <img src="@thumbnail_url" class="grid-image" />
+                                        <span class="overlay"><i class="cil-check-circle"></i></span>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="cil-x"></i> Close</button>
+                <button type="button" class="btn btn-primary" id="select-title-img" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,7 +5,7 @@
 
 <div class="row">
 
-    @if (Model.ErrorMsg != null)
+    @if (!string.IsNullOrWhiteSpace(Model.ErrorMsg))
     {
         <div class="col-12">
             <div class="alert alert-danger alert-dismissible fade show" role="alert">

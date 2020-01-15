@@ -71,6 +71,31 @@ namespace Journal.Areas.Admin
                 new { controller = "Journals", action = "Delete", id = 0 }
             );
 
+            // CATEGORIES ROUTES
+            context.MapRoute(
+                "Categories List",
+                "admin/categories/",
+                new { controller = "Categories", action = "Index" }
+            );
+
+            context.MapRoute(
+                "Add Categories",
+                "admin/categories/add/",
+                new { controller = "Categories", action = "Add" }
+            );
+
+            context.MapRoute(
+                "Edit Categories",
+                "admin/categories/edit/{id}",
+                new { controller = "Categories", action = "Edit", id = 0 }
+            );
+
+            context.MapRoute(
+                "Delete Categories",
+                "admin/categories/delete/{id}",
+                new { controller = "Categories", action = "Delete", id = 0 }
+            );
+
             // TAGS ROUTES
             context.MapRoute(
                 "Tags List",

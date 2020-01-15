@@ -29,7 +29,6 @@ namespace Journal.Models
         public virtual DbSet<ArticlesCategory> ArticlesCategories { get; set; }
         public virtual DbSet<ArticlesTag> ArticlesTags { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<DownloadableResource> DownloadableResources { get; set; }
         public virtual DbSet<EducationLevel> EducationLevels { get; set; }
@@ -40,6 +39,7 @@ namespace Journal.Models
         public virtual DbSet<Gallery> Galleries { get; set; }
         public virtual DbSet<GalleryImage> GalleryImages { get; set; }
         public virtual DbSet<Image> Images { get; set; }
+        public virtual DbSet<ImagesMeta> ImagesMetas { get; set; }
         public virtual DbSet<JournalArticle> JournalArticles { get; set; }
         public virtual DbSet<Journal> Journals { get; set; }
         public virtual DbSet<Podcast> Podcasts { get; set; }
@@ -48,5 +48,6 @@ namespace Journal.Models
         public virtual DbSet<University> Universities { get; set; }
         public virtual DbSet<UserGroup> UserGroups { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
     }
 }

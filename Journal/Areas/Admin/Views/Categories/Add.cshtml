@@ -1,6 +1,7 @@
-﻿@model Journal.Areas.Admin.Models.ViewTags
+﻿@model Journal.Areas.Admin.Models.ViewCategories
 @{
-    ViewBag.title = "Add Tag";
+    ViewBag.title = "Add Category";
+    ViewBag.useUploadMediaJs = true;
 }
 
 <div class="row">
@@ -20,30 +21,56 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="mb-0">Add Tag</h5>
+                <h5 class="mb-0">Add Category</h5>
             </div>
 
             <div class="card-body">
                 <form method="post">
 
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="title-az">Title AZ</label>
                                 <input type="text" name="title_az" id="title-az" class="form-control" value="@Request["title_az"]" />
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="title-en">Title EN</label>
                                 <input type="text" name="title_en" id="title-en" class="form-control" value="@Request["title_en"]" />
                             </div>
                         </div>
-                        <div class="col-md-4">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="alias">Alias</label>
                                 <input type="text" name="alias" id="alias" class="form-control" value="@Request["alias"]" />
                             </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="isActive">Status</label>
+                                <select id="isActive" name="isActive" class="form-control">
+                                    @foreach (KeyValuePair<int, string> status in Model.ActiveStatusList)
+                                    {
+                                        <option value="@status.Key">@status.Value</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#media-browser">Select Title Image</button>
+                            <div class="title-image-wrapper">
+                                <img id="title-image" alt="Title Image" />
+                                <span class="dismiss-title-image"><i class="cil-x"></i></span>
+                            </div>
+                            <input type="hidden" name="title_img_id" />
                         </div>
                     </div>
 
@@ -52,10 +79,12 @@
 
             <div class="card-footer">
                 <div class="d-flex">
-                    <a href="/admin/tags/" class="btn btn-secondary ml-auto" role="button"><i class="cil-x"></i> Cancel</a>
+                    <a href="/admin/categories/" class="btn btn-secondary ml-auto" role="button"><i class="cil-x"></i> Cancel</a>
                     <button type="button" class="btn btn-success ml-2" onclick="$('form').submit()"><i class="cil-plus"></i> Add</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@Html.Partial("_MediaBrowser")

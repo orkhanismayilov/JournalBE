@@ -5,6 +5,18 @@
     let imageSelectItem = $('.images-grid .grid-item'),
         selectedImage = null;
 
+    let titleImgId = $('[name="title_img_id"]').val();
+    if(titleImgId){
+        selectedImage = imageSelectItem.filter(function(){
+            let that = $(this);
+
+            if(that.data('id') == titleImgId){
+                return true;
+            }
+        });
+        selectedImage.addClass('active');
+    }
+
     imageSelectItem.click(function () {
         selectedImage = $(this);
 
@@ -30,7 +42,7 @@
 
         $('[name="title_img_id"]').val('');
 
-        $('.title-image-wrapper').slideUp();
+        $('.title-image-wrapper').removeClass('d-block').slideUp();
         $('#title-image').removeAttr('arc');
     });
 

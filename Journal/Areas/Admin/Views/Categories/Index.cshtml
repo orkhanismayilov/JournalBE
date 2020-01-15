@@ -1,14 +1,14 @@
-﻿@model Journal.Areas.Admin.Models.ViewTags
+﻿@model Journal.Areas.Admin.Models.ViewCategories
 @{
-    ViewBag.title = "Tags";
+    ViewBag.title = "Categories";
 }
 
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header d-flex align-items-center justify-content-between">
-                <h5 class="mb-0">Tags List</h5>
-                <a href="/admin/tags/add/" class="btn btn-primary font-weight-bold" role="button"><i class="cil-plus"></i> Tag</a>
+                <h5 class="mb-0">Categories List</h5>
+                <a href="/admin/categories/add/" class="btn btn-primary font-weight-bold" role="button"><i class="cil-plus"></i> Category</a>
             </div>
 
             <div class="card-body">
@@ -29,6 +29,9 @@
                                 <th class="text-center" scope="col">
                                     Alias
                                 </th>
+                                <th class="text-center" scope="col">
+                                    Status
+                                </th>
                                 <th class="text-center" scope="col" width="10%">
                                     Actions
                                 </th>
@@ -36,26 +39,36 @@
                         </thead>
 
                         <tbody>
-                            @if (Model.TagsList.Count > 0)
+                            @if (Model.CategoriesList.Count > 0)
                             {
-                                foreach (var tag in Model.TagsList)
+                                foreach (var category in Model.CategoriesList)
                                 {
                                     <tr>
                                         <td class="font-lg align-middle">
-                                            @tag.id
+                                            @category.id
                                         </td>
                                         <td class="text-center font-lg align-middle">
-                                            @tag.title_az
+                                            @category.title_az
                                         </td>
                                         <td class="text-center font-lg align-middle">
-                                            @tag.title_en
+                                            @category.title_en
                                         </td>
                                         <td class="text-center font-lg align-middle">
-                                            @tag.alias
+                                            @category.alias
+                                        </td>
+                                        <td class="text-center font-lg align-middle">
+                                            @if (Convert.ToBoolean(category.isActive))
+                                            {
+                                                <span class="badge badge-success">Active</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-danger">Inactive</span>
+                                            }
                                         </td>
                                         <td class="text-center font-xl align-middle">
-                                            <a href="/admin/tags/edit/@tag.id" class="text-warning mr-2"><i class="cil-pencil"></i></a>
-                                            <a href="/admin/tags/delete/@tag.id" class="text-danger"><i class="cil-x-circle"></i></a>
+                                            <a href="/admin/categories/edit/@category.id" class="text-warning mr-2"><i class="cil-pencil"></i></a>
+                                            <a href="/admin/categories/delete/@category.id" class="text-danger"><i class="cil-x-circle"></i></a>
                                         </td>
                                     </tr>
                                 }
@@ -63,8 +76,8 @@
                             else
                             {
                                 <tr>
-                                    <td class="text-center font-xl" colspan="5">
-                                        There is no any tag yet
+                                    <td class="text-center font-xl" colspan="6">
+                                        There is no any category yet
                                     </td>
                                 </tr>
                             }

@@ -12,15 +12,13 @@ namespace Journal.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Comment
+    public partial class ImagesMeta
     {
         public int id { get; set; }
-        public string text { get; set; }
-        public int user_id { get; set; }
-        public int article_id { get; set; }
-        public Nullable<System.DateTime> date { get; set; }
+        public int image_id { get; set; }
+        public string meta_name { get; set; }
+        public string meta_value { get; set; }
     
-        public virtual Article Article { get; set; }
-        public virtual User User { get; set; }
+        public virtual Image Image { get; set; }
     }
 }

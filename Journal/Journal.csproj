@@ -141,12 +141,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ArticlesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\JournalsController.cs" />
     <Compile Include="Areas\Admin\Controllers\MediaController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagsController.cs" />
     <Compile Include="Areas\Admin\Models\Breadcrumb.cs" />
     <Compile Include="Areas\Admin\Models\Media.cs" />
+    <Compile Include="Areas\Admin\Models\ViewCategories.cs" />
     <Compile Include="Areas\Admin\Models\ViewJournals.cs" />
     <Compile Include="Areas\Admin\Models\ViewTags.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
@@ -217,6 +219,9 @@
     </Compile>
     <Compile Include="Models\Globals.cs" />
     <Compile Include="Models\Image.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ImagesMeta.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Journal.cs">
@@ -480,6 +485,11 @@
     <Content Include="Areas\Admin\Views\Shared\Error404.cshtml" />
     <Content Include="Areas\Admin\Views\Tags\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Tags\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_MediaBrowser.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Delete.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Category\Category.cshtml" />
     <Content Include="Views\Authorization\Authorization.cshtml" />

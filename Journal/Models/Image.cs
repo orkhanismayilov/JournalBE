@@ -20,6 +20,7 @@ namespace Journal.Models
             this.Articles = new HashSet<Article>();
             this.Categories = new HashSet<Category>();
             this.GalleryImages = new HashSet<GalleryImage>();
+            this.ImagesMetas = new HashSet<ImagesMeta>();
         }
     
         public int id { get; set; }
@@ -28,18 +29,14 @@ namespace Journal.Models
         public Nullable<int> width { get; set; }
         public Nullable<int> height { get; set; }
         public string file_dir { get; set; }
-
-        public string thumbnail { get; set; }
-        public string image_large { get; set; }
-        public string image_medium_vertical { get; set; }
-        public string image_medium_horizontal { get; set; }
-        public string image_square { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Article> Articles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Category> Categories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GalleryImage> GalleryImages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ImagesMeta> ImagesMetas { get; set; }
     }
 }

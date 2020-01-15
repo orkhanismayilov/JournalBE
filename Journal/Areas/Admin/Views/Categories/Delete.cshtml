@@ -1,0 +1,98 @@
+﻿@model Journal.Areas.Admin.Models.ViewCategories
+@{
+    ViewBag.title = "Delete Category";
+}
+
+<div class="row">
+
+    @if (!string.IsNullOrWhiteSpace(Model.ErrorMsg))
+    {
+        <div class="col-12">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error!</strong> @(Model.ErrorMsg)
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    }
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Add Category</h5>
+            </div>
+
+            <div class="card-body">
+                <form method="post">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="title-az">Title AZ</label>
+                                <input type="text" name="title_az" id="title-az" class="form-control" value="@Model.Category.title_az" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="title-en">Title EN</label>
+                                <input type="text" name="title_en" id="title-en" class="form-control" value="@Model.Category.title_en" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="alias">Alias</label>
+                                <input type="text" name="alias" id="alias" class="form-control" value="@Model.Category.alias" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="isActive">Status</label>
+                                <select id="isActive" name="isActive" class="form-control">
+                                    @foreach (KeyValuePair<int, string> status in Model.ActiveStatusList)
+                                    {
+                                        <option value="@status.Key">@status.Value</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            @{
+                                var titleImg = Model.Category.Image;
+
+                                string dblock = null;
+                                string thumbnail_url = null;
+
+                                if (titleImg != null)
+                                {
+                                    dblock = "d-block";
+                                    thumbnail_url = titleImg.ImagesMetas.Where(im => im.meta_name == "thumbnails").FirstOrDefault().meta_value;
+                                }
+                            }
+                            <div class="title-image-wrapper @dblock">
+                                <img id="title-image" src="@thumbnail_url" alt="Title Image" />
+                                <span class="dismiss-title-image"><i class="cil-x"></i></span>
+                            </div>
+                            <input type="hidden" name="title_img_id" value="@(titleImg?.id)" />
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="card-footer">
+                <div class="d-flex">
+                    <a href="/admin/categories/" class="btn btn-secondary ml-auto" role="button"><i class="cil-x"></i> Cancel</a>
+                    <button type="button" class="btn btn-danger ml-2" onclick="$('form').submit()"><i class="cil-x-circle"></i> Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,18 +8,18 @@ namespace Journal.Areas.Admin.Models
 {
     public class ViewTags
     {
-        public ViewTags()
+        public ViewTags() { }
+
+        public Tag Tag { get; set; } = new Tag();
+        public List<Breadcrumb> Breadcrumbs { get; set; } = new List<Breadcrumb>()
         {
-            Breadcrumbs.Add(new Breadcrumb
+            new Breadcrumb
             {
                 title = "Tags",
-                link = "/admin/tags/",
-            });
-        }
-
-        public Tag Tag { get; set; }
-        public List<Breadcrumb> Breadcrumbs { get; set; } = new List<Breadcrumb>();
-        public List<Tag> TagsList { get; set; }
-        public string ErrorMsg { get; set; }
+                link = "/admin/tags/"
+            }
+        };
+        public List<Tag> TagsList { get; set; } = new List<Tag>();
+        public string ErrorMsg { get; set; } = "";
     }
 }
