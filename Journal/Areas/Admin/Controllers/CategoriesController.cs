@@ -32,7 +32,7 @@ namespace Journal.Areas.Admin.Controllers
                 isLeaf = true
             });
 
-            List<Image> lastImages = db.Images.Take(18).ToList();
+            List<Image> lastImages = db.Images.OrderByDescending(i => i.id).Take(18).ToList();
             viewCategories.Images = lastImages;
 
             return View(model: viewCategories);
@@ -96,7 +96,7 @@ namespace Journal.Areas.Admin.Controllers
                 return View("Error404", model: viewCategories);
             }
 
-            List<Image> lastImages = db.Images.Take(18).ToList();
+            List<Image> lastImages = db.Images.OrderByDescending(i => i.id).Take(18).ToList();
             viewCategories.Images = lastImages;
 
             Category category = db.Categories.Find(id);

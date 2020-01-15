@@ -22,7 +22,14 @@ namespace Journal.Areas.Admin.Controllers
 
                 Image image = media.Add();
 
-                return Json(image);
+                var jsonImage = new
+                {
+                    image.id,
+                    image.file_dir,
+                    image.filename
+                };
+
+                return Json(jsonImage);
             }
 
             return Json("false");
