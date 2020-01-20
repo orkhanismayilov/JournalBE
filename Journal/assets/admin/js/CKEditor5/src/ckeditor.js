@@ -26,10 +26,13 @@ import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment.js';
 import FontSize from '@ckeditor/ckeditor5-font/src/fontsize.js';
 import FontFamily from '@ckeditor/ckeditor5-font/src/fontfamily.js';
 import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize.js';
+import HorizontalLine from '@ckeditor/ckeditor5-horizontal-line/src/horizontalline.js';
 import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock.js';
 import MediaEmbedToolbar from '@ckeditor/ckeditor5-media-embed/src/mediaembedtoolbar.js';
 import RemoveFormat from '@ckeditor/ckeditor5-remove-format/src/removeformat.js';
 import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough.js';
+import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript.js';
+import Subscript from '@ckeditor/ckeditor5-basic-styles/src/subscript.js';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials.js';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph.js';
@@ -61,10 +64,13 @@ Editor.builtinPlugins = [
 	FontSize,
 	FontFamily,
 	ImageResize,
+	HorizontalLine,
 	IndentBlock,
 	MediaEmbedToolbar,
 	RemoveFormat,
 	Strikethrough,
+	Superscript,
+	Subscript,
 	Underline,
 	Essentials,
 	Paragraph

@@ -335,6 +335,7 @@
     <Content Include="assets\admin\js\coreui.bundle.min.js" />
     <Content Include="assets\admin\js\dropzone.js" />
     <Content Include="assets\admin\js\dropzone.min.js" />
+    <Content Include="assets\admin\js\editor.js" />
     <Content Include="assets\admin\js\jquery.js" />
     <Content Include="assets\admin\js\jquery.min.js" />
     <Content Include="assets\admin\js\main.js" />

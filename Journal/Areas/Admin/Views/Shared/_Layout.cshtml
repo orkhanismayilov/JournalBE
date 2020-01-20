@@ -65,6 +65,12 @@
         <script src="~/assets/admin/js/uploadmedia.js"></script>
     }
 
+    @if (ViewBag.useCKEditor != null)
+    {
+        <script src="~/assets/admin/js/ckeditor5/build/ckeditor.js"></script>
+        <script src="~/assets/admin/js/editor.js"></script>
+    }
+
     <script src="~/assets/admin/js/main.js"></script>
 </body>
 

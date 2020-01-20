@@ -7,6 +7,4 @@
         tagsSelect.select2();
     }
 
-
-
 });
