@@ -1,14 +1,14 @@
-﻿@model Journal.Areas.Admin.Models.ViewCategories
+﻿@model Journal.Areas.Admin.Models.ViewArticles
 @{
-    ViewBag.title = "Categories";
+    ViewBag.title = "Non-Published Articles List";
 }
 
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header d-flex align-items-center justify-content-between">
-                <h5 class="mb-0">Categories List</h5>
-                <a href="/admin/categories/add/" class="btn btn-primary font-weight-bold" role="button"><i class="cil-plus"></i> Category</a>
+                <h5 class="mb-0">Non-Published Articles List</h5>
+                <a href="/admin/articles/add/" class="btn btn-primary font-weight-bold" role="button"><i class="cil-plus"></i> Article</a>
             </div>
 
             <div class="card-body">
@@ -27,7 +27,7 @@
                                     Title EN
                                 </th>
                                 <th class="text-center" scope="col">
-                                    Alias
+                                    Date
                                 </th>
                                 <th class="text-center" scope="col">
                                     Status
@@ -39,36 +39,40 @@
                         </thead>
 
                         <tbody>
-                            @if (Model.CategoriesList.Count > 0)
+                            @if (Model.ArticlesList.Count > 0)
                             {
-                                foreach (var category in Model.CategoriesList)
+                                foreach (var article in Model.ArticlesList)
                                 {
                                     <tr>
                                         <td class="font-lg align-middle">
-                                            @category.id
+                                            @article.id
                                         </td>
                                         <td class="text-center font-lg align-middle">
-                                            @category.title_az
+                                            @article.title_az
                                         </td>
                                         <td class="text-center font-lg align-middle">
-                                            @category.title_en
+                                            @article.title_en
                                         </td>
                                         <td class="text-center font-lg align-middle">
-                                            @category.alias
+                                            @article.date;
                                         </td>
                                         <td class="text-center font-lg align-middle">
-                                            @if (Convert.ToBoolean(category.status))
+                                            @if (article.status == 1)
                                             {
-                                                <span class="badge badge-success">Enabled</span>
+                                                <span class="badge badge-success">Published</span>
+                                            }
+                                            else if (article.status == 0)
+                                            {
+                                                <span class="badge badge-warning">Non Published</span>
                                             }
                                             else
                                             {
-                                                <span class="badge badge-danger">Disabled</span>
+                                                <span class="badge badge-danger">Deleted</span>
                                             }
                                         </td>
                                         <td class="text-center font-xl align-middle">
-                                            <a href="/admin/categories/edit/@category.id" class="text-warning mr-2"><i class="cil-pencil"></i></a>
-                                            <a href="/admin/categories/delete/@category.id" class="text-danger"><i class="cil-x-circle"></i></a>
+                                            <a href="/admin/articles/edit/@article.id" class="text-warning mr-2"><i class="cil-pencil"></i></a>
+                                            <a href="/admin/articles/delete/@article.id" class="text-danger"><i class="cil-x-circle"></i></a>
                                         </td>
                                     </tr>
                                 }
@@ -77,7 +81,7 @@
                             {
                                 <tr>
                                     <td class="text-center font-xl" colspan="6">
-                                        There is no any category yet
+                                        There is no any article yet
                                     </td>
                                 </tr>
                             }

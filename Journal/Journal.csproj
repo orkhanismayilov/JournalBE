@@ -148,6 +148,7 @@
     <Compile Include="Areas\Admin\Controllers\TagsController.cs" />
     <Compile Include="Areas\Admin\Models\Breadcrumb.cs" />
     <Compile Include="Areas\Admin\Models\Media.cs" />
+    <Compile Include="Areas\Admin\Models\ViewArticles.cs" />
     <Compile Include="Areas\Admin\Models\ViewCategories.cs" />
     <Compile Include="Areas\Admin\Models\ViewJournals.cs" />
     <Compile Include="Areas\Admin\Models\ViewTags.cs" />
@@ -472,7 +473,6 @@
     <Content Include="Areas\Admin\Views\Journals\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Journals\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Journals\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Articles\Index.cshtml" />
     <EntityDeploy Include="Models\Database.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Database.Designer.cs</LastGenOutput>
@@ -490,6 +490,11 @@
     <Content Include="Areas\Admin\Views\Shared\_MediaBrowser.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Articles\Published.cshtml" />
+    <Content Include="Areas\Admin\Views\Articles\NonPublished.cshtml" />
+    <Content Include="Areas\Admin\Views\Articles\Featured.cshtml" />
+    <Content Include="Areas\Admin\Views\Articles\Deleted.cshtml" />
+    <Content Include="Areas\Admin\Views\Articles\Add.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Category\Category.cshtml" />
     <Content Include="Views\Authorization\Authorization.cshtml" />

@@ -64,7 +64,7 @@ namespace Journal.Areas.Admin.Controllers
                 title_az = collection["title_az"].ToString(),
                 title_en = collection["title_en"].ToString(),
                 alias = collection["alias"].ToString(),
-                isActive = Convert.ToByte(collection["isActive"].ToString())
+                status = Convert.ToByte(collection["status"].ToString())
             };
 
             category.link_short = "/categories/" + category.alias + "/";
@@ -136,7 +136,7 @@ namespace Journal.Areas.Admin.Controllers
             category.title_az = collection["title_az"].ToString();
             category.title_en = collection["title_en"].ToString();
             category.alias = collection["alias"].ToString();
-            category.isActive = Convert.ToByte(collection["isActive"].ToString());
+            category.status = Convert.ToByte(collection["status"].ToString());
 
             category.link_short = "/categories/" + category.alias + "/";
             category.link = Globals.ProjectURL + category.link_short;

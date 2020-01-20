@@ -30,13 +30,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="title-az">Title AZ</label>
-                                <input type="text" name="title_az" id="title-az" class="form-control" value="@Model.Category.title_az" />
+                                <input type="text" name="title_az" id="title-az" class="form-control" value="@Model.Category.title_az" disabled readonly />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="title-en">Title EN</label>
-                                <input type="text" name="title_en" id="title-en" class="form-control" value="@Model.Category.title_en" />
+                                <input type="text" name="title_en" id="title-en" class="form-control" value="@Model.Category.title_en" disabled readonly />
                             </div>
                         </div>
                     </div>
@@ -45,15 +45,15 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="alias">Alias</label>
-                                <input type="text" name="alias" id="alias" class="form-control" value="@Model.Category.alias" />
+                                <input type="text" name="alias" id="alias" class="form-control" value="@Model.Category.alias" disabled readonly />
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="isActive">Status</label>
-                                <select id="isActive" name="isActive" class="form-control">
-                                    @foreach (KeyValuePair<int, string> status in Model.ActiveStatusList)
+                                <label for="status">Status</label>
+                                <select name="status" id="status" class="form-control" disabled readonly>
+                                    @foreach (KeyValuePair<int, string> status in Model.Status)
                                     {
                                         <option value="@status.Key">@status.Value</option>
                                     }

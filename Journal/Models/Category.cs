@@ -27,7 +27,7 @@ namespace Journal.Models
         public string alias { get; set; }
         public string link_short { get; set; }
         public string link { get; set; }
-        public byte isActive { get; set; }
+        public byte status { get; set; }
         public Nullable<int> title_img_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

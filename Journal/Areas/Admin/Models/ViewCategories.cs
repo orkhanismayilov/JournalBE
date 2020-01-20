@@ -19,10 +19,10 @@ namespace Journal.Areas.Admin.Models
         public List<Category> CategoriesList { get; set; } = new List<Category>();
         public List<Image> Images { get; set; } = new List<Image>();
         public string ErrorMsg { get; set; } = "";
-        public IDictionary<int, string> ActiveStatusList { get; set; } = new Dictionary<int, string>
+        public IDictionary<int, string> Status { get; set; } = new Dictionary<int, string>
         {
-            { 0, "Inactive" },
-            { 1, "Active" }
+            { 0, "Disabled" },
+            { 1, "Enabled" }
         };
     }
 }

@@ -170,14 +170,14 @@ namespace Journal.Areas.Admin.Controllers
 
         private bool CheckAlias(string alias)
         {
-            Regex aliasRegex = new Regex("^[a-zA-Z0-9]+$", RegexOptions.Multiline);
+            Regex aliasRegex = new Regex("^[a-zA-Z0-9-_]+$", RegexOptions.Multiline);
             if (!aliasRegex.IsMatch(alias))
             {
-                viewTags.ErrorMsg = "Alias format is wrong! Whitespace and special chars is not allowed.";
+                viewTags.ErrorMsg = "Alias format is wrong! Whitespace and special chars, except dash (-) and underscore (_), is not allowed.";
                 return false;
             };
 
-            return false;
+            return true;
         }
 
         private bool TagExists(string alias)

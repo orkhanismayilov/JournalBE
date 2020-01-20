@@ -1,0 +1,98 @@
+﻿@model Journal.Areas.Admin.Models.ViewArticles
+@{
+    ViewBag.title = "Add Article";
+    ViewBag.useSelect2 = true;
+}
+
+<div class="row">
+
+    @if (!string.IsNullOrWhiteSpace(Model.ErrorMsg))
+    {
+        <div class="col-12">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error!</strong> @(Model.ErrorMsg)
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    }
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Add Article</h5>
+            </div>
+
+            <div class="card-body">
+                <form method="post">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="title-az">Title AZ</label>
+                                <input type="text" name="title_az" id="title-az" class="form-control" value="@Request["title_az"]" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="title-en">Title EN</label>
+                                <input type="text" name="title_en" id="title-en" class="form-control" value="@Request["title_en"]" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="excerpt-az">Excerpt AZ</label>
+                                <input type="text" name="excerpt_az" id="excerpt-az" class="form-control" value="@Request["excerpt_az"]" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="excerpt-en">Excerpt EN</label>
+                                <input type="text" name="excerpt_en" id="excerpt-en" class="form-control" value="@Request["excerpt_en"]" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category">Categories</label>
+                                <select name="category" id="category" class="form-control">
+                                    <option value="0" disabled selected></option>
+                                    @foreach (var category in Model.CategoriesList)
+                                    {
+                                        <option value="@category.id">@category.title_en</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tags">Tags</label>
+                                <select name="tags[]" id="tags" class="form-control tags-select" multiple>
+                                    @foreach (var tag in Model.TagsList)
+                                    {
+                                        <option value="@tag.id">@tag.title_en</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8"></div>
+                    </div>
+
+                    @*<div class="row">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#media-browser">Select Title Image</button>
+                                <div class="title-image-wrapper">
+                                    <img id="title-image" alt="Title Image" />
+                                    <span class="dismiss-title-image"><i class="cil-x"></i></span>
+                                </div>
+                                <input type="hidden" name="title_img_id" />
+                            </div>
+                        </div>*@
+
+                </form>
+            </div>
+
+            <div class="card-footer">
+                <div class="d-flex">
+                    <a href="/admin/articles/published" class="btn btn-secondary ml-auto" role="button"><i class="cil-x"></i> Cancel</a>
+                    <button type="button" class="btn btn-success ml-2" onclick="$('form').submit()"><i class="cil-plus"></i> Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

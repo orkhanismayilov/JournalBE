@@ -71,6 +71,49 @@ namespace Journal.Areas.Admin
                 new { controller = "Journals", action = "Delete", id = 0 }
             );
 
+            // ARTICLES ROUTES
+            context.MapRoute(
+                "Published Articles",
+                "admin/articles/published/",
+                new { controller = "Articles", action = "Published" }
+            );
+
+            context.MapRoute(
+                "Non-published Articles",
+                "admin/articles/non-published/",
+                new { controller = "Articles", action = "NonPublished" }
+            );
+
+            context.MapRoute(
+                "Featured Articles",
+                "admin/articles/featured/",
+                new { controller = "Articles", action = "Featured" }
+            );
+
+            context.MapRoute(
+                "Deleted Articles",
+                "admin/articles/deleted/",
+                new { controller = "Articles", action = "Deleted" }
+            );
+
+            context.MapRoute(
+                "Add Article",
+                "admin/articles/add/",
+                new { controller = "Articles", action = "Add" }
+            );
+
+            context.MapRoute(
+                "Edit Article",
+                "admin/articles/edit/{id}",
+                new { controller = "Articles", action = "Edit", id = 0 }
+            );
+
+            context.MapRoute(
+                "Delete Article",
+                "admin/articles/delete/{id}",
+                new { controller = "Articles", action = "Delete", id = 0 }
+            );
+
             // CATEGORIES ROUTES
             context.MapRoute(
                 "Categories List",
