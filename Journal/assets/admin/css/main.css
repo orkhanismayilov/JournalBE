@@ -180,6 +180,9 @@ img {
   box-shadow: 0 0 10px rgba(34, 34, 34, 0.65);
   z-index: 1031 !important;
 }
+.select2-container {
+  width: 100% !important;
+}
 .select2-container .select2-selection--multiple {
   background-color: #2c2c34 !important;
   border-color: #2c2c34 !important;
@@ -205,6 +208,6 @@ img {
 }
 .ck-editor__editable {
   color: #222;
-  min-height: 400px;
+  height: 1000px;
 }
 /*# sourceMappingURL=main.css.map */

@@ -8,6 +8,7 @@ if (editorAZ) {
         .create(editorAZ, {
             toolbar: {
                 items: [
+                    'CKFinder',
                     'heading',
                     '|',
                     'undo',
@@ -55,6 +56,4 @@ if (editorAZ) {
         })
         .then(editor => console.log(editor))
         .catch(error => console.log(error));
-
-
 }
