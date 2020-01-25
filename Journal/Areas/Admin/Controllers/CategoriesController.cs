@@ -42,7 +42,7 @@ namespace Journal.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Add(FormCollection collection)
         {
-            string alias = collection["alias"];
+            string alias = Request.Form["alias"];
 
             if (!CheckAlias(alias))
             {
@@ -61,18 +61,18 @@ namespace Journal.Areas.Admin.Controllers
 
             Category category = new Category
             {
-                title_az = collection["title_az"].ToString(),
-                title_en = collection["title_en"].ToString(),
-                alias = collection["alias"].ToString(),
-                status = Convert.ToByte(collection["status"].ToString())
+                title_az = Request.Form["title_az"],
+                title_en = Request.Form["title_en"],
+                alias = alias,
+                status = Convert.ToByte(Request.Form["status"])
             };
 
             category.link_short = "/categories/" + category.alias + "/";
             category.link = Globals.ProjectURL + category.link_short;
 
-            if (!string.IsNullOrWhiteSpace(collection["title_img_id"]) && Convert.ToInt32(collection["title_img_id"]) > 0)
+            if (!string.IsNullOrWhiteSpace(Request.Form["title_img_id"]) && Convert.ToInt32(Request.Form["title_img_id"]) > 0)
             {
-                category.title_img_id = Convert.ToInt32(collection["title_img_id"]);
+                category.title_img_id = Convert.ToInt32(Request.Form["title_img_id"]);
             }
 
             db.Categories.Add(category);
@@ -116,7 +116,7 @@ namespace Journal.Areas.Admin.Controllers
             Category category = db.Categories.Find(id);
             viewCategories.Category = category;
 
-            string alias = collection["alias"];
+            string alias = Request.Form["alias"];
 
             if (!CheckAlias(alias))
             {
@@ -133,21 +133,21 @@ namespace Journal.Areas.Admin.Controllers
                 return View(model: viewCategories);
             }
 
-            category.title_az = collection["title_az"].ToString();
-            category.title_en = collection["title_en"].ToString();
-            category.alias = collection["alias"].ToString();
-            category.status = Convert.ToByte(collection["status"].ToString());
+            category.title_az = Request.Form["title_az"];
+            category.title_en = Request.Form["title_en"];
+            category.alias = alias;
+            category.status = Convert.ToByte(Request.Form["status"]);
 
             category.link_short = "/categories/" + category.alias + "/";
             category.link = Globals.ProjectURL + category.link_short;
 
-            if (string.IsNullOrWhiteSpace(collection["title_img_id"]))
+            if (string.IsNullOrWhiteSpace(Request.Form["title_img_id"]))
             {
                 category.title_img_id = null;
             }
-            else if (Convert.ToInt32(collection["title_img_id"]) > 0 && Convert.ToInt32(collection["title_img_id"]) != category.title_img_id)
+            else if (Convert.ToInt32(Request.Form["title_img_id"]) > 0 && Convert.ToInt32(Request.Form["title_img_id"]) != category.title_img_id)
             {
-                category.title_img_id = Convert.ToInt32(collection["title_img_id"]);
+                category.title_img_id = Convert.ToInt32(Request.Form["title_img_id"]);
             }
 
             db.SaveChanges();

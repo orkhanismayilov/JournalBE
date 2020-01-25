@@ -8,7 +8,7 @@ if (editorAZ) {
         .create(editorAZ, {
             toolbar: {
                 items: [
-                    'CKFinder',
+                    // 'CKFinder',
                     'heading',
                     '|',
                     'undo',
@@ -35,7 +35,60 @@ if (editorAZ) {
                     // 'imageUpload',
                     'insertTable',
                     'mediaEmbed',
-                    'fileBrowse'
+                ]
+            },
+            language: 'en',
+            image: {
+                toolbar: [
+                    'imageTextAlternative',
+                    'imageStyle:full',
+                    'imageStyle:side'
+                ]
+            },
+            table: {
+                contentToolbar: [
+                    'tableColumn',
+                    'tableRow',
+                    'mergeTableCells'
+                ]
+            }
+        })
+        .then(editor => console.log(editor))
+        .catch(error => console.log(error));
+}
+
+if(editorEN){
+    ClassicEditor
+        .create(editorEN, {
+            toolbar: {
+                items: [
+                    // 'CKFinder',
+                    'heading',
+                    '|',
+                    'undo',
+                    'redo',
+                    '|',
+                    'bold',
+                    'italic',
+                    'underline',
+                    'strikethrough',
+                    'removeFormat',
+                    'superscript',
+                    'subscript',
+                    '|',
+                    'alignment',
+                    'indent',
+                    'outdent',
+                    'bulletedList',
+                    'numberedList',
+                    'horizontalLine',
+                    '|',
+                    'link',
+                    'blockQuote',
+                    '|',
+                    // 'imageUpload',
+                    'insertTable',
+                    'mediaEmbed'
                 ]
             },
             language: 'en',

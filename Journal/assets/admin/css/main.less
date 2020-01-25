@@ -234,9 +234,15 @@ img {
     z-index: 1031 !important;
 }
 
-.select2-container {
+.select2 {
     width: 100% !important;
 
+    .select2-selection {
+        min-height: 35px;
+    }
+}
+
+.select2-container {
     .select2-selection--multiple {
         background-color: #2c2c34 !important;
         border-color: #2c2c34 !important;
@@ -269,5 +275,5 @@ img {
 
 .ck-editor__editable {
     color: @colors[black];
-    height: 1000px;
+    height: 500px;
 }

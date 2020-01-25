@@ -12,18 +12,13 @@ namespace Journal.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Subscription
+    public partial class ArticlesAuthor
     {
         public int id { get; set; }
-        public string email { get; set; }
-        public int user_id { get; set; }
-        public int category_id { get; set; }
+        public int article_id { get; set; }
         public int author_id { get; set; }
-        public Nullable<System.DateTime> date { get; set; }
-        public byte status { get; set; }
     
-        public virtual Category Category { get; set; }
+        public virtual Article Article { get; set; }
         public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
     }
 }

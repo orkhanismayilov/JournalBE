@@ -73,6 +73,12 @@ namespace Journal.Areas.Admin
 
             // ARTICLES ROUTES
             context.MapRoute(
+                "Articles List",
+                "admin/articles/",
+                new { controller = "Articles", action = "Index" }
+            );
+
+            context.MapRoute(
                 "Published Articles",
                 "admin/articles/published/",
                 new { controller = "Articles", action = "Published" }

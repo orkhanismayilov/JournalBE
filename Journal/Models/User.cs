@@ -17,10 +17,9 @@ namespace Journal.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Author = new HashSet<Article>();
-            this.Editor = new HashSet<Article>();
+            this.ArticlesAuthors = new HashSet<ArticlesAuthor>();
             this.Comments = new HashSet<Comment>();
-            this.SubscriptionToAuthor = new HashSet<Subscription>();
+            this.SubscriptionsToMe = new HashSet<Subscription>();
             this.Subscriptions = new HashSet<Subscription>();
         }
     
@@ -46,15 +45,13 @@ namespace Journal.Models
         public string token { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Article> Author { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Article> Editor { get; set; }
+        public virtual ICollection<ArticlesAuthor> ArticlesAuthors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual Country Country { get; set; }
         public virtual EducationLevel EducationLevel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Subscription> SubscriptionToAuthor { get; set; }
+        public virtual ICollection<Subscription> SubscriptionsToMe { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subscription> Subscriptions { get; set; }
         public virtual University University { get; set; }

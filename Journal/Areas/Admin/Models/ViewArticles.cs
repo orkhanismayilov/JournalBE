@@ -1,11 +1,18 @@
 ﻿using Journal.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Journal.Areas.Admin.Models
 {
     public class ViewArticles
     {
-        public ViewArticles() { }
+        JournalEntities db = new JournalEntities();
+
+        public ViewArticles() { 
+            CategoriesList = db.Categories.Where(c => c.status == 1).ToList();
+            TagsList = db.Tags.ToList();
+            Images = db.Images.OrderByDescending(i => i.id).Take(18).ToList();
+        }
 
         public Article Article { get; set; } = new Article();
         public List<Breadcrumb> Breadcrumbs { get; set; } = new List<Breadcrumb>()

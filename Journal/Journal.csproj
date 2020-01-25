@@ -164,6 +164,9 @@
     <Compile Include="Models\Article.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArticlesAuthor.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ArticlesCategory.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -564,6 +567,8 @@
     <Content Include="assets\admin\js\ckeditor5\LICENSE.md" />
     <Content Include="assets\admin\js\ckeditor5\package.json" />
     <Content Include="assets\admin\js\ckeditor5\README.md" />
+    <Content Include="Areas\Admin\Views\Articles\Test.cshtml" />
+    <Content Include="Areas\Admin\Views\Articles\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Category\Category.cshtml" />
     <Content Include="Views\Authorization\Authorization.cshtml" />

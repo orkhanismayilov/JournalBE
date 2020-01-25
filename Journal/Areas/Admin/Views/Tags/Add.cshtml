@@ -19,12 +19,12 @@
 
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0">Add Tag</h5>
-            </div>
+            <form method="post">
+                <div class="card-header">
+                    <h5 class="mb-0">Add Tag</h5>
+                </div>
 
-            <div class="card-body">
-                <form method="post">
+                <div class="card-body">
 
                     <div class="row">
                         <div class="col-md-4">
@@ -47,15 +47,15 @@
                         </div>
                     </div>
 
-                </form>
-            </div>
-
-            <div class="card-footer">
-                <div class="d-flex">
-                    <a href="/admin/tags/" class="btn btn-secondary ml-auto" role="button"><i class="cil-x"></i> Cancel</a>
-                    <button type="button" class="btn btn-success ml-2" onclick="$('form').submit()"><i class="cil-plus"></i> Add</button>
                 </div>
-            </div>
+
+                <div class="card-footer">
+                    <div class="d-flex">
+                        <a href="/admin/tags/" class="btn btn-secondary ml-auto" role="button"><i class="cil-x"></i> Cancel</a>
+                        <button type="submit" class="btn btn-success ml-2"><i class="cil-plus"></i> Add</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -13,6 +13,14 @@ namespace Journal.Areas.Admin.Controllers
         JournalEntities db = new JournalEntities();
         ViewArticles viewArticles = new ViewArticles();
 
+        // GET: Admin/Article
+        public ActionResult Index()
+        {
+            List<Article> articlesList = db.Articles.OrderByDescending(a => a.date).Take(20).ToList();
+            viewArticles.ArticlesList = articlesList;
+            return View(model: viewArticles);
+        }
+
         // GET: Admin/Articles/Published
         public ActionResult Published()
         {
@@ -56,13 +64,101 @@ namespace Journal.Areas.Admin.Controllers
         // GET: Admin/Articles/Add
         public ActionResult Add()
         {
-            List<Category> categories = db.Categories.Where(c => c.status == 1).ToList();
-            viewArticles.CategoriesList = categories;
-
-            List<Tag> tags = db.Tags.ToList();
-            viewArticles.TagsList = tags;
-
             return View(model: viewArticles);
+        }
+
+        // POST: Admin/Articles/Add
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Add(FormCollection collection)
+        {
+            string title_az = Request.Form["title_az"];
+            string title_en = Request.Form["title_en"];
+
+            string excerpt_az = Request.Form["excerpt_az"];
+            string excerpt_en = Request.Form["excerpt_en"];
+
+            string content_az = Request.Form["content_az"];
+            string content_en = Request.Form["content_en"];
+
+            string category_id = Request.Form["category_id"];
+            string tags = Request.Form["tags[]"];
+
+            string status = Request.Form["status"];
+
+            string title_img_id = Request.Form["title_img_id"];
+
+            if (string.IsNullOrWhiteSpace(title_az) || string.IsNullOrWhiteSpace(title_en))
+            {
+                viewArticles.ErrorMsg = "Title is required field! ";
+                return View(model: viewArticles);
+            }
+
+            if (string.IsNullOrWhiteSpace(category_id))
+            {
+                viewArticles.ErrorMsg = "Category is required field!";
+                return View(model: viewArticles);
+            }
+
+
+            Article article = new Article
+            {
+                title_az = title_az,
+                title_en = title_en,
+                excerpt_az = excerpt_az,
+                excerpt_en = excerpt_en,
+                content_az = content_az,
+                content_en = content_en,
+                status = Convert.ToByte(status)
+            };
+
+            if (!string.IsNullOrWhiteSpace(title_img_id))
+            {
+                article.title_img_id = Convert.ToInt32(title_img_id);
+            }
+
+            if(article.status == 1)
+            {
+                article.date = DateTime.Now;
+            }
+
+            db.Articles.Add(article);
+            db.SaveChanges();
+
+            ArticlesCategory articlesCategory = new ArticlesCategory
+            {
+                article_id = article.id,
+                category_id = Convert.ToInt32(category_id)
+            };
+
+            db.ArticlesCategories.Add(articlesCategory);
+
+            if (string.IsNullOrWhiteSpace(tags))
+            {
+                List<string> tagsList = tags.Split(',').ToList();
+
+                foreach (string tag in tagsList)
+                {
+                    ArticlesTag articlesTag = new ArticlesTag
+                    {
+                        article_id = article.id,
+                        tag_id = Convert.ToInt32(tag)
+                    };
+
+                    db.ArticlesTags.Add(articlesTag);
+                }
+            }
+
+            db.SaveChanges();
+
+            if (article.status == 0)
+            {
+                return RedirectToAction("NonPublished");
+            }
+            else
+            {
+                return RedirectToAction("Published");
+            }
         }
     }
 }

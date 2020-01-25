@@ -26,6 +26,7 @@ namespace Journal.Models
         }
     
         public virtual DbSet<Article> Articles { get; set; }
+        public virtual DbSet<ArticlesAuthor> ArticlesAuthors { get; set; }
         public virtual DbSet<ArticlesCategory> ArticlesCategories { get; set; }
         public virtual DbSet<ArticlesTag> ArticlesTags { get; set; }
         public virtual DbSet<Category> Categories { get; set; }

@@ -39,7 +39,7 @@ namespace Journal.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Add(FormCollection collection)
         {
-            string alias = collection["alias"];
+            string alias = Request.Form["alias"];
 
             if (!CheckAlias(alias))
             {
@@ -58,9 +58,9 @@ namespace Journal.Areas.Admin.Controllers
 
             Tag tag = new Tag
             {
-                title_az = collection["title_az"].ToString(),
-                title_en = collection["title_en"].ToString(),
-                alias = collection["alias"].ToString(),
+                title_az = Request.Form["title_az"],
+                title_en = Request.Form["title_en"],
+                alias = alias,
             };
 
             tag.link_short = "/tags/" + tag.alias + "/";
@@ -104,7 +104,7 @@ namespace Journal.Areas.Admin.Controllers
             Tag tag = db.Tags.Find(id);
             viewTags.Tag = tag;
 
-            string alias = collection["alias"];
+            string alias = Request.Form["alias"];
 
             if (!CheckAlias(alias))
             {
@@ -121,9 +121,9 @@ namespace Journal.Areas.Admin.Controllers
                 return View(model: viewTags);
             }
 
-            tag.title_az = collection["title_az"].ToString();
-            tag.title_en = collection["title_en"].ToString();
-            tag.alias = collection["alias"].ToString();
+            tag.title_az = Request.Form["title_az"];
+            tag.title_en = Request.Form["title_en"];
+            tag.alias = alias;
             tag.link_short = "/tags/" + tag.alias + "/";
             tag.link = Globals.ProjectURL + tag.link_short;
 

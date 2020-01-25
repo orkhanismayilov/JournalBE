@@ -17,6 +17,7 @@ namespace Journal.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Article()
         {
+            this.ArticlesAuthors = new HashSet<ArticlesAuthor>();
             this.ArticlesCategories = new HashSet<ArticlesCategory>();
             this.ArticlesTags = new HashSet<ArticlesTag>();
             this.Comments = new HashSet<Comment>();
@@ -36,15 +37,13 @@ namespace Journal.Models
         public Nullable<System.DateTime> date { get; set; }
         public string content_en { get; set; }
         public string content_az { get; set; }
-        public int title_img_id { get; set; }
-        public int author_id { get; set; }
-        public Nullable<int> editor_id { get; set; }
+        public Nullable<int> title_img_id { get; set; }
         public int views_count { get; set; }
         public byte status { get; set; }
     
-        public virtual User Articles { get; set; }
-        public virtual User ArticlesEdited { get; set; }
         public virtual Image Image { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ArticlesAuthor> ArticlesAuthors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArticlesCategory> ArticlesCategories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,6 +1,7 @@
 ﻿@model Journal.Areas.Admin.Models.ViewArticles
 @{
     ViewBag.title = "Add Article";
+    ViewBag.useUploadMediaJs = true;
     ViewBag.useSelect2 = true;
     ViewBag.useCKEditor = true;
 }
@@ -21,14 +22,15 @@
 
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0">Add Article</h5>
-            </div>
+            <form method="post">
+                <div class="card-header">
+                    <h5 class="mb-0">Add Article</h5>
+                </div>
 
-            <div class="card-body">
-                <form method="post">
+                <div class="card-body">
+
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-12">
                             <div class="form-group">
                                 <label for="title-az">Title AZ</label>
                                 <input type="text" name="title_az" id="title-az" class="form-control" value="@Request["title_az"]" />
@@ -38,20 +40,30 @@
                                 <label for="title-en">Title EN</label>
                                 <input type="text" name="title_en" id="title-en" class="form-control" value="@Request["title_en"]" />
                             </div>
+                        </div>
+                    </div>
 
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="excerpt-az">Excerpt AZ</label>
                                 <textarea name="excerpt_az" id="excerpt-az" class="form-control">@Request["excerpt_az"]</textarea>
                             </div>
+                        </div>
 
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="excerpt-en">Excerpt EN</label>
                                 <textarea name="excerpt_en" id="excerpt-en" class="form-control">@Request["excerpt_en"]</textarea>
                             </div>
+                        </div>
+                    </div>
 
+                    <div class="row">
+                        <div class="col-md-5">
                             <div class="form-group">
                                 <label for="category">Categories</label>
-                                <select name="category" id="category" class="form-control">
+                                <select name="category_id" id="category" class="form-control">
                                     <option value="0" disabled selected></option>
                                     @foreach (var category in Model.CategoriesList)
                                     {
@@ -59,7 +71,9 @@
                                     }
                                 </select>
                             </div>
+                        </div>
 
+                        <div class="col-md-5">
                             <div class="form-group">
                                 <label for="tags">Tags</label>
                                 <select name="tags[]" id="tags" class="form-control tags-select" multiple>
@@ -71,31 +85,62 @@
                             </div>
                         </div>
 
-                        <div class="col-md-8">
-                            <div id="editor-az"></div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select name="status" id="status" class="form-control">
+                                    <option value="0" selected>Non-published</option>
+                                    <option value="1">Published</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
-                    @*<div class="row">
-                            <div class="col-12">
-                                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#media-browser">Select Title Image</button>
-                                <div class="title-image-wrapper">
-                                    <img id="title-image" alt="Title Image" />
-                                    <span class="dismiss-title-image"><i class="cil-x"></i></span>
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="nav nav-tabs" id="tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="content-az-tab" data-toggle="tab" href="#content-az" role="tab" aria-controls="content-az" aria-selected="true">Content AZ</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="content-en-tab" data-toggle="tab" href="#content-en" role="tab" aria-controls="content-en" aria-selected="false">Content EN</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content" id="tabs-content">
+                                <div class="tab-pane fade show active" id="content-az" role="tabpanel" aria-labelledby="content-az-tab">
+                                    <textarea name="content_az" id="editor-az">@Request["content_az"]</textarea>
                                 </div>
-                                <input type="hidden" name="title_img_id" />
+                                <div class="tab-pane fade" id="content-en" role="tabpanel" aria-labelledby="content-en-tab">
+                                    <textarea name="content_en" id="editor-en">@Request["content_en"]</textarea>
+                                </div>
                             </div>
-                        </div>*@
+                        </div>
+                    </div>
 
-                </form>
-            </div>
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#media-browser">Select Title Image</button>
+                            <div class="title-image-wrapper">
+                                <img id="title-image" alt="Title Image" />
+                                <span class="dismiss-title-image"><i class="cil-x"></i></span>
+                            </div>
+                            <input type="hidden" name="title_img_id" value="@Request["title_img_id"]" />
+                        </div>
+                    </div>
 
-            <div class="card-footer">
-                <div class="d-flex">
-                    <a href="/admin/articles/published" class="btn btn-secondary ml-auto" role="button"><i class="cil-x"></i> Cancel</a>
-                    <button type="button" class="btn btn-success ml-2" onclick="$('form').submit()"><i class="cil-plus"></i> Add</button>
+                    <input type="hidden" name="author_id" value="" />
                 </div>
-            </div>
+
+                <div class="card-footer">
+                    <div class="d-flex">
+                        <a href="/admin/articles/published" class="btn btn-secondary ml-auto" role="button"><i class="cil-x"></i> Cancel</a>
+                        <button type="submit" class="btn btn-success ml-2"><i class="cil-plus"></i> Add</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
+@Html.Partial("_MediaBrowser")
