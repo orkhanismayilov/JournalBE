@@ -60,6 +60,17 @@
                     </div>
 
                     <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="authors">Authors</label>
+                                <select name="authors" id="authors" class="form-control authors-select" multiple>
+                                    
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label for="category">Categories</label>
@@ -119,7 +130,7 @@
                     </div>
 
                     <div class="row mt-4">
-                        <div class="col-12">
+                        <div class="col-md-4">
                             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#media-browser">Select Title Image</button>
                             <div class="title-image-wrapper">
                                 <img id="title-image" alt="Title Image" />
@@ -127,9 +138,18 @@
                             </div>
                             <input type="hidden" name="title_img_id" value="@Request["title_img_id"]" />
                         </div>
-                    </div>
 
-                    <input type="hidden" name="author_id" value="" />
+                        <div class="col-md-8">
+                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#media-browser">Select Gallery Images</button>
+                            <div class="gallery-images-wrapper">
+                                <div class="gallery-image-item">
+                                    <img class="gallery-image" alt="Gallery Image" />
+                                    <span class="dismiss-gallery-image"><i class="cil-x"></i></span>
+                                </div>
+                            </div>
+                            <input type="hidden" name="gallery_images" value="" />
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-footer">

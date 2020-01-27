@@ -423,6 +423,8 @@
     <Content Include="assets\js\animation.gsap.js" />
     <Content Include="assets\js\jquery.js" />
     <Content Include="assets\js\jquery.min.js" />
+    <Content Include="assets\js\jquery.validate.js" />
+    <Content Include="assets\js\jquery.validate.min.js" />
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\particles.js" />
     <Content Include="assets\js\particles.min.js" />
@@ -436,6 +438,8 @@
     <Content Include="assets\js\swiper.min.js" />
     <Content Include="assets\js\TweenMax.js" />
     <Content Include="assets\js\TweenMax.min.js" />
+    <Content Include="assets\js\validation_localization\messages_az.js" />
+    <Content Include="assets\js\validation_localization\messages_az.min.js" />
     <Content Include="assets\logo\journal_logo_black.svg" />
     <Content Include="assets\logo\journal_logo_blue.svg" />
     <Content Include="assets\logo\journal_logo_white.svg" />

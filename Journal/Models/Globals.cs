@@ -28,5 +28,11 @@ namespace Journal.Models
             { "600x320", new int[2] { 600, 320 } },
             { "300x300", new int[2] { 300, 300 } },
         };
+
+        public static IDictionary<string, string> RecaptchaKeys { get; } = new Dictionary<string, string>()
+        {
+            { "publicKey", "6LcXNtMUAAAAAKzXaM9T4FiJGrOUT7xLXDkaHZ6K" },
+            { "privateKey", "6LcXNtMUAAAAAO3pTr173zysUF0r0kTfgWHy-ow8" }
+        };
     }
 }
