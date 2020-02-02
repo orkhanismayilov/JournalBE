@@ -343,3 +343,4 @@ healthchecksdb
 /Journal/Web.config
 /Journal/App_Start
 /Journal/uploads
+/Journal/Controllers/AuthoriozationController.cs
