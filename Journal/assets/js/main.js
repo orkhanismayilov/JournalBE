@@ -699,32 +699,50 @@ $(document).ready(function () {
 
     var signUpForm = $('#signup-form');
     if (signUpForm.length > 0) {
-        signUpForm.submit(function () {
-            var url = signUpForm.attr('action');
+        signUpForm.validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 20
+                },
+                password_confirmation: {
+                    required: true,
+                    equalTo: "#password"
+                }
+            },
+            success: 'valid',
+            submitHandler: function () {
+                var url = signUpForm.attr('action');
 
-            grecaptcha.execute('6LcXNtMUAAAAAKzXaM9T4FiJGrOUT7xLXDkaHZ6K', { 
-                action: 'login' 
-            }).then(function (token) {
-                $.ajax({
-                    url: url,
-                    method: postMessage,
-                    dataType: 'json',
-                    data: {
-                        'email': signUpForm.find('[name="email"]'),
-                        'password': signUpForm.find('[name="password"]'),
-                        'password_conf': signUpForm.find('[name="password_confirmation"]'),
-                        'token': token
-                    }
-                }).done(function(response) {
-                    
-                }).fail(function() {
+                grecaptcha.execute('6LcXNtMUAAAAAKzXaM9T4FiJGrOUT7xLXDkaHZ6K', {
+                    action: 'login'
+                }).then(function (token) {
+                    $.ajax({
+                        url: url,
+                        method: postMessage,
+                        dataType: 'json',
+                        data: {
+                            'email': signUpForm.find('[name="email"]'),
+                            'password': signUpForm.find('[name="password"]'),
+                            'password_conf': signUpForm.find('[name="password_confirmation"]'),
+                            'token': token
+                        }
+                    }).done(function (response) {
 
-                }).always(function() {
+                    }).fail(function () {
 
+                    }).always(function () {
+
+                    });
                 });
-            });
 
-            return false;
+                return false;
+            }
         });
     }
 

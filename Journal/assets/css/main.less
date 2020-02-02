@@ -2,6 +2,7 @@
 @import 'reset';
 @import 'fonts';
 @import 'preloader';
+@import 'mouseanim';
 
 // Variables
 @color-blue: #001e3b;
@@ -16,6 +17,11 @@
 @color-gray: #ccc;
 @color-gray-light: #dedede;
 
+@color-success: #45A164;
+@color-danger: #D16767;
+@color-warning: #E1A82D;
+@color-info: #4799EB;
+
 @header-height: 85px;
 @footer-height-fixed: 290px;
 
@@ -27,191 +33,6 @@
 @container-900: 900px;
 @container-1000: 1000px;
 @container-1200: 1200px;
-
-// Mouse Icon Animation
-@colorBg: #222a30;
-@colorOutline: #ffffff;
-@colorOutlineFade: #4e5559;
-
-@widthMouse: 45px;
-@heightMouse: 80px;
-@borderMouse: 5px;
-
-@posMouse: 8px;
-
-@sizeTrackball: 8px;
-@posTrackball: 20px;
-@shrinkTrackball: 0.4;
-
-@animDuration: 5s;
-
-@keyframes colorSlide {
-    0% {
-        background-position: 0% 100%;
-    }
-
-    20% {
-        background-position: 0% 0%;
-    }
-
-    21% {
-        background-color: @colorOutlineFade;
-    }
-
-    29.99% {
-        background-color: @colorOutline;
-        background-position: 0% 0%;
-    }
-
-    30% {
-        background-color: @colorOutlineFade;
-        background-position: 0% 100%;
-    }
-
-    50% {
-        background-position: 0% 0%;
-    }
-
-    51% {
-        background-color: @colorOutlineFade;
-    }
-
-    59% {
-        background-color: @colorOutline;
-        background-position: 0% 0%;
-    }
-
-    60% {
-        background-color: @colorOutlineFade;
-        background-position: 0% 100%;
-    }
-
-    80% {
-        background-position: 0% 0%;
-    }
-
-    81% {
-        background-color: @colorOutlineFade;
-    }
-
-    90%,
-    100% {
-        background-color: @colorOutline;
-    }
-}
-
-@keyframes trackBallSlide {
-    0% {
-        opacity: 1;
-        transform: scale(1) translateY(-@posTrackball);
-    }
-
-    6% {
-        opacity: 1;
-        transform: scale(0.9) translateY(@posTrackball/4);
-    }
-
-    14% {
-        opacity: 0;
-        transform: scale(@shrinkTrackball) translateY(@posTrackball*2);
-    }
-
-    15%,
-    19% {
-        opacity: 0;
-        transform: scale(@shrinkTrackball) translateY(-@posTrackball);
-    }
-
-    28%,
-    29.99% {
-        opacity: 1;
-        transform: scale(1) translateY(-@posTrackball);
-    }
-
-    30% {
-        opacity: 1;
-        transform: scale(1) translateY(-@posTrackball);
-    }
-
-    36% {
-        opacity: 1;
-        transform: scale(0.9) translateY(@posTrackball/4);
-    }
-
-    44% {
-        opacity: 0;
-        transform: scale(@shrinkTrackball) translateY(@posTrackball*2);
-    }
-
-    45%,
-    49% {
-        opacity: 0;
-        transform: scale(@shrinkTrackball) translateY(-@posTrackball);
-    }
-
-    58%,
-    59.99% {
-        opacity: 1;
-        transform: scale(1) translateY(-@posTrackball);
-    }
-
-    60% {
-        opacity: 1;
-        transform: scale(1) translateY(-@posTrackball);
-    }
-
-    66% {
-        opacity: 1;
-        transform: scale(0.9) translateY(@posTrackball/4);
-    }
-
-    74% {
-        opacity: 0;
-        transform: scale(@shrinkTrackball) translateY(@posTrackball*2);
-    }
-
-    75%,
-    79% {
-        opacity: 0;
-        transform: scale(@shrinkTrackball) translateY(-@posTrackball);
-    }
-
-    88%,
-    100% {
-        opacity: 1;
-        transform: scale(1) translateY(-@posTrackball);
-    }
-}
-
-@keyframes nudgeMouse {
-    0% {
-        transform: translateY(0);
-    }
-
-    20% {
-        transform: translateY(@posMouse);
-    }
-
-    30% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(@posMouse);
-    }
-
-    60% {
-        transform: translateY(0);
-    }
-
-    80% {
-        transform: translateY(@posMouse);
-    }
-
-    90% {
-        transform: translateY(0);
-    }
-}
 
 // General CSS
 *,
@@ -465,9 +286,19 @@ ul {
 // Form Group
 .form-group {
     margin-bottom: 30px;
+    position: relative;
 
     label {
         display: block;
+
+        &.error{
+            position: absolute;
+            top: 100%;
+            left: 0;
+            color: @color-danger;
+            font-size: .85rem;
+            line-height: 1.75;
+        }
     }
 }
 
@@ -477,6 +308,14 @@ ul {
     border: none;
     box-shadow: none;
     outline: none;
+
+    &.valid{
+        border-color: @color-success !important;
+    }
+
+    &.error{
+        border-color: @color-danger !important;
+    }
 }
 
 // Particles

@@ -19,7 +19,7 @@ namespace Journal.Models
         {
             this.ArticlesAuthors = new HashSet<ArticlesAuthor>();
             this.Comments = new HashSet<Comment>();
-            this.SubscriptionsToMe = new HashSet<Subscription>();
+            this.SubscriptionsTo = new HashSet<Subscription>();
             this.Subscriptions = new HashSet<Subscription>();
         }
     
@@ -51,7 +51,7 @@ namespace Journal.Models
         public virtual Country Country { get; set; }
         public virtual EducationLevel EducationLevel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Subscription> SubscriptionsToMe { get; set; }
+        public virtual ICollection<Subscription> SubscriptionsTo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subscription> Subscriptions { get; set; }
         public virtual University University { get; set; }

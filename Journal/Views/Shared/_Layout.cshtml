@@ -605,6 +605,13 @@
         }
     }
 
+    @{
+        if (ViewBag.useValidation == true)
+        {
+            <script src="~/assets/js/jquery.validate.min.js"></script>
+        }
+    }
+
     <script src="https://www.google.com/recaptcha/api.js?render=@Globals.RecaptchaKeys["publicKey"]"></script>
 
     <script src="~/assets/js/swiper.min.js"></script>

@@ -252,6 +252,7 @@
     <Compile Include="Models\UserGroup.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewAuth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -349,6 +350,7 @@
     <Content Include="assets\css\hamburgers.css" />
     <Content Include="assets\css\hamburgers.min.css" />
     <Content Include="assets\css\main.css" />
+    <Content Include="assets\css\mouseanim.css" />
     <Content Include="assets\css\preloader.css" />
     <Content Include="assets\css\reset.css" />
     <Content Include="assets\css\simplebar.css" />
@@ -438,8 +440,8 @@
     <Content Include="assets\js\swiper.min.js" />
     <Content Include="assets\js\TweenMax.js" />
     <Content Include="assets\js\TweenMax.min.js" />
-    <Content Include="assets\js\validation_localization\messages_az.js" />
-    <Content Include="assets\js\validation_localization\messages_az.min.js" />
+    <Content Include="assets\js\validation_langs\messages_az.js" />
+    <Content Include="assets\js\validation_langs\messages_az.min.js" />
     <Content Include="assets\logo\journal_logo_black.svg" />
     <Content Include="assets\logo\journal_logo_blue.svg" />
     <Content Include="assets\logo\journal_logo_white.svg" />
@@ -573,6 +575,8 @@
     <Content Include="assets\admin\js\ckeditor5\README.md" />
     <Content Include="Areas\Admin\Views\Articles\Test.cshtml" />
     <Content Include="Areas\Admin\Views\Articles\Index.cshtml" />
+    <Content Include="assets\css\mouseanim.less" />
+    <Content Include="assets\css\mouseanim.css.map" />
     <None Include="packages.config" />
     <Content Include="Views\Category\Category.cshtml" />
     <Content Include="Views\Authorization\Authorization.cshtml" />

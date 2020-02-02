@@ -1575,15 +1575,30 @@ ul {
 }
 .form-group {
   margin-bottom: 30px;
+  position: relative;
 }
 .form-group label {
   display: block;
+}
+.form-group label.error {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: #D16767;
+  font-size: 0.85rem;
+  line-height: 1.75;
 }
 .form-control {
   display: block;
   border: none;
   box-shadow: none;
   outline: none;
+}
+.form-control.valid {
+  border-color: #45A164 !important;
+}
+.form-control.error {
+  border-color: #D16767 !important;
 }
 #particles {
   width: 100%;
