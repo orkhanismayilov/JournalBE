@@ -344,3 +344,4 @@ healthchecksdb
 /Journal/App_Start
 /Journal/uploads
 /Journal/Controllers/AuthoriozationController.cs
+/Journal/Controllers/AuthorizationController.cs
