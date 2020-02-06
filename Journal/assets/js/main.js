@@ -697,6 +697,7 @@ $(document).ready(function () {
         });
     }
 
+    // SignUp Form Validation and Submission
     var signUpForm = $('#signup-form');
     if (signUpForm.length > 0) {
         signUpForm.validate({
@@ -730,6 +731,51 @@ $(document).ready(function () {
                             'email': signUpForm.find('[name="email"]'),
                             'password': signUpForm.find('[name="password"]'),
                             'password_conf': signUpForm.find('[name="password_confirmation"]'),
+                            'token': token
+                        }
+                    }).done(function (response) {
+
+                    }).fail(function () {
+
+                    }).always(function () {
+
+                    });
+                });
+
+                return false;
+            }
+        });
+    }
+
+    // Login Form Validation and Submission
+    var loginForm = $('#login-form');
+    if(loginForm.length > 0) {
+        loginForm.validate({
+            rules: {
+                login_email: {
+                    required: true,
+                    email: true
+                },
+                login_password: {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 20
+                }
+            },
+            success: 'valid',
+            submitHandler: function () {
+                var url = loginForm.attr('action');
+
+                grecaptcha.execute('6LcXNtMUAAAAAKzXaM9T4FiJGrOUT7xLXDkaHZ6K', {
+                    action: 'login'
+                }).then(function (token) {
+                    $.ajax({
+                        url: url,
+                        method: postMessage,
+                        dataType: 'json',
+                        data: {
+                            'email': signUpForm.find('[name="email"]'),
+                            'password': signUpForm.find('[name="password"]'),
                             'token': token
                         }
                     }).done(function (response) {
@@ -788,9 +834,7 @@ $(window).on('load', function () {
     if ($(window).width() > 1024) {
         var particlesContainer = $('#particles');
         if (particlesContainer.length > 0) {
-            particlesJS.load('particles', 'assets/js/particles.json', function () {
-                // console.log('callback - particles.js config loaded');
-            });
+            particlesJS.load('particles', '../assets/js/particles.json');
         }
     }
 });

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Journal.Models
+namespace JournalProject.Models
 {
     using System;
     using System.Data.Entity;

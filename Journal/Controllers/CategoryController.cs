@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Journal.Models;
+using JournalProject.Models;
 
-namespace Journal.Controllers
+namespace JournalProject.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
         // GET: Category
         public ActionResult Category(int id)

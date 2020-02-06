@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Journal.Controllers
+namespace JournalProject.Controllers
 {
-    public class IssuesController : Controller
+    public class IssuesController : BaseController
     {
         // GET: Issue
         public ActionResult Issue(int id)

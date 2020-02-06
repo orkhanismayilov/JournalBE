@@ -1,7 +1,7 @@
-﻿using Journal.Models;
+﻿using JournalProject.Models;
 using System.Collections.Generic;
 
-namespace Journal.Areas.Admin.Models
+namespace JournalProject.Areas.Admin.Models
 {
     public class ViewCategories
     {

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Journal.Areas.Admin
+namespace JournalProject.Areas.Admin
 {
     public class AdminAreaRegistration : AreaRegistration
     {

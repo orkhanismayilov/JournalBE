@@ -2250,6 +2250,7 @@ ul {
 }
 #header .lang-switcher .lang-item {
   position: relative;
+  order: 1;
 }
 #header .lang-switcher .lang-item:before {
   content: '';
@@ -2261,12 +2262,16 @@ ul {
   background: #0080ff;
   transition: all 0.2s;
 }
+#header .lang-switcher .lang-item.active {
+  order: 0;
+}
 #header .lang-switcher .lang-link {
   display: block;
   width: 40px;
   padding: 10px 0;
   color: #fff;
   text-align: center;
+  text-transform: uppercase;
   transition: all 0.2s;
 }
 #header .lang-switcher .lang-link:hover {

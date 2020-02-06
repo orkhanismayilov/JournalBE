@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Journal.Models;
+using JournalProject.Models;
 
-namespace Journal.Areas.Admin.Models
+namespace JournalProject.Areas.Admin.Models
 {
     public class ViewJournals
     {

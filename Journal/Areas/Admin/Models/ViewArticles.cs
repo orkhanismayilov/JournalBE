@@ -1,8 +1,8 @@
-﻿using Journal.Models;
+﻿using JournalProject.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Journal.Areas.Admin.Models
+namespace JournalProject.Areas.Admin.Models
 {
     public class ViewArticles
     {

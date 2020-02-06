@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Text.RegularExpressions;
-using Journal.Models;
-using Journal.Areas.Admin.Models;
+using JournalProject.Models;
+using JournalProject.Areas.Admin.Models;
 
-namespace Journal.Areas.Admin.Controllers
+namespace JournalProject.Areas.Admin.Controllers
 {
     public class CategoriesController : Controller
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Journal.Models
+namespace JournalProject.Models
 {
     public class ViewAuth
     {
@@ -12,6 +12,8 @@ namespace Journal.Models
 
         }
 
+        public string Email { get; set; } = "";
+        public string Token { get; set; } = "";
         public string ErrorMsg { get; set; } = "";
     }
 }

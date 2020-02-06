@@ -154,6 +154,7 @@
     <Compile Include="Areas\Admin\Models\ViewTags.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\AuthorizationController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IssuesController.cs" />
@@ -234,9 +235,12 @@
     <Compile Include="Models\JournalArticle.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Languages.cs" />
     <Compile Include="Models\Podcast.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\SignUpModel.cs" />
     <Compile Include="Models\Subscription.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -254,6 +258,16 @@
     </Compile>
     <Compile Include="Models\ViewAuth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resource.en.Designer.cs">
+      <DependentUpon>Resource.en.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\admin\css\bootstrap.css" />
@@ -457,6 +471,12 @@
       <DependentUpon>Database.edmx</DependentUpon>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\Authorization\images\bg_password.gif" />
+    <Content Include="Views\Authorization\images\facebook2x.png" />
+    <Content Include="Views\Authorization\images\illo.png" />
+    <Content Include="Views\Authorization\images\instagram2x.png" />
+    <Content Include="Views\Authorization\images\journal_logo_blue.svg" />
+    <Content Include="Views\Authorization\images\twitter2x.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -475,6 +495,7 @@
     <Folder Include="Areas\Admin\Views\Media\" />
     <Folder Include="uploads\docs\" />
     <Folder Include="uploads\images\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\fonts.css.map" />
@@ -585,10 +606,21 @@
     <Content Include="Views\Article\Article.cshtml" />
     <Content Include="Views\User\User.cshtml" />
     <None Include="Properties\PublishProfiles\Journal Debug.pubxml" />
+    <Content Include="Views\Authorization\ConfirmationMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

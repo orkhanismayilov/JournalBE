@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Journal.Models;
-using Journal.Areas.Admin.Models;
+using JournalProject.Models;
+using JournalProject.Areas.Admin.Models;
 
-namespace Journal.Areas.Admin.Controllers
+namespace JournalProject.Areas.Admin.Controllers
 {
     public class ArticlesController : Controller
     {

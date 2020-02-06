@@ -1,4 +1,4 @@
-﻿@using Journal.Models
+﻿@using JournalProject.Models
 
 <!DOCTYPE html>
 <html lang="en">
@@ -440,12 +440,17 @@
         <!-- Lang Switcher -->
         <div class="lang-switcher">
             <ul class="langs">
-                <li class="lang-item active">
-                    <a class="lang-link" href="#">EN</a>
-                </li>
-                <li class="lang-item">
-                    <a class="lang-link" href="#">AZ</a>
-                </li>
+                @foreach (var lang in Languages.LanguagesList)
+                {
+                    string active = null;
+                    if(Culture.Contains(lang.Code))
+                    {
+                        active = "active";
+                    }
+                    <li class="lang-item @active">
+                        <a class="lang-link" href="@lang.Link">@lang.Code</a>
+                    </li>
+                }
             </ul>
         </div>
 
@@ -454,7 +459,7 @@
             {
                 <!-- User -->
                 <div class="user-info">
-                    <a href="/auth#login" class="btn btn-login"><i class="fal fa-sign-in-alt"></i> Log In</a>
+                    <a href="/auth#login" class="btn btn-login"><i class="fal fa-sign-in-alt"></i> @JournalProject.Resource.Login</a>
                 </div>
             }
         }

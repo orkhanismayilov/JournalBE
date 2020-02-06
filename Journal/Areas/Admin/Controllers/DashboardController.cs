@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Journal.Areas.Admin.Controllers
+namespace JournalProject.Areas.Admin.Controllers
 {
     public class DashboardController : Controller
     {

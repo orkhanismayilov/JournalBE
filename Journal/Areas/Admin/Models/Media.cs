@@ -5,9 +5,9 @@ using System.IO;
 using SoundInTheory.DynamicImage;
 using SoundInTheory.DynamicImage.Layers;
 using SoundInTheory.DynamicImage.Filters;
-using Journal.Models;
+using JournalProject.Models;
 
-namespace Journal.Areas.Admin.Models
+namespace JournalProject.Areas.Admin.Models
 {
     public class Media
     {

@@ -291,7 +291,7 @@ ul {
     label {
         display: block;
 
-        &.error{
+        &.error {
             position: absolute;
             top: 100%;
             left: 0;
@@ -309,12 +309,12 @@ ul {
     box-shadow: none;
     outline: none;
 
-    &.valid{
-        border-color: @color-success !important;
+    &.valid {
+        border-color: @color-success  !important;
     }
 
-    &.error{
-        border-color: @color-danger !important;
+    &.error {
+        border-color: @color-danger  !important;
     }
 }
 
@@ -1168,6 +1168,7 @@ ul {
 
         .lang-item {
             position: relative;
+            order: 1;
 
             &:before {
                 content: '';
@@ -1179,6 +1180,10 @@ ul {
                 background: @color-blue-light;
                 transition: @transition-2ms;
             }
+
+            &.active{
+                order: 0;
+            }
         }
 
         .lang-link {
@@ -1187,6 +1192,7 @@ ul {
             padding: 10px 0;
             color: #fff;
             text-align: center;
+            text-transform: uppercase;
             transition: @transition-2ms;
 
             &:hover {
