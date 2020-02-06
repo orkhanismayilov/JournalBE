@@ -345,3 +345,4 @@ healthchecksdb
 /Journal/uploads
 /Journal/Controllers/AuthoriozationController.cs
 /Journal/Controllers/AuthorizationController.cs
+/Journal/Filters
