@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using JournalProject.Models;
 using JournalProject.Areas.Admin.Models;
+using JournalProject.Filters;
 
 namespace JournalProject.Areas.Admin.Controllers
 {
+    [AdminAuth]
     public class ArticlesController : Controller
     {
         JournalEntities db = new JournalEntities();

@@ -496,7 +496,6 @@
     <Folder Include="Areas\Admin\Views\Media\" />
     <Folder Include="uploads\docs\" />
     <Folder Include="uploads\images\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\fonts.css.map" />

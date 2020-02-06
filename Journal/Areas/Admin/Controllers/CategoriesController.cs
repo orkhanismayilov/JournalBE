@@ -6,9 +6,11 @@ using System.Web.Mvc;
 using System.Text.RegularExpressions;
 using JournalProject.Models;
 using JournalProject.Areas.Admin.Models;
+using JournalProject.Filters;
 
 namespace JournalProject.Areas.Admin.Controllers
 {
+    [AdminAuth]
     public class CategoriesController : Controller
     {
         JournalEntities db = new JournalEntities();
