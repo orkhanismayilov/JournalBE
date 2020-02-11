@@ -259,7 +259,8 @@
           <Property Name="job_title" Type="nvarchar" MaxLength="256" />
           <Property Name="reg_date" Type="datetime" />
           <Property Name="last_login_date" Type="datetime" />
-          <Property Name="token" Type="varchar" MaxLength="32" />
+          <Property Name="token" Type="nvarchar" MaxLength="512" />
+          <Property Name="status" Type="tinyint" Nullable="false" />
         </EntityType>
         <Association Name="FK_Articles_Images">
           <End Role="Images" Type="Self.Images" Multiplicity="0..1" />
@@ -1203,7 +1204,7 @@
           <Property Name="job_title" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="reg_date" Type="DateTime" Precision="3" />
           <Property Name="last_login_date" Type="DateTime" Precision="3" />
-          <Property Name="token" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="token" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ArticlesAuthors" Relationship="JournalModel.FK_ArticlesAuthors_Users" FromRole="User" ToRole="ArticlesAuthor" />
           <NavigationProperty Name="Comments" Relationship="JournalModel.FK_Comments_Users" FromRole="User" ToRole="Comment" />
           <NavigationProperty Name="Country" Relationship="JournalModel.FK_Users_Countries" FromRole="User" ToRole="Country" />
@@ -1212,6 +1213,7 @@
           <NavigationProperty Name="Subscriptions" Relationship="JournalModel.FK_Subscriptions_Users" FromRole="User" ToRole="Subscription" />
           <NavigationProperty Name="University" Relationship="JournalModel.FK_Users_Universities" FromRole="User" ToRole="University" />
           <NavigationProperty Name="UserGroup" Relationship="JournalModel.FK_Users_UserGroups" FromRole="User" ToRole="UserGroup" />
+          <Property Name="status" Type="Byte" Nullable="false" />
         </EntityType>
         <Association Name="FK_Articles_Images">
           <End Type="JournalModel.Image" Role="Image" Multiplicity="0..1" />
@@ -1825,6 +1827,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="JournalModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="token" ColumnName="token" />
                 <ScalarProperty Name="last_login_date" ColumnName="last_login_date" />
                 <ScalarProperty Name="reg_date" ColumnName="reg_date" />

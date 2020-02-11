@@ -25,7 +25,7 @@ namespace JournalProject.Models
             return LanguagesList[0].Code;
         }
 
-        public void SetLanguage(string lang)
+        public bool SetLanguage(string lang)
         {
             try
             {
@@ -34,11 +34,18 @@ namespace JournalProject.Models
                     var cultureInfo = new CultureInfo(lang);
                     Thread.CurrentThread.CurrentUICulture = cultureInfo;
                     Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cultureInfo.Name);
+                    Globals.Lang = lang;
+
+                    return true;
+                } 
+                else
+                {
+                    return false;
                 }
             }
             catch (Exception)
             {
-
+                return false;
             }
         }
     }

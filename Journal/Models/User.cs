@@ -43,6 +43,7 @@ namespace JournalProject.Models
         public Nullable<System.DateTime> reg_date { get; set; }
         public Nullable<System.DateTime> last_login_date { get; set; }
         public string token { get; set; }
+        public byte status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArticlesAuthor> ArticlesAuthors { get; set; }

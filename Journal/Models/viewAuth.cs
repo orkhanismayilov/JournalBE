@@ -12,8 +12,7 @@ namespace JournalProject.Models
 
         }
 
-        public string Email { get; set; } = "";
-        public string Token { get; set; } = "";
+        public string VerifyLink { get; set; } = "";
         public string ErrorMsg { get; set; } = "";
     }
 }

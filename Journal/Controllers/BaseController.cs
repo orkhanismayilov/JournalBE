@@ -18,7 +18,9 @@ namespace JournalProject.Controllers
                 lang = HttpContext.Request.RequestContext.RouteData.Values["lang"].ToString();
             }
 
-            new Languages().SetLanguage(lang);
+            if (!new Languages().SetLanguage(lang)) {
+                Response.Redirect("/");
+            };
             return base.BeginExecuteCore(callback, state);
         }
     }

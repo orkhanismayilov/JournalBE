@@ -445,7 +445,7 @@
                 @foreach (var lang in Languages.LanguagesList)
                 {
                     string active = null;
-                    if(Culture.Contains(lang.Code))
+                    if(Globals.Lang == lang.Code)
                     {
                         active = "active";
                     }

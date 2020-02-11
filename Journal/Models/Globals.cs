@@ -10,11 +10,9 @@ namespace JournalProject.Models
 {
     public static class Globals
     {
-        static Globals()
-        {
+        static Globals() { }
 
-        }
-
+        public static string Lang { get; set; } = "az";
         public static string ProjectTitle { get; } = "Journal";
         public static string AdminTitle { get; } = "Journal Admin Panel";
         public static string ProjectURL { get; } = "https://www.3031313.xyz";
@@ -36,6 +34,21 @@ namespace JournalProject.Models
         {
             { "publicKey", "6LcXNtMUAAAAAKzXaM9T4FiJGrOUT7xLXDkaHZ6K" },
             { "privateKey", "6LcXNtMUAAAAAO3pTr173zysUF0r0kTfgWHy-ow8" }
+        };
+
+        public static string NoReplyEmail { get; } = "no-reply@3031313.xyz";
+        public static System.Net.NetworkCredential NoReplyCredentials { get; } = new System.Net.NetworkCredential
+        {
+            UserName = "no-reply@3031313.xyz",
+            Password = "@Z@syeD8JMj@34@"
+        };
+        public static System.Net.Mail.SmtpClient SMTP { get; } = new System.Net.Mail.SmtpClient { 
+            Host = "smtp.yandex.ru",
+            Port = 587,
+            EnableSsl = true,
+            DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
+            UseDefaultCredentials = false,
+            Credentials = NoReplyCredentials
         };
     }
 }

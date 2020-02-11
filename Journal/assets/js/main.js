@@ -725,20 +725,20 @@ $(document).ready(function () {
                 }).then(function (token) {
                     $.ajax({
                         url: url,
-                        method: postMessage,
+                        method: 'post',
                         dataType: 'json',
                         data: {
-                            'email': signUpForm.find('[name="email"]'),
-                            'password': signUpForm.find('[name="password"]'),
-                            'password_conf': signUpForm.find('[name="password_confirmation"]'),
-                            'token': token
+                            email: signUpForm.find('[name="email"]').val(),
+                            password: signUpForm.find('[name="password"]').val(),
+                            passwordConfirmation: signUpForm.find('[name="password_confirmation"]').val(),
+                            token: token
                         }
                     }).done(function (response) {
-
+                        console.log(response);
                     }).fail(function () {
-
+                        console.log('fail');
                     }).always(function () {
-
+                        console.log('always')
                     });
                 });
 
@@ -749,7 +749,7 @@ $(document).ready(function () {
 
     // Login Form Validation and Submission
     var loginForm = $('#login-form');
-    if(loginForm.length > 0) {
+    if (loginForm.length > 0) {
         loginForm.validate({
             rules: {
                 login_email: {
