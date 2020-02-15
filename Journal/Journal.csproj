@@ -443,6 +443,7 @@
     <Content Include="assets\js\jquery.validate.js" />
     <Content Include="assets\js\jquery.validate.min.js" />
     <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\main.min.js" />
     <Content Include="assets\js\particles.js" />
     <Content Include="assets\js\particles.min.js" />
     <Content Include="assets\js\scrollmagic.js" />
@@ -472,12 +473,12 @@
       <DependentUpon>Database.edmx</DependentUpon>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\Authorization\images\bg_password.gif" />
-    <Content Include="Views\Authorization\images\facebook2x.png" />
-    <Content Include="Views\Authorization\images\illo.png" />
-    <Content Include="Views\Authorization\images\instagram2x.png" />
-    <Content Include="Views\Authorization\images\journal_logo_blue.svg" />
-    <Content Include="Views\Authorization\images\twitter2x.png" />
+    <Content Include="assets\email_assets\bg_password.gif" />
+    <Content Include="assets\email_assets\facebook2x.png" />
+    <Content Include="assets\email_assets\illo.png" />
+    <Content Include="assets\email_assets\instagram2x.png" />
+    <Content Include="assets\email_assets\journal_logo_blue.svg" />
+    <Content Include="assets\email_assets\twitter2x.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -606,6 +607,8 @@
     <Content Include="Views\User\User.cshtml" />
     <None Include="Properties\PublishProfiles\Journal Debug.pubxml" />
     <Content Include="Views\Authorization\ConfirmationMail.cshtml" />
+    <Content Include="Views\Authorization\InvalidVerificationLink.cshtml" />
+    <Content Include="Views\Authorization\ContinueRegistration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace JournalProject.Models
 {
@@ -42,7 +39,8 @@ namespace JournalProject.Models
             UserName = "no-reply@3031313.xyz",
             Password = "@Z@syeD8JMj@34@"
         };
-        public static System.Net.Mail.SmtpClient SMTP { get; } = new System.Net.Mail.SmtpClient { 
+        public static System.Net.Mail.SmtpClient SMTP { get; } = new System.Net.Mail.SmtpClient
+        {
             Host = "smtp.yandex.ru",
             Port = 587,
             EnableSsl = true,
@@ -50,5 +48,38 @@ namespace JournalProject.Models
             UseDefaultCredentials = false,
             Credentials = NoReplyCredentials
         };
+
+        public static async Task<bool> VerifyRecaptcha(string token)
+        {
+            IDictionary<string, string> postData = new Dictionary<string, string>
+            {
+                { "secret", RecaptchaKeys["privateKey"] },
+                { "response", token }
+            };
+
+            HttpClient httpClient = new HttpClient();
+
+            var content = new FormUrlEncodedContent(postData);
+            var response = await httpClient.PostAsync("https://www.google.com/recaptcha/api/siteverify", content);
+
+            string result;
+            if (response.IsSuccessStatusCode)
+            {
+                result = await response.Content.ReadAsStringAsync();
+
+                JObject json = JObject.Parse(result);
+
+                if (json.Value<bool>("success"))
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+            return false;
+        }
     }
 }

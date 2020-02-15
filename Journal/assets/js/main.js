@@ -734,11 +734,29 @@ $(document).ready(function () {
                             token: token
                         }
                     }).done(function (response) {
-                        console.log(response);
+                        if (response.type == 'error') {
+                            Swal.fire({
+                                title: 'Oops!',
+                                html: response.errorMsg,
+                                icon: 'error'
+                            });
+                        } else if (response.type == 'success') {
+                            Swal.fire({
+                                title: response.successTitle,
+                                html: response.successMsg,
+                                icon: 'success'
+                            });
+
+                            signUpForm[0].reset();
+                        }
                     }).fail(function () {
-                        console.log('fail');
+                        Swal.fire({
+                            title: 'Oops!',
+                            html: response.errorMsg,
+                            icon: 'error'
+                        });
                     }).always(function () {
-                        console.log('always')
+                        console.log('always');
                     });
                 });
 

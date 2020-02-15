@@ -23,8 +23,15 @@
 
     <link rel="stylesheet" href="~/assets/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="~/assets/css/hamburgers.min.css">
-    <link rel="stylesheet" href="~/assets/css/sweetalert2.min.css">
     <link rel="stylesheet" href="~/assets/css/swiper.min.css">
+
+    @{
+        if (ViewBag.useSweetAlert == true)
+        {
+            <link rel="stylesheet" href="~/assets/css/sweetalert2.min.css">
+        }
+    }
+
     <link rel="stylesheet" href="~/assets/css/main.css">
 </head>
 
@@ -445,7 +452,7 @@
                 @foreach (var lang in Languages.LanguagesList)
                 {
                     string active = null;
-                    if(Globals.Lang == lang.Code)
+                    if (Globals.Lang == lang.Code)
                     {
                         active = "active";
                     }
@@ -616,6 +623,13 @@
         if (ViewBag.useValidation == true)
         {
             <script src="~/assets/js/jquery.validate.min.js"></script>
+        }
+    }
+
+    @{
+        if (ViewBag.useSweetAlert == true)
+        {
+            <script src="~/assets/js/sweetalert2.all.min.js"></script>
         }
     }
 
